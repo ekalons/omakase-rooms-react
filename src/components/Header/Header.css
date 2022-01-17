@@ -13,17 +13,19 @@
 .header__logo {
     height: 24px;
     width: 100px;
-    margin-top: 7px;
+    margin-left: 10px;
 }
 
 .header__center {
+    background-color: transparent;
     flex: 1;
     display: flex;
     justify-content: center;
 }
 .header__center p {
+    background-color: transparent;
     margin: 10px;
-
+    margin-right: 20px;
 }
 
 .header__right {
