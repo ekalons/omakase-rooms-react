@@ -8,8 +8,10 @@ const Header = () => {
                 <h1>お任せ</h1>
             </div>
             <div className="header__center">
-                <p>What is omakase?</p>
-                <p>Rooms</p>
+                <nav>
+                    <a href="../App/App">Home</a>
+                    <a href="../Visualizer/Visualizer">Rooms</a>
+                </nav>
             </div>
             <div className="header__right">
                 <p>{/*dark mode icon will go here*/}</p>

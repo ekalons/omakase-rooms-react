@@ -14,6 +14,10 @@
     height: 24px;
     width: 100px;
     margin-left: 10px;
+    background: transparent;
+}
+.header__logo h1 {
+    background: transparent;
 }
 
 .header__center {
@@ -22,15 +26,46 @@
     display: flex;
     justify-content: center;
 }
-.header__center p {
-    background-color: transparent;
-    margin: 10px;
-    margin-right: 20px;
-}
 
 .header__right {
     display: flex;
     justify-content: flex-end;
-
 }
 
+nav {
+    height: 20px;
+    width: 350px;
+    min-width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+    background: transparent;
+}
+
+a {
+    position: relative;
+    text-decoration: none;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    padding: 0 10px;
+    color: #393c41;
+    background: transparent;
+    left: -65px;
+}
+a:after{
+    content: "";
+    position: absolute;
+    background-color: #393c41;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.3s;
+}
+a:hover {
+    color: #676a6f;
+}
+a:hover:after {
+    width: 100%;
+}
