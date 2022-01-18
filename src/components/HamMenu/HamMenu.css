@@ -1,0 +1,38 @@
+
+.hamburger {
+    height: 20px;
+    width: 20px;
+    right: 500px;
+    background-color: transparent;
+    border: 0;
+    font-size: 20px;
+    color: #000000;
+    cursor: pointer;
+    display: none;
+    position: absolute;
+
+}
+.hamburger:hover {
+    color: #323c41;
+}
+.hamburgerIcon {
+    background-color: transparent;
+}
+
+@media (max-width: 1250px) and (min-width: 985px) {
+    .hamburger {
+        display: none;
+    }
+}
+
+@media (max-width: 984px) and (min-width: 721px) {
+    .hamburger {
+        display: none;
+    }
+
+}
+@media (max-width: 720px) {
+    .hamburger {
+        display: contents;
+    }
+}

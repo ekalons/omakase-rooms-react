@@ -23,7 +23,7 @@ function App() {
                 />
                 <Item
                     title="Rooms"
-                    description="Omakase's are typically small restaurants and most times on the counter. They offer an intimate dining experience"
+                    description="Omakase restaurants are typically referred to as rooms, due to their limited size. They offer a quiet and intimate dining experience."
                     backgroundImg={Room}
                     backgroundColor="#F8F7F4"
                     photoLeft={true}
@@ -31,7 +31,7 @@ function App() {
                 />
                 <Item
                     title="Counter"
-                    description="They are usually in counters because the chef can manage the temperature of the food and ask you whether you like the dishes, in order to decide what to serve next"
+                    description="Dishes are usually served in counters. It allows the chef to accurately manage food temperature as well as to observe your reactions"
                     backgroundImg={Chef}
                     backgroundColor="#F3EEE8"
                     photoLeft={false}
