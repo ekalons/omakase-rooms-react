@@ -4,12 +4,11 @@ import './NavBar.css';
 const NavBar = () => {
     return (
         <div>
-            <nav className="navBar">
-                    <a href="../App/App">Home</a>
-                    <a href="../Visualizer/Visualizer">Rooms</a>
-            </nav>
+            <ul className="navBar">
+                <li><a href="../App/App">Home</a></li>
+                <li><a href="../Visualizer/Visualizer">Rooms</a></li>
+            </ul>
         </div>
-
         )
 }
 
