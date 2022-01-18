@@ -27,18 +27,19 @@
     width: 40%;
     height: 50%;
     position: relative;
-    top: 47.5%;
-    transform: translateY(-75%);
+    top: 52.5%;
     left: 10%;
     transform: translateX(-90%);
 
 }
 
+
 .item__title {
-    height: 50px;
+    height: 65px;
     display: flex;
     flex-direction: column;
-    font-size: 34px;
+    font-size: 48px;
+    font-weight: 300;
     color: #393c41;
     align-items: flex-start;
     flex: 1;
@@ -48,18 +49,16 @@
 
 .item__description {
     font-weight: 200;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 
 .item__photo {
-    width: 450px;
-    height: 450px;
+    width: 480px;
+    height: 500px;
     position: relative;
     top: -5%;
-    /*transform: translateY(-75%);*/
-    left: 45%;
-    transform: translateX(-65%);
+    left: 20%;
     margin: 10px;
 }
 
@@ -68,4 +67,28 @@
     width: 100%;
     border-radius: 6%;
 }
+
+/* Only when photoLeft is true */
+.item__detailsLeft {
+    width: 40%;
+    height: 50%;
+    position: relative;
+    top: 48.5%;
+    left: 25%;
+
+}
+.item__photoLeft {
+    width: 480px;
+    height: 500px;
+    position: relative;
+    top: -5%;
+    left: -25%;
+    margin: 10px;
+}
+.item__photoLeft img {
+    height: 95%;
+    width: 100%;
+    border-radius: 6%;
+}
+
 
