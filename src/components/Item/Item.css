@@ -91,4 +91,29 @@
     border-radius: 6%;
 }
 
+@media (max-width: 720px) {
+    .item__photo, .item__photoLeft {
+        width: 380px;
+        height: 400px;
+        top: 15%;
+        left: 0%;
+    }
 
+    .item__details, .item__detailsLeft {
+        width: 350px;
+        height: 180px;
+        top: 7.5%;
+        left: 0%;
+        transform: translateX(0%);
+
+
+    }
+
+    .item__title {
+        font-size: 35px;
+    }
+    .item__description {
+        font-size: 23px;
+    }
+
+}
