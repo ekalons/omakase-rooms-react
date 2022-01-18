@@ -106,7 +106,6 @@
         left: 0%;
         transform: translateX(0%);
 
-
     }
 
     .item__title {
@@ -116,4 +115,34 @@
         font-size: 23px;
     }
 
+}
+
+@media (min-width: 985px) and (max-width: 1250px) {
+    .item__photo {
+        width: 432px;
+        height: 450px;
+        left: 26.5%;
+
+    }
+
+    .item__photoLeft {
+        width: 432px;
+        height: 450px;
+    }
+    .item__detailsLeft {
+        left: 29%;
+    }
+    .item__details {
+        width: 380px;
+        height: 180px;
+        left: 10%;
+        transform: translateX(-90%);
+    }
+
+    .item__title {
+        font-size: 45px;
+    }
+    .item__description {
+        font-size: 26px;
+    }
 }
