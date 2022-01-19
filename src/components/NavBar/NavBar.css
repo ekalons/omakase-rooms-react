@@ -104,6 +104,10 @@ a {
         color: #F3EEE8;
     }
 
+    ul li a:hover {
+        color: #C2BEB9;
+    }
+
 }
 
 
