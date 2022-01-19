@@ -6,14 +6,14 @@
     background-color: transparent;
     border: 0;
     font-size: 20px;
-    color: #000000;
+    color: #F3EEE8;
     cursor: pointer;
     display: none;
     position: absolute;
 
 }
 .hamburger:hover {
-    color: #191919;
+    color: #C2BEB9;
 }
 .hamburgerIcon {
     background-color: transparent;
