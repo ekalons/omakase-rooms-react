@@ -55,6 +55,8 @@ a {
     }
 
     .hamButtonContainer {
+        height: 12px;
+        width: 24px;
         display: flex;
         background-color: transparent;
         justify-content: flex-end;

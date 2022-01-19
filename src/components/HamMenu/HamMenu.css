@@ -1,65 +1,47 @@
 .buttonContainer {
-    background-color: transparent;
-    display: flex;
-    position: relative;
-}
-
-.adjustPosition {
-    position: relative;
-    right: 15.5%;
-    top: 2.5px;
-}
-
-.hamburger {
     height: 20px;
     width: 20px;
-    right: 500px;
     background-color: transparent;
-    border: 0;
-    font-size: 20px;
-    color: #F3EEE8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hamburgerMenu {
+    height: 1.5rem;
+    width: 4rem;
+    background: transparent;
     cursor: pointer;
-    display: none;
+}
+
+.hamburgerMenu.cross #bar1 {
+    top: 50%;
+    transform: rotate(-45deg);
+}
+
+.hamburgerMenu.cross #bar2 {
+    top: 50%;
+    transform: rotate(45deg);
+}
+
+.bar {
     position: absolute;
+    height: 2px;
+    width: 100%;
+    background: #F3EEE8;
+    border-radius: 5px;
+    transition: top 150ms ease-in-out 150ms, transform 150ms ease-in-out;
 }
 
-.close {
-    font-size: 15px;
-    color: #F3EEE8;
-    cursor: pointer;
+#bar1 {
+    top: 27.5%;
 }
 
-.hamburger:hover, .close:hover {
-    color: #C2BEB9;
-}
-.hamburgerIcon, .closeIcon {
-    background-color: transparent;
+#bar2 {
+    top: 95%;
 }
 
-
-@media (max-width: 1250px) and (min-width: 985px) {
-    .hamburger {
-        display: none;
-    }
-    .close {
-        display: none;
-    }
+.hamburgerMenu.cross .bar {
+    transition: top 150ms ease-in-out, transform 150ms ease-in-out 150ms;
 }
 
-@media (max-width: 984px) and (min-width: 721px) {
-    .hamburger {
-        display: none;
-    }
-    .close {
-        display: none;
-    }
-
-}
-@media (max-width: 720px) {
-    .hamburger {
-        display: contents;
-    }
-    .close {
-        display: contents;
-    }
-}
