@@ -9,30 +9,16 @@ const NavBar = () => {
 
     const handleClick = () => setAnimate(prevAnimate => !prevAnimate);
 
-    let isMobile;
-    const mediaQuery = () => {
-        if (window.matchMedia("(min-width: 721px)").matches) {
-            isMobile = false;
-            // setAnimate(true);
-            return false
-        }
-    }
-    mediaQuery();
 
     return (
         <div >
             <div className={`${animate ? "navBarContainer transitionIn" : "navBarContainer"}`}>
-                {animate === true && (
                     <ul className="navBar">
-                        <li><a href="../App/App">Home</a></li>
-                        <li><a href="../Visualizer/Visualizer">Rooms</a></li>
+                        <li className={`${animate ? "showItem" : "hideItem"}`}><a href="../App/App">Home</a></li>
+                        <li className={`${animate ? "showItem" : "hideItem"}`}><a href="../Visualizer/Visualizer">Rooms</a></li>
                     </ul>
-                )}
-                {animate === false && (<></>)}
 
             </div>
-
-
 
             <div className="hamButtonContainer" onClick={handleClick}>
                 <HamMenu className="hamburger"/>

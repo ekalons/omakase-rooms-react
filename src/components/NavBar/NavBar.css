@@ -18,41 +18,54 @@ a {
     background: transparent;
     left: -65px;
 }
-a:after{
-    content: "";
-    position: absolute;
-    background-color: #3B3B3B;
-    height: 3px;
-    width: 0;
-    left: 0;
-    bottom: -10px;
-    transition: 0.3s;
-}
-a:hover {
-    color: #676a6f;
-}
-a:hover:after {
-    width: 100%;
-}
 
-.hamButtonContainer {
-    display: flex;
-    background-color: transparent;
-    justify-content: flex-end;
-    position: absolute;
-    /*top: 5px;*/
-    right: 35px;
-}
+
 
 @media (min-width: 721px) {
     .navBarContainer {
         width: 500px;
         display: contents;
     }
+    a:after{
+        content: "";
+        position: absolute;
+        background-color: #3B3B3B;
+        height: 3px;
+        width: 0;
+        left: 0;
+        bottom: -10px;
+        transition: 0.3s;
+    }
+    a:hover {
+        color: #676a6f;
+    }
+    a:hover:after {
+        width: 100%;
+    }
 }
 
 
 @media (max-width: 720px) {
+
+    .navbar .showItem {
+        display: contents;
+    }
+
+    .hideItem {
+        display: none;
+    }
+/*    .navBar {
+        display: none;
+    }
+*/
+    .hamButtonContainer {
+        display: flex;
+        background-color: transparent;
+        justify-content: flex-end;
+        position: absolute;
+        /*top: 5px;*/
+        right: 35px;
+    }
 
     .navBarContainer {
         background-color: #3B3B3B;
