@@ -1,7 +1,6 @@
 .header {
     display: flex;
     background-color: transparent;
-    /*background: none;*/
     position: fixed;
     width: 100vw;
     top: 0;
@@ -40,8 +39,3 @@
     top: 7%;
     right: 35px;
 }
-
-/*.header__center.show {
-    display: flex;
-}
-*/

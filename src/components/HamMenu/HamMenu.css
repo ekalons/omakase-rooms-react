@@ -13,9 +13,12 @@
 
 }
 .hamburger:hover {
-    color: #323c41;
+    color: #191919;
 }
 .hamburgerIcon {
+    background-color: transparent;
+}
+.closeIcon {
     background-color: transparent;
 }
 

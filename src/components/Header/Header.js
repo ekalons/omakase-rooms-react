@@ -1,26 +1,17 @@
 import React from 'react';
-import './Header.css';
 import {NavBar} from '../NavBar/NavBar';
-import {HamMenu} from '../HamMenu/HamMenu';
+import './Header.css';
 
 
 const Header = () => {
 
-    const handleClick = ({ target }) => {
-        const item = target.value;
-    };
 
     return (
         <div className="header">
             <div className="header__logo">
                 <h1>お任せ</h1>
             </div>
-
             <NavBar className="navBar"/>
-
-            <div className="header__right">
-                <HamMenu className="hamburger" onClick={handleClick}/>
-            </div>
         </div>
         )
 }

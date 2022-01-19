@@ -36,10 +36,71 @@ a:hover:after {
 }
 
 
-@media (max-width: 720px) {
 
-    .navBar {
-        display: none;
+@media (max-width: 720px) {
+    .header {
+        /*background-color: #3B3B3B;*/
+        /*height: 35vh;*/
     }
 
+    .navBarContainer {
+        background-color: #3B3B3B;
+        /*display: contents;*/
+        position: absolute;
+        top: -15px;
+        right: 0px;
+        width: 103vw;
+        height: 37vh;
+    }
+
+    .navBarContainer ul {
+        /*display: table-column;*/
+        flex-direction: column;
+        padding: 25px;
+        /*top: 15px;*/
+    }
+
+    .navBar {
+        height: 100px;
+        top: 25px;
+    }
+
+    .navBar li {
+        /*display: inline;*/
+        width: 100px;
+        padding: 20px;
+        /*align-items: center;*/
+        /*border-color: #000000;*/
+        text-align: center;
+    }
+
+    .navBar li a {
+        width: 100px;
+        left: -38px;
+    }
+
+    .navBarContainer ul li a {
+        flex-direction: column;
+        color: #FFFFFF;
+
+    }
 }
+
+
+.hamButtonContainer {
+    display: flex;
+    background-color: transparent;
+    justify-content: flex-end;
+    position: absolute;
+    top: 5%;
+    right: 35px;
+}
+/*
+@media (min-width: 721px) {
+    .navBarContainer {
+        display: contents;
+    }
+}*/
+/*.hideNavBar {
+
+}*/
