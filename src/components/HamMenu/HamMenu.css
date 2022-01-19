@@ -1,3 +1,14 @@
+.buttonContainer {
+    background-color: transparent;
+    display: flex;
+    position: relative;
+}
+
+.adjustPosition {
+    position: relative;
+    right: 15.5%;
+    top: 2.5px;
+}
 
 .hamburger {
     height: 20px;
@@ -10,20 +21,27 @@
     cursor: pointer;
     display: none;
     position: absolute;
-
 }
-.hamburger:hover {
+
+.close {
+    font-size: 15px;
+    color: #F3EEE8;
+    cursor: pointer;
+}
+
+.hamburger:hover, .close:hover {
     color: #C2BEB9;
 }
-.hamburgerIcon {
+.hamburgerIcon, .closeIcon {
     background-color: transparent;
 }
-.closeIcon {
-    background-color: transparent;
-}
+
 
 @media (max-width: 1250px) and (min-width: 985px) {
     .hamburger {
+        display: none;
+    }
+    .close {
         display: none;
     }
 }
@@ -32,10 +50,16 @@
     .hamburger {
         display: none;
     }
+    .close {
+        display: none;
+    }
 
 }
 @media (max-width: 720px) {
     .hamburger {
+        display: contents;
+    }
+    .close {
         display: contents;
     }
 }

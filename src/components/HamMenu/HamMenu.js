@@ -11,14 +11,16 @@ const HamMenu = () => {
 
 
     return (
-        <button className="hamburger" onClick={handleClick}>
-            {switchIcon === false && (
-                <HamburgerIcon className="hamburgerIcon"/>
-                )}
-            {switchIcon === true && (
-                <CloseIcon className="closeIcon"/>
-                )}
-        </button>
+        <div className={`buttonContainer ${!switchIcon ? "" : "adjustPosition"}`}>
+            <button className={`${!switchIcon ? "hamburger" : "close"}`} onClick={handleClick}>
+                {switchIcon === false && (
+                    <HamburgerIcon className="hamburgerIcon"/>
+                    )}
+                {switchIcon === true && (
+                    <CloseIcon className="closeIcon"/>
+                    )}
+            </button>
+        </div>
         )
 }
 
