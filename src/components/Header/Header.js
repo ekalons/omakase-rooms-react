@@ -15,9 +15,9 @@ const Header = () => {
             <div className="header__logo">
                 <h1>お任せ</h1>
             </div>
-            <div className="header__center">
-                <NavBar className="navBar"/>
-            </div>
+
+            <NavBar className="navBar"/>
+
             <div className="header__right">
                 <HamMenu className="hamburger" onClick={handleClick}/>
             </div>
