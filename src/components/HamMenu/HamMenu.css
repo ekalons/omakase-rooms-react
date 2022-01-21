@@ -45,3 +45,6 @@
     transition: top 150ms ease-in-out, transform 150ms ease-in-out 150ms;
 }
 
+@media (min-width: 721px) {
+    .buttonContainer {display: none;}
+}
