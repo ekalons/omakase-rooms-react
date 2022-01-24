@@ -1,0 +1,13 @@
+footer {
+    background: #3B3B3B;
+    color: #F3EEE8;
+    padding: 3em;
+    margin-top: auto;
+}
+
+footer p {
+    background: transparent;
+    text-align: center;
+    font-weight: 300;
+    font-size: 18px
+}

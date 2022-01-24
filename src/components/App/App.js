@@ -1,6 +1,7 @@
 import './App.css';
 import Header from '../Header/Header';
 import Item from '../Item/Item';
+import Footer from '../Footer/Footer';
 
 // Importing images
 import Chef from '../../assets/chef.jpeg';
@@ -11,6 +12,7 @@ function App() {
     return (
 
         <div className="App">
+            <body>
             <Header/>
             <div className="app__itemsContainer">
                 <Item
@@ -37,7 +39,9 @@ function App() {
                     photoLeft={false}
 
                 />
+                <Footer />
             </div>
+            </body>
         </div>
     );
 }
