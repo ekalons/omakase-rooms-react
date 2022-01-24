@@ -1,7 +1,6 @@
 footer {
     background: #3B3B3B;
     color: #F3EEE8;
-    padding: 3em;
     margin-top: auto;
 }
 
@@ -10,4 +9,16 @@ footer p {
     text-align: center;
     font-weight: 300;
     font-size: 18px
+}
+
+@media (min-width: 985px) {
+    footer {
+        padding: 3em;
+    }
+}
+
+@media (max-width: 984px) {
+    footer {
+        padding: 1em;
+    }
 }

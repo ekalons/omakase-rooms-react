@@ -16,6 +16,8 @@ const NavBar = () => {
                     <ul className="navBar">
                         <li className={`${animate ? "showItem" : "hideItem"}`}><a href="../App/App">Home</a></li>
                         <li className={`${animate ? "showItem" : "hideItem"}`}><a href="../Visualizer/Visualizer">Rooms</a></li>
+                        <li className={`${animate ? "showItem" : "hideItem"}`}><a href="../Etiquette/Etiquette">Etiquette</a></li>
+
                     </ul>
 
             </div>
