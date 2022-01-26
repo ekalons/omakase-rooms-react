@@ -7,13 +7,13 @@ footer {
 footer p {
     background: transparent;
     text-align: center;
-    font-weight: 300;
+    font-weight: 350;
     font-size: 18px
 }
 
 @media (min-width: 985px) {
     footer {
-        padding: 3em;
+        padding: 2em;
     }
 }
 
