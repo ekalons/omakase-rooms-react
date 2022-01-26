@@ -14,9 +14,9 @@ const NavBar = () => {
         <div >
             <div className={`${animate ? "NavbarContainer TransitionIn" : "NavbarContainer"}`}>
                     <ul className="navBar">
-                        <li className={`${animate ? "ShowItem" : "HideItem"}`}><a href="../App/App">Home</a></li>
-                        <li className={`${animate ? "ShowItem" : "HideItem"}`}><a href="../Visualizer/Visualizer">Rooms</a></li>
-                        <li className={`${animate ? "ShowItem" : "HideItem"}`}><a href="../Etiquette/Etiquette">Etiquette</a></li>
+                        <li className={`${animate ? "ShowItem" : "HideItem"}`}><a href="/">Home</a></li>
+                        <li className={`${animate ? "ShowItem" : "HideItem"}`}><a href="/rooms">Rooms</a></li>
+                        <li className={`${animate ? "ShowItem" : "HideItem"}`}><a href="/etiquette">Etiquette</a></li>
 
                     </ul>
 

@@ -1,5 +1,5 @@
 // General
-import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Style
 import './App.css';
