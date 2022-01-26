@@ -1,10 +1,13 @@
-import React from 'react';
+// Styles
 import './Etiquette.css';
+
+// Components
+import Header from '../Header/Header';
 
 const Etiquette = () => {
     return (
         <div>
-
+            <Header />
         </div>
     )
 }

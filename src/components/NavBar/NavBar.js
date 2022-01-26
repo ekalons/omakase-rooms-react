@@ -1,5 +1,11 @@
+// General
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+// Components
 import {HamMenu} from '../HamMenu/HamMenu';
+
+// Styles
 import './NavBar.css';
 
 
@@ -11,21 +17,29 @@ const NavBar = () => {
 
 
     return (
-        <div >
-            <div className={`${animate ? "NavbarContainer TransitionIn" : "NavbarContainer"}`}>
-                    <ul className="navBar">
-                        <li className={`${animate ? "ShowItem" : "HideItem"}`}><a href="/">Home</a></li>
-                        <li className={`${animate ? "ShowItem" : "HideItem"}`}><a href="/rooms">Rooms</a></li>
-                        <li className={`${animate ? "ShowItem" : "HideItem"}`}><a href="/etiquette">Etiquette</a></li>
 
-                    </ul>
+            <div >
+                <div className={`${animate ? "NavbarContainer TransitionIn" : "NavbarContainer"}`}>
+                        <ul className="navBar">
+                            <li className={`${animate ? "ShowItem" : "HideItem"}`}>
+                                <Link to="/">Home</Link>
+                            </li>
+                            <li className={`${animate ? "ShowItem" : "HideItem"}`}>
+                                <Link to="/rooms">Rooms</Link>
+                            </li>
+                            <li className={`${animate ? "ShowItem" : "HideItem"}`}>
+                                <Link to="/etiquette">Etiquette</Link>
+                            </li>
 
+                        </ul>
+
+                </div>
+
+                <div className="HamButtonContainer" onClick={handleClick}>
+                    <HamMenu className="hamburger"/>
+                </div>
             </div>
 
-            <div className="HamButtonContainer" onClick={handleClick}>
-                <HamMenu className="hamburger"/>
-            </div>
-        </div>
         )
 }
 
