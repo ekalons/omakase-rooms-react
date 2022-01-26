@@ -1,4 +1,4 @@
-.header {
+.Header {
     display: flex;
     background-color: transparent;
     position: fixed;
@@ -9,26 +9,18 @@
     z-index: 100;
 }
 
-.header__logo {
+.HeaderLogo {
     height: 24px;
     width: 100px;
     margin-left: 10px;
     background: transparent;
     z-index: 10;
 }
-.header__logo h1 {
+.HeaderLogo h1 {
     background: transparent;
     font-size: 25px;
 }
 
-.navBar {
-    position: absolute;
-    background-color: transparent;
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    margin-top: 3px;
-}
 
 .header__right {
     display: flex;
@@ -39,37 +31,19 @@
     right: 35px;
 }
 
-@media (min-width: 985px) {
-    .navBar {
-        right: 0;
-        left: 0;
-    }
-}
-
-@media (max-width: 984px) and (min-width: 721px) {
-    .navBar {
-        right: 0;
-        left: 0;
-    }
-
-}
 
 @media (max-width: 720px) {
-    .navBar {
-        right: 0;
-        left: 0;
-    }
-    .header {
+    .Header {
         margin: 15px;
         margin-top: 15px;
         padding: 0;
         padding-top: 0;
     }
-    .header__logo {
+    .HeaderLogo {
         position: absolute;
         top: -6px;
     }
-    .header__logo h1 {
+    .HeaderLogo h1 {
         color: #F3EEE8;
     }
 }

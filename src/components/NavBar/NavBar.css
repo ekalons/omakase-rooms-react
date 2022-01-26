@@ -21,7 +21,7 @@ a {
 
 
 @media (min-width: 721px) {
-    .navBarContainer {
+    .NavbarContainer {
         width: 500px;
         display: contents;
     }
@@ -43,18 +43,49 @@ a {
     }
 }
 
+.navBar {
+    position: absolute;
+    background-color: transparent;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin-top: 3px;
+}
+
+
+@media (min-width: 985px) {
+    .navBar {
+        right: 0;
+        left: 0;
+    }
+}
+
+@media (max-width: 984px) and (min-width: 721px) {
+    .navBar {
+        right: 0;
+        left: 0;
+    }
+
+}
+
 
 @media (max-width: 720px) {
+    .navBar {
+        height: 100px;
+        top: 50px;
+        right: 0;
+        left: 0;
+    }
 
-    .navbar .showItem {
+    .navbar .ShowItem {
         display: contents;
     }
 
-    .hideItem {
+    .HideItem {
         display: none;
     }
 
-    .hamButtonContainer {
+    .HamButtonContainer {
         height: 12px;
         width: 24px;
         display: flex;
@@ -65,7 +96,7 @@ a {
         right: 35px;
     }
 
-    .navBarContainer {
+    .NavbarContainer {
         background-color: #3B3B3B;
         position: absolute;
         top: -15px;
@@ -76,32 +107,27 @@ a {
         transition-duration: 0.3s;
     }
 
-    .transitionIn {
+    .TransitionIn {
         height: 37vh;
     }
 
-    .navBarContainer ul {
+    .NavbarContainer ul {
         flex-direction: column;
         padding: 30px;
     }
 
-    .navBar {
-        height: 100px;
-        top: 50px;
-    }
-
-    .navBar li {
-        width: 100px;
+    li {
+        width: 200px;
         padding: 20px;
         text-align: center;
     }
 
-    .navBar li a {
+    li a {
         width: 100px;
         left: -20px;
     }
 
-    .navBarContainer ul li a {
+    .NavbarContainer ul li a {
         flex-direction: column;
         color: #F3EEE8;
     }

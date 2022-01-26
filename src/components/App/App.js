@@ -1,47 +1,25 @@
-import './App.css';
-import Header from '../Header/Header';
-import Item from '../Item/Item';
-import Footer from '../Footer/Footer';
+// General
+import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 
-// Importing images
-import Chef from '../../assets/chef.jpeg';
-import Room from '../../assets/room.jpeg';
-import Serving from '../../assets/serving.jpeg';
+// Style
+import './App.css';
+
+// Pages
+import Home from '../Home/Home';
+import Rooms from '../Rooms/Rooms';
+import Etiquette from '../Etiquette/Etiquette';
+
 
 function App() {
     return (
-
         <div className="App">
-            <body>
-            <Header/>
-            <div className="app__itemsContainer">
-                <Item
-                    title="Omakase"
-                    description='"I leave it up to you" which means you are letting the chef decide what to serve. They will plan the dishes and adjust based on your reactions'
-                    backgroundImg={Serving}
-                    backgroundColor="#F3EEE8"
-                    photoLeft={false}
-
-                />
-                <Item
-                    title="Rooms"
-                    description="Omakase restaurants are typically referred to as rooms, due to their limited size. They offer a quiet and intimate dining experience."
-                    backgroundImg={Room}
-                    backgroundColor="#F8F7F4"
-                    photoLeft={true}
-
-                />
-                <Item
-                    title="Counter"
-                    description="Dishes are usually served in counters. It allows the chef to accurately manage food temperature as well as to observe your reactions"
-                    backgroundImg={Chef}
-                    backgroundColor="#F3EEE8"
-                    photoLeft={false}
-
-                />
-                <Footer />
-            </div>
-            </body>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/rooms" element={<Rooms />} />
+                    <Route path="/etiquette" element={<Etiquette />} />
+                </Routes>
+            </BrowserRouter>
         </div>
     );
 }

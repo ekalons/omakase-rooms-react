@@ -12,17 +12,17 @@ const NavBar = () => {
 
     return (
         <div >
-            <div className={`${animate ? "navBarContainer transitionIn" : "navBarContainer"}`}>
+            <div className={`${animate ? "NavbarContainer TransitionIn" : "NavbarContainer"}`}>
                     <ul className="navBar">
-                        <li className={`${animate ? "showItem" : "hideItem"}`}><a href="../App/App">Home</a></li>
-                        <li className={`${animate ? "showItem" : "hideItem"}`}><a href="../Visualizer/Visualizer">Rooms</a></li>
-                        <li className={`${animate ? "showItem" : "hideItem"}`}><a href="../Etiquette/Etiquette">Etiquette</a></li>
+                        <li className={`${animate ? "ShowItem" : "HideItem"}`}><a href="../App/App">Home</a></li>
+                        <li className={`${animate ? "ShowItem" : "HideItem"}`}><a href="../Visualizer/Visualizer">Rooms</a></li>
+                        <li className={`${animate ? "ShowItem" : "HideItem"}`}><a href="../Etiquette/Etiquette">Etiquette</a></li>
 
                     </ul>
 
             </div>
 
-            <div className="hamButtonContainer" onClick={handleClick}>
+            <div className="HamButtonContainer" onClick={handleClick}>
                 <HamMenu className="hamburger"/>
             </div>
         </div>

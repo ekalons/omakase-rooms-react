@@ -9,10 +9,10 @@ const HamMenu = () => {
 
 
     return (
-        <div className="buttonContainer">
-            <div className={`hamburgerMenu ${switchIcon === true ? "cross" : ""}`} onClick={handleClick}>
-                <div className="bar" id="bar1"></div>
-                <div className="bar" id="bar2"></div>
+        <div className="ButtonContainer">
+            <div className={`HamburgerMenu ${switchIcon === true ? "Cross" : ""}`} onClick={handleClick}>
+                <div className="Bar" id="Bar1"></div>
+                <div className="Bar" id="Bar2"></div>
             </div>
         </div>
         )
