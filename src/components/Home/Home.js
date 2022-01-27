@@ -1,12 +1,5 @@
-// General
-import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
-
 // Style
 import './Home.css';
-
-// Pages
-import Rooms from '../Rooms/Rooms';
-import Etiquette from '../Etiquette/Etiquette';
 
 // Components
 import Header from '../Header/Header';
@@ -21,7 +14,6 @@ import Serving from '../../assets/serving.jpeg';
 const Home = () => {
     return (
         <div className="Home">
-            <body>
             <Header/>
             <div className="HomeItemsContainer">
                 <Item
@@ -50,7 +42,6 @@ const Home = () => {
                 />
                 <Footer />
             </div>
-            </body>
         </div>
     )
 }

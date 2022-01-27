@@ -10,15 +10,17 @@
 }
 
 .HeaderLogo {
-    height: 24px;
+    height: 30px;
     width: 100px;
-    margin-left: 10px;
     background: transparent;
     z-index: 10;
+    cursor: pointer;
 }
+
 .HeaderLogo h1 {
     background: transparent;
     font-size: 25px;
+    text-align: center;
 }
 
 
