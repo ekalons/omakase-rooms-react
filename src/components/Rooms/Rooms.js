@@ -8,6 +8,7 @@ import './Rooms.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import RoomCard from '../RoomCard/RoomCard';
+import Mapbox from '../Mapbox/Mapbox';
 
 const Rooms = () => {
     const [rooms, setRooms] = useState([]);
@@ -37,11 +38,12 @@ const Rooms = () => {
                 </div>
                 <div className="RoomResults">
                     {rooms.results?.map(
-                        ({ id, name, rating, review_count, neighborhood, price, michelin_stars, serve_style, coordinates, photo }
+                        ({ id, name, details, rating, review_count, neighborhood, price, michelin_stars, serve_style, coordinates, photo }
                         ) => (
                             <RoomCard
                                 key={id}
                                 name={name}
+                                details={details}
                                 rating={rating}
                                 review_count={review_count}
                                 neighborhood={neighborhood}
@@ -54,6 +56,13 @@ const Rooms = () => {
                         )
                     )}
                 </div>
+            </section>
+            <section>
+                <div className="MapContainer">
+                    {/*<Mapbox className="MapView"/>*/}
+
+                </div>
+
             </section>
             {/*<Footer />*/}
         </div>

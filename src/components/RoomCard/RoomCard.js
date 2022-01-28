@@ -5,7 +5,7 @@ import { ReactComponent as MichelinStar } from '../../assets/MichelinStar.svg';
 import StarSVG from '../SVGIcons/StarSVG';
 import LocationSVG from '../SVGIcons/LocationSVG';
 
-const RoomCard = ({ id, name, rating, review_count, neighborhood, price, michelin_stars, serve_style, coordinates, photo }) => {
+const RoomCard = ({ id, name, details, rating, review_count, neighborhood, price, michelin_stars, serve_style, coordinates, photo }) => {
     return (
         <div className="RoomCard">
             <div className="CardImageContainer">
@@ -42,6 +42,12 @@ const RoomCard = ({ id, name, rating, review_count, neighborhood, price, micheli
                         <LocationSVG />
                     </div>
                     <p className="RoomNeighborhood">{neighborhood}</p>
+                </div>
+                <div className="InfoRow RoomDetailsContainer">
+                 {details}
+                    {/*<p className="RoomDetails">{details}</p>*/}
+
+
                 </div>
 
             </div>
