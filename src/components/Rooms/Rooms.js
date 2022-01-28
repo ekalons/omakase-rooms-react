@@ -32,18 +32,22 @@ const Rooms = () => {
                 <div className="Parameters">
                     <p>Neighborhood</p>
                     <p>Price</p>
-                    <p>Etiquette</p>
+                    <p>Bar / Table</p>
 
                 </div>
                 <div className="RoomResults">
                     {rooms.results?.map(
-                        ({ id, name, rating, review_count, neighborhood, coordinates, photo }
+                        ({ id, name, rating, review_count, neighborhood, price, michelin_stars, serve_style, coordinates, photo }
                         ) => (
                             <RoomCard
                                 key={id}
                                 name={name}
                                 rating={rating}
                                 review_count={review_count}
+                                neighborhood={neighborhood}
+                                price={price}
+                                michelin_stars={michelin_stars}
+                                serve_style={serve_style}
                                 coordinates={coordinates}
                                 photo={photo}
                             />
@@ -51,22 +55,10 @@ const Rooms = () => {
                     )}
                 </div>
             </section>
+            {/*<Footer />*/}
         </div>
     )
 }
 
 export default Rooms;
 
-// export async function getServerSideProps() {
-//     const url = "https://api.npoint.io/a627d9c124f01677cafd";
-//     const searchResults = await fetch(url)
-//     .then(
-//         (res) => res.json()
-//     );
-
-//     return {
-//         props: {
-//             searchResults,
-//         },
-//     };
-// }

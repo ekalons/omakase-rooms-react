@@ -6,13 +6,18 @@
     padding: 12px;
     border: 1px solid #a3a3a3;
     border-radius: 14px;
+    cursor: pointer;
+}
+
+.RoomCard:hover {
+    border-color: #828282;
 }
 
 .CardImageContainer {
     display: flex;
     flex-direction: row;
     position: relative;
-    height: 160px;
+    height: 130px;
     width: 240px;
 
 }
@@ -23,6 +28,82 @@
     height: 100%;
     width: 100%;
     border-radius: 10px;
+}
+.InfoContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 20px;
+    padding-right: 0;
+}
+
+.InfoContainer p {
+    padding-bottom: 3px;
+}
+
+.RoomName {
+    font-size: 20px;
+    font-weight: 450;
+}
+
+.InfoRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.RoomRating {
+    font-size: 15px;
+    font-weight: 400;
+    color: red;
+}
+
+.RoomReviewCount {
+    font-size: 12px;
+    padding: 1.5px 3px;
+}
+
+.RoomServeStyle {
+    font-size: 13px;
+    padding: 1.5px 3px;
+    font-weight: 350;
+}
+
+.RoomPrice {
+    font-size: 14px;
+    padding: 1px 3px;
+}
+
+.RoomNeighborhood {
+
+}
+
+.IconContainer {
+    display: flex;
+    height: 21px;
+    width: 16px;
+    justify-content: center;
+}
+
+.Star {
+    position: relative;
+    top: -1px;
+    color: red;
+}
+
+.MichelinStarContainer {
+    display: flex;
+    height: 21px;
+    width: 55px;
+    padding: 0px 3px;
+}
+
+.MichelinStar {
+    position: relative;
+    top: 3.5px;
+    height: 12px;
+    width: 12px;
+    padding: 0px 2px;
+
 }
 
 
