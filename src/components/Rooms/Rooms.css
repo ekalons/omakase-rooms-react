@@ -54,10 +54,34 @@
     .RoomResults {
         width: 830px;
     }
+    .MapContainer {
+        display: flex;
+        position: absolute;
+        height: 750px;
+        width: 40%;
+        top: 180px;
+        right: 0;
+        margin: 10px;
+        background: transparent;
+
+    }
+    .MapView {
+        display: inline-flex;
+        position: relative;
+        width: 40vw;
+    }
 }
 
 @media (max-width: 960px) {
     .RoomResults {
         width: 100vw;
+    }
+    .MapContainer {
+        display: hidden;
+    }
+
+
+    .MapView {
+        display: hidden;
     }
 }
