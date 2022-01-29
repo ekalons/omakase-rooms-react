@@ -8,7 +8,7 @@ import './Rooms.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import RoomCard from '../RoomCard/RoomCard';
-import Mapbox from '../Mapbox/Mapbox';
+import Mapview from '../Mapview/Mapview';
 
 const Rooms = () => {
     const [rooms, setRooms] = useState([]);
@@ -28,6 +28,7 @@ const Rooms = () => {
     return (
         <div className="Rooms">
             <Header />
+            <div className="HeaderSeparator"></div>
             <section>
                 <h2 className="CityName">Rooms in New York City</h2>
                 <div className="Parameters">
@@ -57,13 +58,9 @@ const Rooms = () => {
                     )}
                 </div>
             </section>
-            <section>
-                <div className="MapContainer">
-                    {/*<Mapbox className="MapView"/>*/}
-
-                </div>
-
-            </section>
+            <div className="MapContainer">
+                <Mapview/>
+            </div>
             {/*<Footer />*/}
         </div>
     )

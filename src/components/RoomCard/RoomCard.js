@@ -44,10 +44,7 @@ const RoomCard = ({ id, name, details, rating, review_count, neighborhood, price
                     <p className="RoomNeighborhood">{neighborhood}</p>
                 </div>
                 <div className="InfoRow RoomDetailsContainer">
-                 {details}
-                    {/*<p className="RoomDetails">{details}</p>*/}
-
-
+                    <span>{details}</span>
                 </div>
 
             </div>

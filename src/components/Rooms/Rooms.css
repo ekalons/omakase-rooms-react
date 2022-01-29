@@ -1,11 +1,25 @@
 .Rooms {
     display: flex;
+    height: 100vh;
+    width: 100vw;
+    background: #F3EEE8;
+}
+
+.HeaderSeparator {
+    display: flex;
+    position: fixed;
+    top: 60px;
+    width: 100vw;
+    height: 1px;
+    background: #a3a3a3;
+    z-index: 5;
 }
 
 .CityName {
     position: absolute;
     top: 60px;
     margin: 15px 20px;
+    background: #F3EEE8;
 }
 
 .Parameters {
@@ -15,6 +29,7 @@
     position: absolute;
     top: 110px;
     width: 90vw;
+    background: #F3EEE8;
 }
 
 .Parameters p {
@@ -48,27 +63,22 @@
     flex-direction: column;
     position: absolute;
     top: 180px;
+    background: #F3EEE8;
 }
+
 
 @media (min-width: 961px) {
     .RoomResults {
-        width: 830px;
+        width: 57vw;
     }
     .MapContainer {
         display: flex;
-        position: absolute;
-        height: 750px;
-        width: 40%;
-        top: 180px;
+        position: fixed;
+        height: 100vh;
+        width: 43%;
+        top: 60px;
         right: 0;
-        margin: 10px;
         background: transparent;
-
-    }
-    .MapView {
-        display: inline-flex;
-        position: relative;
-        width: 40vw;
     }
 }
 
@@ -77,11 +87,10 @@
         width: 100vw;
     }
     .MapContainer {
-        display: hidden;
+        display: none;
     }
 
-
     .MapView {
-        display: hidden;
+        display: none;
     }
 }
