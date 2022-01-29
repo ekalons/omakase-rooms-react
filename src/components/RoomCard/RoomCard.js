@@ -1,9 +1,10 @@
 // Styles
 import './RoomCard.css';
-// Michelin star svg
+
+// Icons
 import { ReactComponent as MichelinStar } from '../../assets/MichelinStar.svg';
-import StarSVG from '../SVGIcons/StarSVG';
-import LocationSVG from '../SVGIcons/LocationSVG';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkerAlt, faStar } from '@fortawesome/free-solid-svg-icons';
 
 const RoomCard = ({ id, name, details, rating, review_count, neighborhood, price, michelin_stars, serve_style, coordinates, photo }) => {
     return (
@@ -15,7 +16,7 @@ const RoomCard = ({ id, name, details, rating, review_count, neighborhood, price
                 <p className="RoomName">{name}</p>
                 <div className="InfoRow">
                     <div className="IconContainer">
-                        <StarSVG />
+                        <FontAwesomeIcon icon={faStar} color="red" size="sm" className="Star"/>
                     </div>
                     <p className="RoomRating">{rating}</p>
                     <p className="RoomReviewCount">({review_count})</p>
@@ -24,7 +25,7 @@ const RoomCard = ({ id, name, details, rating, review_count, neighborhood, price
                         {price >=250 ? "$$$$" : price <250 && price >=125 ? "$$$" : "$$"}
                     </p>
                     {michelin_stars >= 1 && (
-                        <div className="MichelinStarContainer">
+                        <div className="MichelinStarContainer" role="Michelin stars" aria-label="Michelin stars">
                             <MichelinStar className="MichelinStar"/>
                             {michelin_stars >= 2 && (
                                 <MichelinStar className="MichelinStar"/>
@@ -39,7 +40,7 @@ const RoomCard = ({ id, name, details, rating, review_count, neighborhood, price
                 </div>
                 <div className="InfoRow">
                     <div className="IconContainer">
-                        <LocationSVG />
+                        <FontAwesomeIcon icon={faMapMarkerAlt} size="sm" className="LocationMarker"/>
                     </div>
                     <p className="RoomNeighborhood">{neighborhood}</p>
                 </div>

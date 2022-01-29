@@ -1,0 +1,16 @@
+.MarkerMapIcon {
+    cursor: pointer;
+}
+
+/* Popup styling */
+.PopupText {
+    font-size: 15px;
+    padding-top: 1px;
+    padding-left: 2px;
+}
+
+h2 {
+    padding: 1px;
+    padding-bottom: 5px;
+}
+

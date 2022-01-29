@@ -23,7 +23,7 @@ const Rooms = () => {
         // Temporary API -> Public w/o security
         fetchData("https://api.npoint.io/a627d9c124f01677cafd");
     }, []);
-    console.log(rooms.results);
+    // console.log(rooms.results);
 
     return (
         <div className="Rooms">
@@ -59,7 +59,7 @@ const Rooms = () => {
                 </div>
             </section>
             <div className="MapContainer">
-                <Mapview/>
+                <Mapview searchResults={rooms.results}/>
             </div>
             {/*<Footer />*/}
         </div>

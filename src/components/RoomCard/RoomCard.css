@@ -92,8 +92,13 @@
 
 .Star {
     position: relative;
-    top: -1px;
+    top: 1.25px;
     color: red;
+}
+
+.LocationMarker {
+    position: relative;
+    top: 3.5px;
 }
 
 .MichelinStarContainer {
@@ -124,6 +129,6 @@
 
 @media (max-width: 640px) {
     .RoomDetailsContainer {
-        font-size: 14px;
+        font-size: 13px;
     }
 }
