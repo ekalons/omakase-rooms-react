@@ -28,7 +28,7 @@ const Rooms = () => {
     return (
         <div className="Rooms">
             <Header />
-            <div className="HeaderSeparator"></div>
+            <div className="HeaderBackground"></div>
             <section>
                 <h2 className="CityName">Rooms in New York City</h2>
                 <div className="Parameters">

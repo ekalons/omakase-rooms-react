@@ -5,13 +5,14 @@
     background: #F3EEE8;
 }
 
-.HeaderSeparator {
+.HeaderBackground {
     display: flex;
     position: fixed;
-    top: 60px;
+    top: 0px;
     width: 100vw;
-    height: 1px;
-    background: #a3a3a3;
+    height: 60px;
+    background: #F3EEE8;
+    border-bottom: 1px solid #a3a3a3;
     z-index: 5;
 }
 
