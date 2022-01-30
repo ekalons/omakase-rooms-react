@@ -27,7 +27,7 @@ const MapView = ({searchResults}) => {
         longitude: -73.9900,
         zoom: 12.3,
         width: '43vw',
-        height: window.innerHeight - 60
+        height: window.innerHeight - 52
 
     });
 

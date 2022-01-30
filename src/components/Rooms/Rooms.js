@@ -29,6 +29,9 @@ const Rooms = () => {
         <div className="Rooms">
             <Header />
             <div className="HeaderBackground"></div>
+            <div className="MapContainer">
+                <Mapview searchResults={rooms.results}/>
+            </div>
             <section>
                 <h2 className="CityName">Rooms in New York City</h2>
                 <div className="Parameters">
@@ -57,11 +60,15 @@ const Rooms = () => {
                         )
                     )}
                 </div>
+                <div className="RoomsFooter">
+                    <Footer />
+                </div>
             </section>
-            <div className="MapContainer">
-                <Mapview searchResults={rooms.results}/>
-            </div>
-            {/*<Footer />*/}
+
+
+
+
+
         </div>
     )
 }
