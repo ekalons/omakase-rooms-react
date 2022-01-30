@@ -21,9 +21,9 @@ const Rooms = () => {
 
     useEffect(() => {
         // Temporary API -> Public w/o security
-        fetchData("https://api.npoint.io/a627d9c124f01677cafd");
+        fetchData("https://api.jsonbin.io/b/61f69701fb3ece3ad7ce5fa3");
     }, []);
-    // console.log(rooms.results);
+
 
     return (
         <div className="Rooms">

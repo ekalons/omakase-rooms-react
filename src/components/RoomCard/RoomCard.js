@@ -10,7 +10,7 @@ const RoomCard = ({ id, name, details, rating, review_count, neighborhood, price
     return (
         <div className="RoomCard">
             <div className="CardImageContainer">
-                <img src={photo} alt="Restaurant photo" width="240px" height="160px"/>
+                <img src={photo} alt="Restaurant" width="240px" height="160px"/>
             </div>
             <div className="InfoContainer">
                 <p className="RoomName">{name}</p>
@@ -25,7 +25,7 @@ const RoomCard = ({ id, name, details, rating, review_count, neighborhood, price
                         {price >=250 ? "$$$$" : price <250 && price >=125 ? "$$$" : "$$"}
                     </p>
                     {michelin_stars >= 1 && (
-                        <div className="MichelinStarContainer" role="Michelin stars" aria-label="Michelin stars">
+                        <div className="MichelinStarContainer">
                             <MichelinStar className="MichelinStar"/>
                             {michelin_stars >= 2 && (
                                 <MichelinStar className="MichelinStar"/>

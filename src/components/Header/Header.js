@@ -2,8 +2,6 @@
 import { useNavigate } from 'react-router-dom';
 // Style
 import './Header.css';
-// Pages
-import Home from '../Home/Home';
 // Components
 import {NavBar} from '../NavBar/NavBar';
 

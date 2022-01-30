@@ -45,10 +45,6 @@ const MapView = ({searchResults}) => {
         }
     }, []);
 
-    // console.log(coordinates);
-    // console.log(center);
-    console.log(selectedLocation);
-
     return (
         <div>
             <Map
@@ -62,8 +58,6 @@ const MapView = ({searchResults}) => {
                         <Marker
                             longitude={result.coordinates.longitude}
                             latitude={result.coordinates.latitude}
-                            // offsetLeft={-20}
-                            // offsetRight={-10}
                         >
                             <div onClick={() => setSelectedLocation(result)} className="MarkerMapIcon">
                                 <FontAwesomeIcon icon={faMapMarkerAlt} color="red" size="lg"/>
@@ -92,7 +86,7 @@ const MapView = ({searchResults}) => {
                                             {selectedLocation.price >=250 ? "$$$$" : selectedLocation.price <250 && selectedLocation.price >=125 ? "$$$" : "$$"}
                                         </p>
                                         {selectedLocation.michelin_stars >= 1 && (
-                                            <div className="MichelinStarContainer" role="Michelin stars" aria-label="Michelin stars">
+                                            <div className="MichelinStarContainer">
                                                 <MichelinStar className="MichelinStar"/>
                                                 {selectedLocation.michelin_stars >= 2 && (
                                                     <MichelinStar className="MichelinStar"/>
