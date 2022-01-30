@@ -20,7 +20,7 @@ const Rooms = () => {
     };
 
     useEffect(() => {
-        // Temporary API -> Public w/o security
+        // Public API -> Public data
         fetchData("https://api.jsonbin.io/b/61f69701fb3ece3ad7ce5fa3");
     }, []);
 
