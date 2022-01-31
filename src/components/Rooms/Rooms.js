@@ -63,6 +63,8 @@ const Rooms = () => {
                                 coordinates={coordinates}
                                 photo={photo}
                                 isClicked={isClicked}
+                                allRooms={rooms}
+                                updateRoom={setRooms}
                             />
                         )
                     )}

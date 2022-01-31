@@ -26,9 +26,9 @@ const MapView = ({searchResults}) => {
     const center = getCenter(coordinates);
 
     const [viewport, setViewport] = useState({
-        latitude: 40.7266756,
+        latitude: 40.736,
         longitude: -73.9900,
-        zoom: 12.3,
+        zoom: 12.2,
         width: '43vw',
         height: window.innerHeight - 52
 
@@ -89,6 +89,7 @@ const MapView = ({searchResults}) => {
                                 offsetTop={-3}
                                 closeButton={false}
                                 onClose={() => {
+                                    searchResults?.forEach(result => result.isClicked = false)
                                     setSelectedLocation(null);
                                 }}>
                                 <div>
