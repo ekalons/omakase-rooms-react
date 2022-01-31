@@ -15,7 +15,10 @@ const Rooms = () => {
     const fetchData = (url) => {
         return fetch(url)
             .then((response) => response.json())
-            .then((data) => setRooms(data)
+            .then((data) => {
+                // Adding isClicked properety to every room obj
+                data.results?.forEach(room => room.isClicked = false)
+                setRooms(data)}
         );
     };
 
@@ -23,6 +26,9 @@ const Rooms = () => {
         // Public API -> Public data
         fetchData("https://api.jsonbin.io/b/61f69701fb3ece3ad7ce5fa3");
     }, []);
+
+    // console.log(rooms)
+
 
 
     return (
@@ -42,7 +48,7 @@ const Rooms = () => {
                 </div>
                 <div className="RoomResults">
                     {rooms.results?.map(
-                        ({ id, name, details, rating, review_count, neighborhood, price, michelin_stars, serve_style, coordinates, photo }
+                        ({ id, name, details, rating, review_count, neighborhood, price, michelin_stars, serve_style, coordinates, photo, isClicked }
                         ) => (
                             <RoomCard
                                 key={id}
@@ -56,6 +62,7 @@ const Rooms = () => {
                                 serve_style={serve_style}
                                 coordinates={coordinates}
                                 photo={photo}
+                                isClicked={isClicked}
                             />
                         )
                     )}

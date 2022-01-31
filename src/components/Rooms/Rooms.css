@@ -1,7 +1,7 @@
 .Rooms {
     display: flex;
     flex-direction: column;
-    /*min-height: 150vh;*/
+    /*min-height: 100vh;*/
     height: 2000px;
     width: 100vw;
     background: #F3EEE8;
@@ -106,16 +106,11 @@
     }
 
     .RoomsFooter {
-        /*display: none;*/
-        margin-top: 10px;
         position: relative;
         top: 1940px;
-        /*bottom: 0;*/
+        margin-top: 10px;
     }
 
-    Footer {
-        /*display: none;*/
-    }
 
     .HeaderBackground {
         display: none;

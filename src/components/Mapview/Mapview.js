@@ -13,6 +13,9 @@ import { faMapMarkerAlt, faStar } from '@fortawesome/free-solid-svg-icons';
 
 const MapView = ({searchResults}) => {
     const [selectedLocation, setSelectedLocation] = useState(null)
+    if (searchResults) {
+        // setSelectedLocation(searchResults)
+    }
 
     // Transform searchResults props into latitude/longitude obj
     const coordinates = searchResults?.map((result) => ({
@@ -39,12 +42,19 @@ const MapView = ({searchResults}) => {
             }
         };
         window.addEventListener("keydown", listener)
-
         return () => {
             window.removeEventListener("keydown", listener);
         }
     }, []);
 
+    const toggleIsClicked = (obj) => {
+        if (obj.isClicked === true) {
+            obj.isClicked = false;
+        } else {
+            obj.isClicked = true
+        }
+    }
+    console.log(selectedLocation)
     return (
         <div>
             <Map
@@ -59,8 +69,15 @@ const MapView = ({searchResults}) => {
                             longitude={result.coordinates.longitude}
                             latitude={result.coordinates.latitude}
                         >
-                            <div onClick={() => setSelectedLocation(result)} className="MarkerMapIcon">
-                                <FontAwesomeIcon icon={faMapMarkerAlt} color="red" size="lg"/>
+                            <div
+                            onClick={() => {
+                                searchResults?.forEach(result => result.isClicked = false)
+                                toggleIsClicked(result)
+                                setSelectedLocation(result)
+
+                            }}
+                            className="MarkerMapIcon">
+                                <FontAwesomeIcon icon={faMapMarkerAlt} color={result.isClicked === true ? "gray" : "red"} size="lg"/>
                             </div>
 
                         </Marker>

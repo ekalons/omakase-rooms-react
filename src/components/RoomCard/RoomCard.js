@@ -6,7 +6,7 @@ import { ReactComponent as MichelinStar } from '../../assets/MichelinStar.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faStar } from '@fortawesome/free-solid-svg-icons';
 
-const RoomCard = ({ id, name, details, rating, review_count, neighborhood, price, michelin_stars, serve_style, coordinates, photo }) => {
+const RoomCard = ({ id, name, details, rating, review_count, neighborhood, price, michelin_stars, serve_style, coordinates, photo, isClicked }) => {
     return (
         <div className="RoomCard">
             <div className="CardImageContainer">
