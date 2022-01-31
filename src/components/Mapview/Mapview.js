@@ -54,7 +54,7 @@ const MapView = ({searchResults}) => {
             obj.isClicked = true
         }
     }
-    console.log(selectedLocation)
+
     return (
         <div>
             <Map
