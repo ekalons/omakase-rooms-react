@@ -17,8 +17,10 @@ const Rooms = () => {
     const [isPriceClicked, setIsPriceClicked] = useState(true);
     const [isMichelinClicked, setIsMichelinClicked] = useState(true);
     const [isBarTableClicked, setIsBarTableClicked] = useState(true);
+
     // Public API -> Public data
-    const address = "https://api.jsonbin.io/b/61f69701fb3ece3ad7ce5fa3";
+    const address = process.env.REACT_APP_JSONBIN_IO_API_KEY;
+
 
     const fetchData = (url) => {
         return fetch(url)
