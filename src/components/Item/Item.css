@@ -65,7 +65,7 @@
 .ItemPhoto img {
     height: 95%;
     width: 100%;
-    border-radius: 6%;
+    border-radius: 15px;
 }
 
 /* Only when photoLeft is true */
@@ -88,9 +88,16 @@
 .ItemPhotoLeft img {
     height: 95%;
     width: 100%;
-    border-radius: 6%;
+    border-radius: 15px;
 }
 
+.FirstItem {
+    display: flex;
+    position: relative;
+    top: 90%;
+    right: 40%;
+    left: transformX(-50%);
+}
 
 
 @media (max-width: 1250px) and (min-width: 985px) {
@@ -120,6 +127,7 @@
     .ItemDescription {
         font-size: 26px;
     }
+
 }
 @media (max-width: 984px) and (min-width: 721px) {
     .ItemPhoto, .ItemPhotoLeft {
@@ -145,6 +153,9 @@
     .ItemDescription {
         font-size: 22px;
     }
+    .FirstItem {
+        top: 94%;
+    }
 }
 @media (max-width: 720px) {
     .ItemPhoto, .ItemPhotoLeft {
@@ -168,6 +179,10 @@
     }
     .ItemDescription {
         font-size: 23px;
+    }
+
+    .FirstItem {
+        top: 92%;
     }
 
 }

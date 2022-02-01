@@ -1,0 +1,32 @@
+.MapPhotoContainer {
+    display: flex;
+    flex-direction: column;
+    height: 55vh;
+    width: 65vw;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 20px;
+
+}
+
+.MapPhotoContainer:hover img {
+    box-shadow: 0 20px 7.5px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.2);
+    transform: scale(1.05);
+    transition-property: box-shadow, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) ease-in;
+    transition-duration: 250ms;
+}
+
+.MapPhotoContainer img {
+    object-fit: cover;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+}
+
+@media (max-width: 720px) {
+    .MapPhotoContainer {
+        padding-top: 40px;
+    }
+}

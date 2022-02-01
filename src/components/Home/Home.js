@@ -4,6 +4,7 @@ import './Home.css';
 // Components
 import Header from '../Header/Header';
 import Item from '../Item/Item';
+import MapItem from '../MapItem/MapItem';
 import Footer from '../Footer/Footer';
 
 // Importing images
@@ -16,12 +17,14 @@ const Home = () => {
         <div className="Home">
             <Header/>
             <div className="HomeItemsContainer">
+
                 <Item
                     title="Omakase"
                     description='"I leave it up to you" which means you are letting the chef decide what to serve. They will plan the dishes and adjust based on your reactions'
                     backgroundImg={Serving}
                     backgroundColor="#F3EEE8"
                     photoLeft={false}
+                    first={true}
 
                 />
                 <Item
@@ -30,6 +33,7 @@ const Home = () => {
                     backgroundImg={Room}
                     backgroundColor="#F8F7F4"
                     photoLeft={true}
+                    first={false}
 
                 />
                 <Item
@@ -38,8 +42,10 @@ const Home = () => {
                     backgroundImg={Chef}
                     backgroundColor="#F3EEE8"
                     photoLeft={false}
+                    first={false}
 
                 />
+                <MapItem backgroundColor="#F8F7F4"/>
                 <Footer />
             </div>
         </div>
