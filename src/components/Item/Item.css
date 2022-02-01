@@ -94,7 +94,7 @@
 .FirstItem {
     display: flex;
     position: relative;
-    top: 90%;
+    top: 94%;
     right: 40%;
     left: transformX(-50%);
 }
@@ -153,9 +153,6 @@
     .ItemDescription {
         font-size: 22px;
     }
-    .FirstItem {
-        top: 94%;
-    }
 }
 @media (max-width: 720px) {
     .ItemPhoto, .ItemPhotoLeft {
@@ -179,10 +176,6 @@
     }
     .ItemDescription {
         font-size: 23px;
-    }
-
-    .FirstItem {
-        top: 92%;
     }
 
 }
