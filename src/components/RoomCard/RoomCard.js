@@ -13,7 +13,7 @@ const RoomCard = ({ id, name, details, rating, review_count, neighborhood, price
 
         objArr?.forEach(room => room.isClicked = false)
 
-        const obj = objArr.find(obj => obj.name == name);
+        const obj = objArr.find(obj => obj.name === name);
         if (obj.isClicked === true) {
             obj.isClicked = false
         } else {

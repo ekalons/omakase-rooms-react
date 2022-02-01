@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Map, {Marker, Popup} from 'react-map-gl';
-import getCenter from 'geolib/es/getCenter';
+// import getCenter from 'geolib/es/getCenter';
 
 
 // Styles
@@ -18,12 +18,12 @@ const MapView = ({searchResults}) => {
     }
 
     // Transform searchResults props into latitude/longitude obj
-    const coordinates = searchResults?.map((result) => ({
-        longitude: result.coordinates.longitude,
-        latitude: result.coordinates.latitude,
-    }));
+    // const coordinates = searchResults?.map((result) => ({
+    //     longitude: result.coordinates.longitude,
+    //     latitude: result.coordinates.latitude,
+    // }));
 
-    const center = getCenter(coordinates);
+    // const center = getCenter(coordinates);
 
     const [viewport, setViewport] = useState({
         latitude: 40.736,
