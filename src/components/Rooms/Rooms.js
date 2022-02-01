@@ -69,7 +69,7 @@ const Rooms = () => {
                 <h2 className="CityName">Rooms in New York City</h2>
                 <div className="Parameters">
                     <p>Neighborhood</p>
-                    <p onClick={onPriceClick}>Price</p>
+                    <p onClick={onPriceClick} style={{backgroundColor: isPriceClicked === false ? 'rgb(228 228 231)' : ''}}>Price</p>
                     <p>Bar / Table</p>
                     <p>Michelin</p>
 
