@@ -2,6 +2,8 @@
   "name": "omakase-rooms-react",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+  "node": "17.3.x"},
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
