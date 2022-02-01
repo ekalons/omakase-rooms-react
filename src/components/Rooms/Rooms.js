@@ -12,6 +12,10 @@ import Mapview from '../Mapview/Mapview';
 
 const Rooms = () => {
     const [rooms, setRooms] = useState([]);
+    const [isPriceClicked, setIsPriceClicked] = useState(true);
+    // Public API -> Public data
+    const address = "https://api.jsonbin.io/b/61f69701fb3ece3ad7ce5fa3";
+
     const fetchData = (url) => {
         return fetch(url)
             .then((response) => response.json())
@@ -23,11 +27,34 @@ const Rooms = () => {
     };
 
     useEffect(() => {
-        // Public API -> Public data
-        fetchData("https://api.jsonbin.io/b/61f69701fb3ece3ad7ce5fa3");
+
+        fetchData(address);
     }, []);
 
-    // console.log(rooms)
+    // onParameterClick handlers
+    const onPriceClick = () => {
+        const ascendingPriceSort = ( a, b ) => {
+            if ( a.price < b.price ) {
+                return -1;
+            }
+            if ( a.price > b.price ) {
+                return 1;
+            }
+            return 0;
+        }
+
+        setIsPriceClicked(!isPriceClicked);
+
+        if (isPriceClicked === true) {
+            const arrToUpdate = rooms.results;
+            arrToUpdate?.sort(ascendingPriceSort)
+            const objToPass = {results: arrToUpdate}
+            setRooms(objToPass);
+        } else if (isPriceClicked === false) {
+            fetchData(address);
+        }
+
+    }
 
 
 
@@ -42,8 +69,9 @@ const Rooms = () => {
                 <h2 className="CityName">Rooms in New York City</h2>
                 <div className="Parameters">
                     <p>Neighborhood</p>
-                    <p>Price</p>
+                    <p onClick={onPriceClick}>Price</p>
                     <p>Bar / Table</p>
+                    <p>Michelin</p>
 
                 </div>
                 <div className="RoomResults">
