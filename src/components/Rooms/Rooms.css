@@ -110,8 +110,9 @@
         top: 1940px;
         margin-top: 10px;
     }
+}
 
-
+@media (max-width: 720px) {
     .HeaderBackground {
         display: none;
     }

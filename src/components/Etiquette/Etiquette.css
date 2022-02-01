@@ -1,0 +1,79 @@
+.Etiquette {
+    display: flex;
+    height: 140vh;
+    width: 100vw;
+    background: #F3EEE8;
+
+}
+
+.EtiquetteUL, .EtiquetteUL li {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 5px;
+    margin: 0px;
+    text-align: left;
+    color: rgb(56, 53, 48);
+}
+
+.EtiquetteUL li{
+    display: list-item;
+    line-height: 22px;
+}
+
+.EtiquetteItemContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 80vw;
+    background: #F3EEE8;
+    top: 100px;
+    margin: 0px 27.5%;
+
+}
+
+.EtiquetteItemContainer h2 {
+    font-size: 30px;
+    color: rgb(56, 53, 48);
+    padding: 10px 0px;
+}
+
+#VideoLink, #VideoLink:hover:after {
+    all: revert;
+    color: rgb(56, 53, 48);
+}
+
+#VideoLink:hover {
+    text-decoration: none;
+    color: rgb(135, 133, 131);
+}
+
+@media (max-width: 1200px) {
+    .Etiquette {
+        height: 155vh;
+    }
+}
+
+@media (max-width: 960px) {
+    .Etiquette {
+        height: 155vh;
+    }
+    .EtiquetteItemContainer {
+        margin: 0px 18%;
+    }
+}
+
+@media (max-width: 720px) {
+    .Etiquette {
+        height: 170vh;
+    }
+}
+
+@media (max-width: 570px) {
+    .Etiquette {
+        height: 185vh;
+    }
+}
+
