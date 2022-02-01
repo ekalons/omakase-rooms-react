@@ -116,5 +116,11 @@
     .HeaderBackground {
         display: none;
     }
+    .Parameters {
+        display: none;
+    }
+    .RoomResults {
+        top: 130px;
+    }
 }
 
