@@ -11,8 +11,12 @@ import RoomCard from '../RoomCard/RoomCard';
 import Mapview from '../Mapview/Mapview';
 
 const Rooms = () => {
+    // Data state
     const [rooms, setRooms] = useState([]);
+    // Button states
     const [isPriceClicked, setIsPriceClicked] = useState(true);
+    const [isMichelinClicked, setIsMichelinClicked] = useState(true);
+    const [isBarTableClicked, setIsBarTableClicked] = useState(true);
     // Public API -> Public data
     const address = "https://api.jsonbin.io/b/61f69701fb3ece3ad7ce5fa3";
 
@@ -53,8 +57,43 @@ const Rooms = () => {
         } else if (isPriceClicked === false) {
             fetchData(address);
         }
+    }
+
+    const onMichelinClick = () => {
+        setIsMichelinClicked(!isMichelinClicked);
+
+        if (isMichelinClicked === true) {
+            const arrToUpdate = rooms.results;
+            const michelinArr = arrToUpdate.filter(function (el) {
+                return el.michelin_stars >= 1;
+            });
+            const objToPass = {results: michelinArr}
+            // console.log(objToPass);
+            setRooms(objToPass);
+        } else {
+            fetchData(address);
+        }
 
     }
+
+    const onBarTableClick = () => {
+        setIsBarTableClicked(!isBarTableClicked);
+
+        if (isBarTableClicked === true) {
+            const arrToUpdate = rooms.results;
+            const barTableArr = arrToUpdate.filter(function (el) {
+                return el.serve_style !== 'Bar';
+            });
+            const objToPass = {results: barTableArr};
+            setRooms(objToPass);
+        } else {
+            fetchData(address);
+        }
+
+    }
+
+
+
 
 
 
@@ -68,11 +107,9 @@ const Rooms = () => {
             <section>
                 <h2 className="CityName">Rooms in New York City</h2>
                 <div className="Parameters">
-                    <p>Neighborhood</p>
                     <p onClick={onPriceClick} style={{backgroundColor: isPriceClicked === false ? 'rgb(228 228 231)' : ''}}>Price</p>
-                    <p>Bar / Table</p>
-                    <p>Michelin</p>
-
+                    <p onClick={onMichelinClick} style={{backgroundColor: isMichelinClicked === false ? 'rgb(228 228 231)' : ''}}>Michelin</p>
+                    <p onClick={onBarTableClick} style={{backgroundColor: isBarTableClicked === false ? 'rgb(228 228 231)' : ''}}>Bar / Table</p>
                 </div>
                 <div className="RoomResults">
                     {rooms.results?.map(
