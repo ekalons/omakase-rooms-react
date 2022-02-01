@@ -1,12 +1,17 @@
 import React from 'react'
 import './Footer.css';
 
+// Icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+
 const Footer = () => {
     return (
         <footer>
             <p>
-                Built with &#128156; by ekalons
+                omakaserooms © 2022 - All rights reserved
             </p>
+
         </footer>
     )
 }
