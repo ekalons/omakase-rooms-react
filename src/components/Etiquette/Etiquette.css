@@ -77,3 +77,14 @@
     }
 }
 
+@media (max-width: 450px) {
+    .Etiquette {
+        height: 220vh;
+    }
+}
+
+@media (max-width: 340px) {
+    .Etiquette {
+        height: 240vh;
+    }
+}

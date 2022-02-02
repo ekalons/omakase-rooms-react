@@ -138,5 +138,11 @@ a {
 
 }
 
+@media (max-width: 500px) {
+    .NavbarContainer {
+        width: 105vw;
+    }
+}
+
 
 
