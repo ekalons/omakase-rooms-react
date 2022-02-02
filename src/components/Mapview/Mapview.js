@@ -58,7 +58,7 @@ const MapView = ({searchResults}) => {
     return (
         <div>
             <Map
-                mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API_KEY}
+                mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
                 mapStyle="mapbox://styles/ekalons/ckyydwp4g002414pgg7qx58m1"
                 {...viewport}
                 onViewportChange={(newView) => setViewport(newView)}
