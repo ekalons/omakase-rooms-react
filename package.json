@@ -2,10 +2,6 @@
   "name": "omakase-rooms-react",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "17.3.x",
-    "npm": "8.3.x"
-  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
@@ -41,6 +37,9 @@
     "production": [
       ">0.2%",
       "not dead",
+      "not ie 11",
+      "not chrome < 51",
+      "not safari < 10",
       "not op_mini all"
     ],
     "development": [
@@ -48,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "worker-loader": "^3.0.8"
   }
 }
