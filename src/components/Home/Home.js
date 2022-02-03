@@ -45,7 +45,10 @@ const Home = () => {
                     first={false}
 
                 />
-                <MapItem backgroundColor="#F8F7F4"/>
+                {window.innerWidth > 720 && (
+                    <MapItem backgroundColor="#F8F7F4"/>
+                    )}
+
                 <Footer />
             </div>
         </div>

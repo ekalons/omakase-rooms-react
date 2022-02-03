@@ -179,3 +179,28 @@
     }
 
 }
+
+@media (max-width: 450px) {
+    .ItemPhoto, .ItemPhotoLeft {
+        width: 266px;
+        height: 280px;
+        top: 6%;
+        left: 0%;
+    }
+    .ItemDetails, .ItemDetailsLeft {
+        width: 250px;
+        height: 240px;
+        top: 3%;
+        left: 0%;
+        transform: translateX(0%);
+
+    }
+    .ItemTitle {
+        font-size: 32px;
+    }
+    .ItemDescription {
+        font-size: 20px;
+    }
+
+
+}
