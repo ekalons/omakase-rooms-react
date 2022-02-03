@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+// Mapbox-gl transpilation fix
+import mapboxgl from '!mapbox-gl';
+/* eslint import/no-webpack-loader-syntax: off */
 import Map, {Marker, Popup} from 'react-map-gl';
 // import getCenter from 'geolib/es/getCenter';
 
