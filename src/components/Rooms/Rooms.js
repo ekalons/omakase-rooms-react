@@ -83,8 +83,6 @@ const Rooms = () => {
         }
     }
 
-    console.log(rooms)
-
 
     return (
         <div className="Rooms">

@@ -10,7 +10,7 @@ const RoomCard = ({ _id, name, details, rating, review_count, neighborhood, pric
 
     const handleUpdate = () => {
         const objArr = allRooms
-        console.log('Roomcard clicked')
+        // console.log('Roomcard clicked')
 
         objArr.forEach(room => room.isClicked = false)
 
