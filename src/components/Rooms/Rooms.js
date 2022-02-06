@@ -1,5 +1,6 @@
 // General
 import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
 
 // Styles
 import './Rooms.css';
@@ -18,24 +19,18 @@ const Rooms = () => {
     const [isMichelinClicked, setIsMichelinClicked] = useState(true);
     const [isBarTableClicked, setIsBarTableClicked] = useState(true);
 
-    // Public API -> Public data
-    const address = process.env.REACT_APP_JSONBIN_IO_API_KEY;
+    const url = process.env.REACT_APP_SERVER_ACCESS_TOKEN;
 
-
-    const fetchData = (url) => {
-        return fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-                // Adding isClicked properety to every room obj
-                data.results?.forEach(room => room.isClicked = false)
-                setRooms(data)}
-        );
-    };
+    const fetchData = () => {
+        Axios.get(`${url}/api/rooms`).then((response) => {
+            response.data.forEach((room) => room.isClicked = false)
+            setRooms(response.data);
+        })
+    }
 
     useEffect(() => {
-
-        fetchData(address);
-    }, []);
+        fetchData()
+    }, [])
 
     // onParameterClick handlers
     const onPriceClick = () => {
@@ -52,12 +47,11 @@ const Rooms = () => {
         setIsPriceClicked(!isPriceClicked);
 
         if (isPriceClicked === true) {
-            const arrToUpdate = rooms.results;
-            arrToUpdate?.sort(ascendingPriceSort)
-            const objToPass = {results: arrToUpdate}
-            setRooms(objToPass);
+            const arrToUpdate = rooms;
+            const priceSortArr = arrToUpdate?.sort(ascendingPriceSort)
+            setRooms(priceSortArr);
         } else if (isPriceClicked === false) {
-            fetchData(address);
+            fetchData();
         }
     }
 
@@ -65,38 +59,31 @@ const Rooms = () => {
         setIsMichelinClicked(!isMichelinClicked);
 
         if (isMichelinClicked === true) {
-            const arrToUpdate = rooms.results;
+            const arrToUpdate = rooms;
             const michelinArr = arrToUpdate.filter(function (el) {
                 return el.michelin_stars >= 1;
             });
-            const objToPass = {results: michelinArr}
-            // console.log(objToPass);
-            setRooms(objToPass);
+            setRooms(michelinArr);
         } else {
-            fetchData(address);
+            fetchData();
         }
-
     }
 
     const onBarTableClick = () => {
         setIsBarTableClicked(!isBarTableClicked);
 
         if (isBarTableClicked === true) {
-            const arrToUpdate = rooms.results;
+            const arrToUpdate = rooms;
             const barTableArr = arrToUpdate.filter(function (el) {
                 return el.serve_style !== 'Bar';
             });
-            const objToPass = {results: barTableArr};
-            setRooms(objToPass);
+            setRooms(barTableArr);
         } else {
-            fetchData(address);
+            fetchData();
         }
-
     }
 
-
-
-
+    console.log(rooms)
 
 
     return (
@@ -104,7 +91,7 @@ const Rooms = () => {
             <Header />
             <div className="HeaderBackground"></div>
             <div className="MapContainer">
-                <Mapview searchResults={rooms.results}/>
+                <Mapview searchResults={rooms}/>
             </div>
             <section>
                 <h2 className="CityName">Rooms in New York City</h2>
@@ -114,11 +101,11 @@ const Rooms = () => {
                     <p onClick={onBarTableClick} style={{backgroundColor: isBarTableClicked === false ? 'rgb(228 228 231)' : ''}}>Bar / Table</p>
                 </div>
                 <div className="RoomResults">
-                    {rooms.results?.map(
-                        ({ id, name, details, rating, review_count, neighborhood, price, michelin_stars, serve_style, coordinates, photo, isClicked }
+                    {rooms?.map(
+                        ({ _id, name, details, rating, review_count, neighborhood, price, michelin_stars, serve_style, coordinates, photo, isClicked }
                         ) => (
                             <RoomCard
-                                key={id}
+                                key={_id}
                                 name={name}
                                 details={details}
                                 rating={rating}
@@ -140,11 +127,6 @@ const Rooms = () => {
                     <Footer />
                 </div>
             </section>
-
-
-
-
-
         </div>
     )
 }

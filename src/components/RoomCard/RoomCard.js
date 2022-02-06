@@ -6,12 +6,13 @@ import { ReactComponent as MichelinStar } from '../../assets/MichelinStar.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faStar } from '@fortawesome/free-solid-svg-icons';
 
-const RoomCard = ({ id, name, details, rating, review_count, neighborhood, price, michelin_stars, serve_style, coordinates, photo, isClicked, allRooms, updateRoom }) => {
+const RoomCard = ({ _id, name, details, rating, review_count, neighborhood, price, michelin_stars, serve_style, coordinates, photo, isClicked, allRooms, updateRoom }) => {
 
     const handleUpdate = () => {
-        const objArr = allRooms.results
+        const objArr = allRooms
+        console.log('Roomcard clicked')
 
-        objArr?.forEach(room => room.isClicked = false)
+        objArr.forEach(room => room.isClicked = false)
 
         const obj = objArr.find(obj => obj.name === name);
         if (obj.isClicked === true) {
@@ -20,9 +21,7 @@ const RoomCard = ({ id, name, details, rating, review_count, neighborhood, price
             obj.isClicked = true
         }
 
-        const toPass = {results: objArr}
-
-        updateRoom(toPass)
+        updateRoom(objArr)
     }
 
     return (

@@ -5,7 +5,6 @@ import mapboxgl from '!mapbox-gl';
 import Map, {Marker, Popup} from 'react-map-gl';
 // import getCenter from 'geolib/es/getCenter';
 
-
 // Styles
 import './Mapview.css';
 
@@ -16,9 +15,12 @@ import { faMapMarkerAlt, faStar } from '@fortawesome/free-solid-svg-icons';
 
 const MapView = ({searchResults}) => {
     const [selectedLocation, setSelectedLocation] = useState(null)
-    if (searchResults) {
-        // setSelectedLocation(searchResults)
-    }
+    const mapboxToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+    const mapboxStyles = process.env.REACT_APP_MAPBOX_STYLES_TOKEN;
+
+    // if (searchResults) {
+    //     setSelectedLocation(searchResults)
+    // }
 
     // Transform searchResults props into latitude/longitude obj
     // const coordinates = searchResults?.map((result) => ({
@@ -61,8 +63,8 @@ const MapView = ({searchResults}) => {
     return (
         <div>
             <Map
-                mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
-                mapStyle="mapbox://styles/ekalons/ckyydwp4g002414pgg7qx58m1"
+                mapboxApiAccessToken={mapboxToken}
+                mapStyle={mapboxStyles}
                 {...viewport}
                 onViewportChange={(newView) => setViewport(newView)}
                 >
