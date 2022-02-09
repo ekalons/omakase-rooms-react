@@ -11,7 +11,6 @@ const RoomCard = ({ _id, name, details, rating, review_count, neighborhood, pric
     // onRoomCardClick callback func -> Update parent state
     const handleUpdate = () => {
     const objArr = allRooms
-    console.log('Roomcard clicked')
 
     objArr.forEach(room => room.isClicked = false)
 

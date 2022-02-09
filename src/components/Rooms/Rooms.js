@@ -88,8 +88,6 @@ const Rooms = () => {
     // Updates clickedRoomCard state when RoomCard is clicked
     const updateRoomsState = (obj) => {
         setClickedRoomCard(obj);
-        console.log('New clicked element');
-        console.log(obj);
     }
 
     return (
