@@ -20,6 +20,7 @@ const Rooms = () => {
     const [isMichelinClicked, setIsMichelinClicked] = useState(true);
     const [isBarTableClicked, setIsBarTableClicked] = useState(true);
 
+    // Setting environment variables & getting data from server
     const url = process.env.REACT_APP_SERVER_ACCESS_TOKEN;
 
     const fetchData = () => {
@@ -88,6 +89,7 @@ const Rooms = () => {
     const updateRoomsState = (obj) => {
         setClickedRoomCard(obj);
         console.log('New clicked element');
+        console.log(obj);
     }
 
     return (

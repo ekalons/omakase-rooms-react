@@ -1,17 +1,16 @@
+// General
 import { useState, useEffect } from 'react';
-// Mapbox-gl transpilation fix
+
+// Mapbox
+import Map, {Marker, Popup} from 'react-map-gl';
+import './Mapview.css';
+
+// Mapbox-gl transpilation fix -> Lines 9-13
 import mapboxgl from '!mapbox-gl';
 /* eslint import/no-webpack-loader-syntax: off */
-import Map, {Marker, Popup} from 'react-map-gl';
-// import getCenter from 'geolib/es/getCenter';
 // import 'mapbox-gl/dist/mapbox-gl.css';
-// import mapboxgl from 'mapbox-gl';
-
 // // eslint-disable-next-line import/no-webpack-loader-syntax
 // mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
-
-// Styles
-import './Mapview.css';
 
 // Icons
 import { ReactComponent as MichelinStar } from '../../assets/MichelinStar.svg';
@@ -33,20 +32,6 @@ const MapView = ({searchResults, clickedElement}) => {
     // Environment variables
     const mapboxToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
     const mapboxStyles = process.env.REACT_APP_MAPBOX_STYLES_TOKEN;
-
-    // if (searchResults) {
-    //     setSelectedLocation(searchResults)
-    // }
-
-    // Transform searchResults props into latitude/longitude obj
-    // const coordinates = searchResults?.map((result) => ({
-    //     longitude: result.coordinates.longitude,
-    //     latitude: result.coordinates.latitude,
-    // }));
-
-    // const center = getCenter(coordinates);
-
-
 
     // Close map popup with ESC key
     useEffect(() => {
@@ -95,7 +80,7 @@ const MapView = ({searchResults, clickedElement}) => {
                             </div>
 
                         </Marker>
-                        {selectedLocation ? (
+                        {(selectedLocation?.isClicked === true) ? (
                             <Popup
                                 latitude={selectedLocation.coordinates.latitude}
                                 longitude={selectedLocation.coordinates.longitude}
