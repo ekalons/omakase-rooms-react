@@ -1,5 +1,6 @@
 // General
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 // Style
 import './App.css';
@@ -14,11 +15,13 @@ function App() {
     return (
         <div className="App">
             <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/rooms" element={<Rooms />} />
-                    <Route path="/etiquette" element={<Etiquette />} />
-                </Routes>
+                <ScrollToTop>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/rooms" element={<Rooms />} />
+                        <Route path="/etiquette" element={<Etiquette />} />
+                    </Routes>
+                </ScrollToTop>
             </BrowserRouter>
         </div>
     );
