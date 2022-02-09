@@ -6,23 +6,24 @@ import { ReactComponent as MichelinStar } from '../../assets/MichelinStar.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faStar } from '@fortawesome/free-solid-svg-icons';
 
-const RoomCard = ({ _id, name, details, rating, review_count, neighborhood, price, michelin_stars, serve_style, coordinates, photo, isClicked, allRooms, updateRoom }) => {
+const RoomCard = ({ _id, name, details, rating, review_count, neighborhood, price, michelin_stars, serve_style, coordinates, photo, isClicked, allRooms, updateParent }) => {
 
+    // onRoomCardClick callback func -> Update parent state
     const handleUpdate = () => {
-        const objArr = allRooms
-        // console.log('Roomcard clicked')
+    const objArr = allRooms
+    console.log('Roomcard clicked')
 
-        objArr.forEach(room => room.isClicked = false)
+    objArr.forEach(room => room.isClicked = false)
 
-        const obj = objArr.find(obj => obj.name === name);
-        if (obj.isClicked === true) {
-            obj.isClicked = false
-        } else {
-            obj.isClicked = true
-        }
-
-        updateRoom(objArr)
+    const obj = objArr.find(obj => obj.name === name);
+    if (obj.isClicked === true) {
+        obj.isClicked = false
+    } else {
+        obj.isClicked = true
     }
+    updateParent(objArr)
+    }
+
 
     return (
         <div className="RoomCard" onClick={handleUpdate}>

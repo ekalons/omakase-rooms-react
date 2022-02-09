@@ -83,6 +83,12 @@ const Rooms = () => {
         }
     }
 
+    const updateRoomsState = (obj) => {
+        setRooms(obj);
+        console.log('State updated in parent')
+        console.log(rooms);
+    }
+
 
     return (
         <div className="Rooms">
@@ -95,7 +101,7 @@ const Rooms = () => {
                 <h2 className="CityName">Rooms in New York City</h2>
                 <div className="Parameters">
                     <p onClick={onPriceClick} style={{backgroundColor: isPriceClicked === false ? 'rgb(228 228 231)' : ''}}>Price</p>
-                    <p onClick={onMichelinClick} style={{backgroundColor: isMichelinClicked === false ? 'rgb(228 228 231)' : ''}}>Michelin</p>
+                    <p onClick={onMichelinClick} style={{backgroundColor: isMichelinClicked === false ? 'rgb(228 228 231)' : ''}}>Michelin stars</p>
                     <p onClick={onBarTableClick} style={{backgroundColor: isBarTableClicked === false ? 'rgb(228 228 231)' : ''}}>Bar / Table</p>
                 </div>
                 <div className="RoomResults">
@@ -116,7 +122,7 @@ const Rooms = () => {
                                 photo={photo}
                                 isClicked={isClicked}
                                 allRooms={rooms}
-                                updateRoom={setRooms}
+                                updateParent={updateRoomsState}
                             />
                         )
                     )}
