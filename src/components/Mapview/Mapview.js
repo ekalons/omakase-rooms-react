@@ -18,8 +18,19 @@ import { ReactComponent as MichelinStar } from '../../assets/MichelinStar.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faStar } from '@fortawesome/free-solid-svg-icons';
 
-const MapView = ({searchResults}) => {
-    const [selectedLocation, setSelectedLocation] = useState(null)
+const MapView = ({searchResults, clickedElement}) => {
+    // States
+    const [selectedLocation, setSelectedLocation] = useState(clickedElement);
+    const [viewport, setViewport] = useState({
+        latitude: 40.736,
+        longitude: -73.9900,
+        zoom: 12.2,
+        width: '43vw',
+        height: window.innerHeight - 52
+
+    });
+
+    // Environment variables
     const mapboxToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
     const mapboxStyles = process.env.REACT_APP_MAPBOX_STYLES_TOKEN;
 
@@ -35,14 +46,7 @@ const MapView = ({searchResults}) => {
 
     // const center = getCenter(coordinates);
 
-    const [viewport, setViewport] = useState({
-        latitude: 40.736,
-        longitude: -73.9900,
-        zoom: 12.2,
-        width: '43vw',
-        height: window.innerHeight - 52
 
-    });
 
     // Close map popup with ESC key
     useEffect(() => {

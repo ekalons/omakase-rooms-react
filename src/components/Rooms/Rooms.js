@@ -14,6 +14,7 @@ import Mapview from '../Mapview/Mapview';
 const Rooms = () => {
     // Data state
     const [rooms, setRooms] = useState([]);
+    const [clickedRoomCard, setClickedRoomCard] = useState(null);
     // Button states
     const [isPriceClicked, setIsPriceClicked] = useState(true);
     const [isMichelinClicked, setIsMichelinClicked] = useState(true);
@@ -83,19 +84,18 @@ const Rooms = () => {
         }
     }
 
+    // Updates clickedRoomCard state when RoomCard is clicked
     const updateRoomsState = (obj) => {
-        setRooms(obj);
-        console.log('State updated in parent')
-        console.log(rooms);
+        setClickedRoomCard(obj);
+        console.log('New clicked element');
     }
-
 
     return (
         <div className="Rooms">
             <Header />
             <div className="HeaderBackground"></div>
             <div className="MapContainer">
-                <Mapview searchResults={rooms}/>
+                <Mapview searchResults={rooms} clickedElement={clickedRoomCard}/>
             </div>
             <section>
                 <h2 className="CityName">Rooms in New York City</h2>

@@ -21,7 +21,7 @@ const RoomCard = ({ _id, name, details, rating, review_count, neighborhood, pric
     } else {
         obj.isClicked = true
     }
-    updateParent(objArr)
+    updateParent(obj)
     }
 
 
