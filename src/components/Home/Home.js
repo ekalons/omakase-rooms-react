@@ -5,7 +5,6 @@ import './Home.css';
 import Header from '../Header/Header';
 import Item from '../Item/Item';
 import MapItem from '../MapItem/MapItem';
-import Footer from '../Footer/Footer';
 
 // Importing images
 import Chef from '../../assets/chef.jpeg';
@@ -49,7 +48,6 @@ const Home = () => {
                     <MapItem backgroundColor="#F8F7F4"/>
                     )}
 
-                <Footer />
             </div>
         </div>
     )
