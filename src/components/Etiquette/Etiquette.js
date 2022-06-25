@@ -3,7 +3,6 @@ import './Etiquette.css';
 
 // Components
 import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 
 const Etiquette = () => {
     return (
@@ -44,7 +43,6 @@ const Etiquette = () => {
 
                 </div>
             </div>
-            <Footer/>
         </div>
     )
 }

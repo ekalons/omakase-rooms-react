@@ -7,7 +7,6 @@ import './Rooms.css';
 
 // Components
 import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import RoomCard from '../RoomCard/RoomCard';
 import Mapview from '../Mapview/Mapview';
 
@@ -126,9 +125,6 @@ const Rooms = () => {
                             />
                         )
                     )}
-                </div>
-                <div className="RoomsFooter">
-                    <Footer />
                 </div>
             </section>
         </div>

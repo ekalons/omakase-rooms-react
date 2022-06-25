@@ -9,6 +9,7 @@ import './App.css';
 import Home from '../Home/Home';
 import Rooms from '../Rooms/Rooms';
 import Etiquette from '../Etiquette/Etiquette';
+import Footer from '../Footer/Footer';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                     </Routes>
                 </ScrollToTop>
             </BrowserRouter>
+            <Footer />
         </div>
     );
 }

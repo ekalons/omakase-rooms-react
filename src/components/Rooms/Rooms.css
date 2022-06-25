@@ -85,12 +85,6 @@
         background: transparent;
     }
 
-    .RoomsFooter {
-        position: relative;
-        width: 100vw;
-        top: 1180px;
-    }
-
 }
 
 @media (max-width: 960px) {
@@ -105,11 +99,6 @@
         display: none;
     }
 
-    .RoomsFooter {
-        position: relative;
-        top: 1940px;
-        margin-top: 10px;
-    }
 }
 
 @media (max-width: 720px) {
