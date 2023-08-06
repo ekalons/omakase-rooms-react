@@ -108,4 +108,7 @@
     .HeaderBackground {
         display: none;
     }
+    .Parameters {
+        display: none;
+    }
 }
