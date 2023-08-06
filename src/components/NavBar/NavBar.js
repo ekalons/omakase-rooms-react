@@ -1,11 +1,6 @@
-// General
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-// Components
 import {HamMenu} from '../HamMenu/HamMenu';
-
-// Styles
 import './NavBar.css';
 
 

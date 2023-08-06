@@ -1,12 +1,9 @@
-// Style
 import './Home.css';
 
-// Components
 import Header from '../Header/Header';
 import Item from '../Item/Item';
 import MapItem from '../MapItem/MapItem';
 
-// Importing images
 import Chef from '../../assets/chef.jpeg';
 import Room from '../../assets/room.jpeg';
 import Serving from '../../assets/serving.jpeg';

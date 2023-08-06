@@ -1,11 +1,5 @@
-// General
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
-
-// Style
-import './App.css';
-
-// Pages
 import Home from '../Home/Home';
 import Rooms from '../Rooms/Rooms';
 import Etiquette from '../Etiquette/Etiquette';

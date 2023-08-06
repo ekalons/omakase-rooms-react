@@ -1,53 +1,62 @@
 .Rooms {
     display: flex;
     flex-direction: column;
-    /*min-height: 100vh;*/
-    height: 2000px;
-    width: 100vw;
     background: #F3EEE8;
 }
 
-.HeaderBackground {
+.PageContainer {
     display: flex;
-    position: fixed;
-    top: 0px;
-    width: 100vw;
-    height: 60px;
-    background: #F3EEE8;
-    border-bottom: 1px solid #a3a3a3;
-    z-index: 5;
-}
+    height: calc(100vh - 60px);
+    margin-top: 60px;
+  }
 
-.CityName {
-    position: absolute;
-    top: 60px;
-    margin: 15px 20px;
-    background: #F3EEE8;
-}
-
-.Parameters {
+.RoomResultsContainer {
+    flex: 1;
     display: flex;
-    flex-direction: row;
-    margin: 0 15px;
-    position: absolute;
-    top: 110px;
-    width: 50vw;
-    background: #F3EEE8;
+    align-items: center;
+    flex-direction: column;
+    overflow: auto;
 }
 
-.Parameters p {
+.RoomResults {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background: #F3EEE8;
+    width: 100%;
+}
+
+.ParameterContainer {
+    display: flex;
+    flex: 0 0 8%;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .CityName {
+    margin: 5px 20px;
+    padding: 0px 0px;
+  }
+  
+  .Parameters {
+    display: flex;
+    align-items: flex-start;
+    padding: 0px 10px;
+  }
+  
+  .Parameters p {
     margin: 10px 10px;
     padding: 10px 10px;
     border-width: 1px;
-    border-color: 1px;
     border-style: solid;
     border-radius: 50px;
     border-color: #a3a3a3;
     cursor: pointer;
     font-size: 15px;
     font-weight: 400;
-}
-
+  }
 .Parameters p:hover {
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
@@ -61,40 +70,34 @@
     background-color: rgb(228 228 231);
 }
 
-.RoomResults {
+.MapContainer {
+    flex: 1;
+    background-color: #d3d3d3;
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 60px);
+    width: 100%;
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 180px;
+}
+
+.HeaderBackground {
+    display: flex;
+    position: fixed;
+    top: 0px;
+    width: 100vw;
+    height: 60px;
     background: #F3EEE8;
-    margin-bottom: 10px;
+    border-bottom: 1px solid #a3a3a3;
+    z-index: 5;
 }
 
 
-@media (min-width: 961px) {
-    .RoomResults {
-        width: 57vw;
-    }
-    .MapContainer {
-        display: flex;
-        position: sticky;
-        height: 100vh;
-        width: 43%;
-        top: 60px;
-        left: 1000px;
-        background: transparent;
-    }
-
-}
 
 @media (max-width: 960px) {
-    .RoomResults {
-        width: 100vw;
-    }
     .MapContainer {
         display: none;
     }
-
     .MapView {
         display: none;
     }
@@ -105,11 +108,4 @@
     .HeaderBackground {
         display: none;
     }
-    .Parameters {
-        display: none;
-    }
-    .RoomResults {
-        top: 130px;
-    }
 }
-

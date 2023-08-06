@@ -1,39 +1,30 @@
-// General
 import { useState, useEffect } from 'react';
-
-// Mapbox
 import Map, {Marker, Popup} from 'react-map-gl';
 import './Mapview.css';
 
-// Mapbox-gl transpilation fix -> Lines 9-13
+// Mapbox-gl transpilation fix
 import mapboxgl from '!mapbox-gl';
 /* eslint import/no-webpack-loader-syntax: off */
 // import 'mapbox-gl/dist/mapbox-gl.css';
 // // eslint-disable-next-line import/no-webpack-loader-syntax
 // mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
-// Icons
 import { ReactComponent as MichelinStar } from '../../assets/MichelinStar.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faStar } from '@fortawesome/free-solid-svg-icons';
 
 const MapView = ({searchResults, clickedElement}) => {
-    // States
+
     const [selectedLocation, setSelectedLocation] = useState(clickedElement);
     const [viewport, setViewport] = useState({
         latitude: 40.736,
         longitude: -73.9900,
         zoom: 12.2,
-        width: '43vw',
-        height: window.innerHeight - 52
+        width: '50vw',
+        height: window.innerHeight - 60
 
     });
 
-    // Environment variables
-    const mapboxToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
-    const mapboxStyles = process.env.REACT_APP_MAPBOX_STYLES_TOKEN;
-
-    // Close map popup with ESC key
     useEffect(() => {
         const listener = e => {
             if (e.key === "Escape") {
@@ -57,8 +48,8 @@ const MapView = ({searchResults, clickedElement}) => {
     return (
         <div>
             <Map
-                mapboxApiAccessToken={mapboxToken}
-                mapStyle={mapboxStyles}
+                mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
+                mapStyle={process.env.REACT_APP_MAPBOX_STYLES_TOKEN}
                 {...viewport}
                 onViewportChange={(newView) => setViewport(newView)}
                 >
