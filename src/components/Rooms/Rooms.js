@@ -83,49 +83,61 @@ const Rooms = () => {
 
     return (
         <div className="Rooms">
-            <Header />
-            <div className="HeaderBackground"></div>
-            <div className="PageContainer">
+        <Header />
+        <div className="HeaderBackground"></div>
+        <div className="PageContainer">
             <div className="RoomResultsContainer">
                 <div className="ParameterContainer">
                     <h2 className="CityName">Rooms in New York City</h2>
                     <div className="Parameters">
-                        <p onClick={onPriceClick} style={{backgroundColor: isPriceClicked === false ? 'rgb(228 228 231)' : ''}}>Price</p>
-                        <p onClick={onMichelinClick} style={{backgroundColor: isMichelinClicked === false ? 'rgb(228 228 231)' : ''}}>Michelin stars</p>
-                        <p onClick={onBarTableClick} style={{backgroundColor: isBarTableClicked === false ? 'rgb(228 228 231)' : ''}}>Bar / Table</p>
+                        <p onClick={onPriceClick} style={{ backgroundColor: isPriceClicked === false ? 'rgb(228 228 231)' : '' }}>Price</p>
+                        <p onClick={onMichelinClick} style={{ backgroundColor: isMichelinClicked === false ? 'rgb(228 228 231)' : '' }}>Michelin stars</p>
+                        <p onClick={onBarTableClick} style={{ backgroundColor: isBarTableClicked === false ? 'rgb(228 228 231)' : '' }}>Bar / Table</p>
                     </div>
                 </div>
                 <div className="RoomResults">
-                    {rooms?.map(
-                        ({ _id, name, details, rating, review_count, neighborhood, price, michelin_stars, serve_style, coordinates, photo, isClicked }
-                        ) => (
-                            <RoomCard
-                                key={_id}
-                                name={name}
-                                details={details}
-                                rating={rating}
-                                review_count={review_count}
-                                neighborhood={neighborhood}
-                                price={price}
-                                michelin_stars={michelin_stars}
-                                serve_style={serve_style}
-                                coordinates={coordinates}
-                                photo={photo}
-                                isClicked={isClicked}
-                                allRooms={rooms}
-                                updateParent={updateRoomsState}
-                            />
-                        )
-                    )}
+                {rooms?.map(
+                    ({
+                    _id,
+                    name,
+                    details,
+                    rating,
+                    review_count,
+                    neighborhood,
+                    price,
+                    michelin_stars,
+                    serve_style,
+                    coordinates,
+                    photo,
+                    isClicked,
+                    }) => (
+                    <RoomCard
+                        key={_id}
+                        name={name}
+                        details={details}
+                        rating={rating}
+                        review_count={review_count}
+                        neighborhood={neighborhood}
+                        price={price}
+                        michelin_stars={michelin_stars}
+                        serve_style={serve_style}
+                        coordinates={coordinates}
+                        photo={photo}
+                        isClicked={isClicked}
+                        allRooms={rooms}
+                        updateParent={updateRoomsState}
+                    />
+                    )
+                )}
                 </div>
             </div>
             <div className="MapContainer">
-                <Mapview searchResults={rooms} clickedElement={clickedRoomCard}/>
+                <Mapview searchResults={rooms} clickedElement={clickedRoomCard} />
             </div>
             </div>
         </div>
-    )
-}
-
-export default Rooms;
-
+      );
+    };
+    
+    export default Rooms;
+    

@@ -8,7 +8,7 @@
     display: flex;
     height: calc(100vh - 60px);
     margin-top: 60px;
-  }
+}
 
 .RoomResultsContainer {
     flex: 1;
@@ -33,20 +33,21 @@
     align-items: flex-start;
     width: 100%;
     margin-top: 10px;
-  }
+    z-index: 6;
+}
   
-  .CityName {
+.CityName {
     margin: 5px 20px;
     padding: 0px 0px;
-  }
+}
   
-  .Parameters {
+.Parameters {
     display: flex;
     align-items: flex-start;
     padding: 0px 10px;
-  }
+}
   
-  .Parameters p {
+.Parameters p {
     margin: 10px 10px;
     padding: 10px 10px;
     border-width: 1px;
@@ -56,10 +57,10 @@
     cursor: pointer;
     font-size: 15px;
     font-weight: 400;
-  }
+}
+
 .Parameters p:hover {
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-
 }
 
 .Parameters p:active {
@@ -93,7 +94,6 @@
 }
 
 
-
 @media (max-width: 960px) {
     .MapContainer {
         display: none;
@@ -101,14 +101,13 @@
     .MapView {
         display: none;
     }
-
 }
 
 @media (max-width: 720px) {
-    .HeaderBackground {
-        display: none;
+    .PageContainer {
+        touch-action: manipulation;
     }
-    .Parameters {
+    .HeaderBackground {
         display: none;
     }
 }

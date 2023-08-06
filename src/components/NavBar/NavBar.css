@@ -41,16 +41,16 @@ a {
     a:hover:after {
         width: 100%;
     }
+    .navBar {
+        position: absolute;
+        background-color: transparent;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        margin-top: 3px;
+    }
 }
 
-.navBar {
-    position: absolute;
-    background-color: transparent;
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    margin-top: 3px;
-}
 
 
 @media (min-width: 985px) {
@@ -75,6 +75,7 @@ a {
         top: 50px;
         right: 0;
         left: 0;
+        display: unset;
     }
 
     .navbar .ShowItem {
@@ -108,7 +109,7 @@ a {
     }
 
     .TransitionIn {
-        height: 37vh;
+        height: 200px;
     }
 
     .NavbarContainer ul {
