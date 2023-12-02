@@ -45,7 +45,7 @@
 
 .RoomName {
     font-size: 20px;
-    font-weight: 450;
+    font-weight: 500;
 }
 
 .InfoRow {
@@ -55,7 +55,7 @@
 
 .RoomRating {
     font-size: 15px;
-    font-weight: 400;
+    font-weight: 450;
     color: red;
     padding-left: 2px;
 }
@@ -68,10 +68,11 @@
 .RoomServeStyle {
     font-size: 13px;
     padding: 1.5px 3px;
-    font-weight: 350;
+    font-weight: 500;
 }
 
 .RoomPrice {
+    font-weight: 500;
     font-size: 14px;
     padding: 1px 3px;
 }
@@ -121,7 +122,7 @@
     display: flex;
     height: 100%;
     font-size: 15px;
-    font-weight: 300;
+    font-weight: 400;
     /*vertical-align: bottom;*/
     align-items: flex-end;
 
