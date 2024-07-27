@@ -3,6 +3,7 @@ import "./RoomCard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faStar } from "@fortawesome/free-solid-svg-icons";
 import { MichelinStarIcon } from "../MichelinStar/MichelinStar";
+import { Room } from "../../clients/getRooms";
 
 interface RoomCardProps {
   name: string;
@@ -14,8 +15,12 @@ interface RoomCardProps {
   michelin_stars: number;
   serve_style: string;
   photo: string;
-  allRooms: any;
-  updateParent: any;
+  allRooms: Room[];
+  coordinates?: {
+    latitude: number;
+    longitude: number;
+  };
+  updateParent: (obj: Room | undefined) => void;
 }
 
 const RoomCard = ({
@@ -37,9 +42,9 @@ const RoomCard = ({
     objArr.forEach((room) => (room.isClicked = false));
 
     const obj = objArr.find((obj) => obj.name === name);
-    if (obj.isClicked === true) {
+    if (obj && obj.isClicked === true) {
       obj.isClicked = false;
-    } else {
+    } else if (obj) {
       obj.isClicked = true;
     }
     updateParent(obj);

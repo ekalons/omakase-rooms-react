@@ -1,34 +1,31 @@
 import React, { useState, useEffect } from "react";
-import Axios from "axios";
 
 import "./Rooms.css";
 
 import Header from "../Header/Header";
 import RoomCard from "../RoomCard/RoomCard";
 import Mapview from "../Mapview/Mapview";
+import { Room, getRooms } from "../../clients/getRooms";
 
 const Rooms = () => {
-  const [rooms, setRooms] = useState([]);
+  const [rooms, setRooms] = useState<Room[]>([]);
   const [clickedRoomCard, setClickedRoomCard] = useState(null);
   const [isPriceClicked, setIsPriceClicked] = useState(true);
   const [isMichelinClicked, setIsMichelinClicked] = useState(true);
   const [isBarTableClicked, setIsBarTableClicked] = useState(true);
 
-  const url = process.env.REACT_APP_SERVER_ACCESS_TOKEN;
-
-  const fetchData = () => {
-    Axios.get(`${url}/api/rooms`).then((response) => {
-      response.data.forEach((room: any) => (room.isClicked = false));
-      setRooms(response.data);
-    });
+  const fetchAndUpdateRoomsData = async () => {
+    const roomsResponse = await getRooms();
+    roomsResponse.forEach((room: any) => (room.isClicked = false));
+    setRooms(roomsResponse);
   };
 
   useEffect(() => {
-    fetchData();
+    fetchAndUpdateRoomsData();
   }, []);
 
   const onPriceClick = () => {
-    const ascendingPriceSort = (a, b) => {
+    const ascendingPriceSort = (a: any, b: any) => {
       if (a.price < b.price) {
         return -1;
       }
@@ -45,7 +42,7 @@ const Rooms = () => {
       const priceSortArr = arrToUpdate?.sort(ascendingPriceSort);
       setRooms(priceSortArr);
     } else if (isPriceClicked === false) {
-      fetchData();
+      fetchAndUpdateRoomsData();
     }
   };
 
@@ -57,7 +54,7 @@ const Rooms = () => {
       const michelinArr = arrToUpdate.filter((el) => el.michelin_stars >= 1);
       setRooms(michelinArr);
     } else {
-      fetchData();
+      fetchAndUpdateRoomsData();
     }
   };
 
@@ -71,7 +68,7 @@ const Rooms = () => {
       });
       setRooms(barTableArr);
     } else {
-      fetchData();
+      fetchAndUpdateRoomsData();
     }
   };
 
@@ -131,7 +128,6 @@ const Rooms = () => {
                 serve_style,
                 coordinates,
                 photo,
-                isClicked,
               }) => (
                 <RoomCard
                   key={_id}
@@ -145,7 +141,6 @@ const Rooms = () => {
                   serve_style={serve_style}
                   coordinates={coordinates}
                   photo={photo}
-                  isClicked={isClicked}
                   allRooms={rooms}
                   updateParent={updateRoomsState}
                 />
