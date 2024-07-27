@@ -1,0 +1,96 @@
+import React from "react";
+import "./RoomCard.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkerAlt, faStar } from "@fortawesome/free-solid-svg-icons";
+import { MichelinStarIcon } from "../MichelinStar/MichelinStar";
+
+interface RoomCardProps {
+  name: string;
+  details: string;
+  rating: number;
+  review_count: number;
+  neighborhood: string;
+  price: number;
+  michelin_stars: number;
+  serve_style: string;
+  photo: string;
+  allRooms: any;
+  updateParent: any;
+}
+
+const RoomCard = ({
+  name,
+  details,
+  rating,
+  review_count,
+  neighborhood,
+  price,
+  michelin_stars,
+  serve_style,
+  photo,
+  allRooms,
+  updateParent,
+}: RoomCardProps) => {
+  const handleUpdate = () => {
+    const objArr = allRooms;
+
+    objArr.forEach((room) => (room.isClicked = false));
+
+    const obj = objArr.find((obj) => obj.name === name);
+    if (obj.isClicked === true) {
+      obj.isClicked = false;
+    } else {
+      obj.isClicked = true;
+    }
+    updateParent(obj);
+  };
+
+  return (
+    <div className="RoomCard" onClick={handleUpdate}>
+      <div className="CardImageContainer">
+        <img src={photo} alt="Restaurant" width="240px" height="160px" />
+      </div>
+      <div className="InfoContainer">
+        <p className="RoomName">{name}</p>
+        <div className="InfoRow">
+          <div className="IconContainer">
+            <FontAwesomeIcon
+              icon={faStar}
+              color="red"
+              size="sm"
+              className="Star"
+            />
+          </div>
+          <p className="RoomRating">{rating}</p>
+          <p className="RoomReviewCount">({review_count})</p>
+          <p className="RoomServeStyle">{serve_style}</p>
+          <p className="RoomPrice">
+            {price >= 250 ? "$$$$" : price < 250 && price >= 125 ? "$$$" : "$$"}
+          </p>
+          {michelin_stars >= 1 && (
+            <div className="MichelinStarContainer">
+              <MichelinStarIcon />
+              {michelin_stars >= 2 && <MichelinStarIcon />}
+              {michelin_stars === 3 && <MichelinStarIcon />}
+            </div>
+          )}
+        </div>
+        <div className="InfoRow">
+          <div className="IconContainer">
+            <FontAwesomeIcon
+              icon={faMapMarkerAlt}
+              size="sm"
+              className="LocationMarker"
+            />
+          </div>
+          <p className="RoomNeighborhood">{neighborhood}</p>
+        </div>
+        <div className="InfoRow RoomDetailsContainer">
+          <span>{details}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RoomCard;
