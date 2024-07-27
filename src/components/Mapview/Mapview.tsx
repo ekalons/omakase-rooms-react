@@ -6,24 +6,30 @@ import { MichelinStarIcon } from "../MichelinStar/MichelinStar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faStar } from "@fortawesome/free-solid-svg-icons";
 import { Room } from "../../clients/getRooms";
+import { configuration } from "../../configurationProvider";
 
 interface MapViewProps {
   searchResults: Room[];
   clickedElement: Room | undefined;
 }
 
+interface Viewport {
+  latitude: number;
+  longitude: number;
+  zoom: number;
+  width: string;
+  height: number;
+}
 const MapView = ({ searchResults, clickedElement }: MapViewProps) => {
-  const [selectedLocation, setSelectedLocation] = useState(clickedElement);
-  const [viewport, setViewport] = useState({
-    latitude: 40.736,
-    longitude: -73.99,
-    zoom: 12.2,
-    width: "50vw",
-    height: window.innerHeight - 60,
-  });
+  const [selectedLocation, setSelectedLocation] = useState<Room | undefined>(
+    clickedElement
+  );
+  const [viewport, setViewport] = useState<Viewport>(
+    configuration.map.defaultViewportSettings
+  );
 
   useEffect(() => {
-    const listener = (e) => {
+    const listener = (e: any) => {
       if (e.key === "Escape") {
         setSelectedLocation(undefined);
       }
@@ -34,11 +40,11 @@ const MapView = ({ searchResults, clickedElement }: MapViewProps) => {
     };
   }, []);
 
-  const toggleIsClicked = (obj) => {
-    if (obj.isClicked === true) {
-      obj.isClicked = false;
+  const toggleIsClicked = (room: Room) => {
+    if (room.isClicked === true) {
+      room.isClicked = false;
     } else {
-      obj.isClicked = true;
+      room.isClicked = true;
     }
   };
 
@@ -48,7 +54,7 @@ const MapView = ({ searchResults, clickedElement }: MapViewProps) => {
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         mapStyle={process.env.REACT_APP_MAPBOX_STYLES_TOKEN}
         {...viewport}
-        onViewportChange={(newView) => setViewport(newView)}
+        onViewportChange={(newView: Viewport) => setViewport(newView)}
       >
         {searchResults?.map((result) => (
           <div key={result.coordinates.longitude}>
