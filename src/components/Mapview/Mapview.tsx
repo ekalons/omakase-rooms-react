@@ -2,20 +2,14 @@ import React, { useState, useEffect } from "react";
 import Map, { Marker, Popup } from "react-map-gl";
 import "./Mapview.css";
 
-// Mapbox-gl transpilation fix
-// import mapboxgl from "!mapbox-gl";
-/* eslint import/no-webpack-loader-syntax: off */
-// import 'mapbox-gl/dist/mapbox-gl.css';
-// // eslint-disable-next-line import/no-webpack-loader-syntax
-// mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
-
 import { MichelinStarIcon } from "../MichelinStar/MichelinStar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faStar } from "@fortawesome/free-solid-svg-icons";
+import { Room } from "../../clients/getRooms";
 
 interface MapViewProps {
-  searchResults: any;
-  clickedElement: any;
+  searchResults: Room[];
+  clickedElement: Room | undefined;
 }
 
 const MapView = ({ searchResults, clickedElement }: MapViewProps) => {
@@ -31,7 +25,7 @@ const MapView = ({ searchResults, clickedElement }: MapViewProps) => {
   useEffect(() => {
     const listener = (e) => {
       if (e.key === "Escape") {
-        setSelectedLocation(null);
+        setSelectedLocation(undefined);
       }
     };
     window.addEventListener("keydown", listener);
@@ -90,7 +84,7 @@ const MapView = ({ searchResults, clickedElement }: MapViewProps) => {
                   searchResults?.forEach(
                     (result) => (result.isClicked = false)
                   );
-                  setSelectedLocation(null);
+                  setSelectedLocation(undefined);
                 }}
               >
                 <div>

@@ -9,10 +9,12 @@ import { Room, getRooms } from "../../clients/getRooms";
 
 const Rooms = () => {
   const [rooms, setRooms] = useState<Room[]>([]);
-  const [clickedRoomCard, setClickedRoomCard] = useState(null);
-  const [isPriceClicked, setIsPriceClicked] = useState(true);
-  const [isMichelinClicked, setIsMichelinClicked] = useState(true);
-  const [isBarTableClicked, setIsBarTableClicked] = useState(true);
+  const [clickedRoomCard, setClickedRoomCard] = useState<Room | undefined>(
+    undefined
+  );
+  const [isPriceClicked, setIsPriceClicked] = useState<boolean>(true);
+  const [isMichelinClicked, setIsMichelinClicked] = useState<boolean>(true);
+  const [isBarTableClicked, setIsBarTableClicked] = useState<boolean>(true);
 
   const fetchAndUpdateRoomsData = async () => {
     const roomsResponse = await getRooms();
@@ -72,8 +74,10 @@ const Rooms = () => {
     }
   };
 
-  const updateRoomsState = (obj: any) => {
-    setClickedRoomCard(obj);
+  const updateRoomsState = (room: Room | undefined) => {
+    if (room !== undefined) {
+      setClickedRoomCard(room);
+    }
   };
 
   return (
