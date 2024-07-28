@@ -1,37 +1,39 @@
-import { useState, useEffect } from "react";
-import Map, { Marker, Popup } from "react-map-gl";
+import { useState, useEffect, useContext } from "react";
+import Map, { Marker, Popup, ViewStateChangeEvent } from "react-map-gl";
 import "./Mapview.css";
 
 import { MichelinStarIcon } from "../MichelinStar/MichelinStar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faStar } from "@fortawesome/free-solid-svg-icons";
-import { Room } from "../../clients/getRooms";
 import { configuration } from "../../configurationProvider";
-
-interface MapViewProps {
-  searchResults: Room[];
-  clickedElement: Room | undefined;
-}
+import { RoomsContext } from "../../providers/RoomsProvider";
 
 interface Viewport {
   latitude: number;
   longitude: number;
   zoom: number;
-  width: string;
-  height: number;
 }
-const MapView = ({ searchResults, clickedElement }: MapViewProps) => {
-  const [selectedLocation, setSelectedLocation] = useState<Room | undefined>(
-    clickedElement
-  );
-  const [viewport, setViewport] = useState<Viewport>(
-    configuration.map.defaultViewportSettings
+const defaultStyleSettings: React.CSSProperties = {
+  width: "50vw",
+  height: window.innerHeight - 60,
+};
+
+const MapView = () => {
+  const roomsContext = useContext(RoomsContext);
+  if (!roomsContext) {
+    throw new Error("useRoomsContext must be used within Rooms");
+  }
+  const { rooms, deSelectRooms, clickedRoomCard, setClickedRoomCard } =
+    roomsContext;
+
+  const [viewState, setViewState] = useState<Viewport>(
+    configuration.map.defaultViewportSettingsNYC
   );
 
   useEffect(() => {
     const listener = (e: any) => {
       if (e.key === "Escape") {
-        setSelectedLocation(undefined);
+        deSelectRooms();
       }
     };
     window.addEventListener("keydown", listener);
@@ -40,61 +42,48 @@ const MapView = ({ searchResults, clickedElement }: MapViewProps) => {
     };
   }, []);
 
-  const toggleIsClicked = (room: Room) => {
-    if (room.isClicked === true) {
-      room.isClicked = false;
-    } else {
-      room.isClicked = true;
-    }
-  };
-
   return (
     <div>
       <Map
-        mapboxApiAccessToken={configuration.map.mapboxApiAccessToken}
+        mapboxAccessToken={configuration.map.mapboxApiAccessToken}
         mapStyle={configuration.map.mapStyle}
-        {...viewport}
-        onViewportChange={(newView: Viewport) => setViewport(newView)}
+        initialViewState={configuration.map.defaultViewportSettingsNYC}
+        style={defaultStyleSettings}
+        {...viewState}
+        onMove={(newView: ViewStateChangeEvent) =>
+          setViewState(newView.viewState)
+        }
       >
-        {searchResults?.map((result) => (
-          <div key={result.coordinates.longitude}>
+        {rooms?.map((room) => (
+          <div key={room.coordinates.longitude}>
             <Marker
-              longitude={result.coordinates.longitude}
-              latitude={result.coordinates.latitude}
+              longitude={room.coordinates.longitude}
+              latitude={room.coordinates.latitude}
             >
               <div
                 onClick={() => {
-                  searchResults?.forEach(
-                    (result) => (result.isClicked = false)
-                  );
-                  toggleIsClicked(result);
-                  setSelectedLocation(result);
+                  deSelectRooms();
                 }}
                 className="MarkerMapIcon"
               >
                 <FontAwesomeIcon
                   icon={faMapMarkerAlt}
-                  color={result.isClicked === true ? "gray" : "red"}
+                  color={room.isClicked === true ? "gray" : "red"}
                   size="lg"
                 />
               </div>
             </Marker>
-            {selectedLocation?.isClicked === true ? (
+            {clickedRoomCard?.isClicked === true ? (
               <Popup
-                latitude={selectedLocation.coordinates.latitude}
-                longitude={selectedLocation.coordinates.longitude}
-                offsetLeft={8}
-                offsetTop={-3}
-                closeButton={false}
+                latitude={clickedRoomCard.coordinates.latitude}
+                longitude={clickedRoomCard.coordinates.longitude}
+                offset={11}
                 onClose={() => {
-                  searchResults?.forEach(
-                    (result) => (result.isClicked = false)
-                  );
-                  setSelectedLocation(undefined);
+                  deSelectRooms();
                 }}
               >
                 <div>
-                  <h2 className="RoomName">{selectedLocation.name}</h2>
+                  <h2 className="RoomName">{clickedRoomCard.name}</h2>
                   <div className="InfoRow">
                     <div className="IconContainer StarContainer">
                       <FontAwesomeIcon
@@ -104,25 +93,25 @@ const MapView = ({ searchResults, clickedElement }: MapViewProps) => {
                         className="Star"
                       />
                     </div>
-                    <p className="RoomRating">{selectedLocation.rating}</p>
+                    <p className="RoomRating">{clickedRoomCard.rating}</p>
                     <p className="RoomServeStyle">
-                      {selectedLocation.serve_style}
+                      {clickedRoomCard.serve_style}
                     </p>
                     <p className="RoomPrice">
-                      {selectedLocation.price >= 250
+                      {clickedRoomCard.price >= 250
                         ? "$$$$"
-                        : selectedLocation.price < 250 &&
-                          selectedLocation.price >= 125
+                        : clickedRoomCard.price < 250 &&
+                          clickedRoomCard.price >= 125
                         ? "$$$"
                         : "$$"}
                     </p>
-                    {selectedLocation.michelin_stars >= 1 && (
+                    {clickedRoomCard.michelin_stars >= 1 && (
                       <div className="MichelinStarContainer">
                         <MichelinStarIcon />
-                        {selectedLocation.michelin_stars >= 2 && (
+                        {clickedRoomCard.michelin_stars >= 2 && (
                           <MichelinStarIcon />
                         )}
-                        {selectedLocation.michelin_stars === 3 && (
+                        {clickedRoomCard.michelin_stars === 3 && (
                           <MichelinStarIcon />
                         )}
                       </div>
@@ -137,7 +126,7 @@ const MapView = ({ searchResults, clickedElement }: MapViewProps) => {
                       />
                     </div>
                     <p className="RoomNeighborhood">
-                      {selectedLocation.neighborhood}
+                      {clickedRoomCard.neighborhood}
                     </p>
                   </div>
                 </div>

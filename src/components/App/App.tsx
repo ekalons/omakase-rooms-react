@@ -4,6 +4,8 @@ import Home from "../Home/Home";
 import Rooms from "../Rooms/Rooms";
 import Etiquette from "../Etiquette/Etiquette";
 import Footer from "../Footer/Footer";
+import "mapbox-gl/dist/mapbox-gl.css";
+import { RoomsProvider } from "../../providers/RoomsProvider";
 
 function App() {
   return (
@@ -12,7 +14,14 @@ function App() {
         <ScrollToTop>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/rooms" element={<Rooms />} />
+            <Route
+              path="/rooms"
+              element={
+                <RoomsProvider>
+                  <Rooms />
+                </RoomsProvider>
+              }
+            />
             <Route path="/etiquette" element={<Etiquette />} />
           </Routes>
         </ScrollToTop>

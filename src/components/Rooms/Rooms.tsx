@@ -1,37 +1,35 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import "./Rooms.css";
 
 import Header from "../Header/Header";
 import RoomCard from "../RoomCard/RoomCard";
 import Mapview from "../Mapview/Mapview";
-import { Room, getRooms } from "../../clients/getRooms";
+import { Room } from "../../clients/getRooms";
+import { RoomsContext } from "../../providers/RoomsProvider";
 
 const Rooms = () => {
-  const [rooms, setRooms] = useState<Room[]>([]);
-  const [clickedRoomCard, setClickedRoomCard] = useState<Room | undefined>(
-    undefined
-  );
+  const roomsContext = useContext(RoomsContext);
+  if (!roomsContext) {
+    throw new Error("useRoomsContext must be used within a Rooms");
+  }
+  const { rooms, setRooms, fetchAndUpdateRoomsData, setClickedRoomCard } =
+    roomsContext;
+
   const [isPriceClicked, setIsPriceClicked] = useState<boolean>(true);
   const [isMichelinClicked, setIsMichelinClicked] = useState<boolean>(true);
   const [isBarTableClicked, setIsBarTableClicked] = useState<boolean>(true);
-
-  const fetchAndUpdateRoomsData = async () => {
-    const roomsResponse = await getRooms();
-    roomsResponse.forEach((room: any) => (room.isClicked = false));
-    setRooms(roomsResponse);
-  };
 
   useEffect(() => {
     fetchAndUpdateRoomsData();
   }, []);
 
   const onPriceClick = () => {
-    const ascendingPriceSort = (a: any, b: any) => {
-      if (a.price < b.price) {
+    const ascendingPriceSort = (room_a: Room, room_b: Room) => {
+      if (room_a.price < room_b.price) {
         return -1;
       }
-      if (a.price > b.price) {
+      if (room_a.price > room_b.price) {
         return 1;
       }
       return 0;
@@ -153,7 +151,7 @@ const Rooms = () => {
           </div>
         </div>
         <div className="MapContainer">
-          <Mapview searchResults={rooms} clickedElement={clickedRoomCard} />
+          <Mapview />
         </div>
       </div>
     </div>
