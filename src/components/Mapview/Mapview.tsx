@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Map, { Marker, Popup } from "react-map-gl";
 import "./Mapview.css";
 
@@ -51,8 +51,8 @@ const MapView = ({ searchResults, clickedElement }: MapViewProps) => {
   return (
     <div>
       <Map
-        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
-        mapStyle={process.env.REACT_APP_MAPBOX_STYLES_TOKEN}
+        mapboxApiAccessToken={configuration.map.mapboxApiAccessToken}
+        mapStyle={configuration.map.mapStyle}
         {...viewport}
         onViewportChange={(newView: Viewport) => setViewport(newView)}
       >

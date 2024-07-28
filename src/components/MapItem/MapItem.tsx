@@ -1,6 +1,6 @@
-import React from "react";
 import "./MapItem.css";
 import { useNavigate } from "react-router-dom";
+import navigationMap from "../../assets/navigationMap.png";
 
 interface MapItemProps {
   backgroundColor: string;
@@ -20,10 +20,7 @@ const MapItem = ({ backgroundColor }: MapItemProps) => {
         style={{ backgroundColor: backgroundColor }}
       >
         <div className="MapPhotoContainer" onClick={goToRooms}>
-          <img
-            src={require("../../assets/navigationMap.png")}
-            alt="Navigation map"
-          />
+          <img src={navigationMap} alt="Navigation map" />
         </div>
       </div>
     </div>

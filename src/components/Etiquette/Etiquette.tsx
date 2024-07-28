@@ -1,4 +1,3 @@
-import React from "react";
 import "./Etiquette.css";
 import Header from "../Header/Header";
 

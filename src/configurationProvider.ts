@@ -1,6 +1,6 @@
 export const configuration = {
   serviceUrls: {
-    backendUrl: process.env.REACT_APP_SERVER_ACCESS_TOKEN,
+    backendUrl: import.meta.env.VITE_SERVER_ACCESS_TOKEN,
   },
   map: {
     defaultViewportSettings: {
@@ -10,5 +10,7 @@ export const configuration = {
       width: "50vw",
       height: window.innerHeight - 60,
     },
+    mapboxApiAccessToken: import.meta.env.VITE_MAPBOX_ACCESS_TOKEN,
+    mapStyle: import.meta.env.VITE_MAPBOX_STYLES_TOKEN,
   },
 };
