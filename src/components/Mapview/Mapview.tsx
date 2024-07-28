@@ -23,8 +23,7 @@ const MapView = () => {
   if (!roomsContext) {
     throw new Error("useRoomsContext must be used within Rooms");
   }
-  const { rooms, deSelectRooms, clickedRoomCard, setClickedRoomCard } =
-    roomsContext;
+  const { rooms, deSelectRooms, clickedRoomCard } = roomsContext;
 
   const [viewState, setViewState] = useState<Viewport>(
     configuration.map.defaultViewportSettingsNYC
@@ -40,7 +39,7 @@ const MapView = () => {
     return () => {
       window.removeEventListener("keydown", listener);
     };
-  }, []);
+  }, [clickedRoomCard]);
 
   return (
     <div>

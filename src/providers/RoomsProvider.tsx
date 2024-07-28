@@ -45,6 +45,7 @@ const RoomsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     rooms?.forEach((room) => (room.isClicked = false));
     setClickedRoomCard(undefined);
   };
+
   useEffect(() => {
     fetchInitialData();
   }, []);
