@@ -13,3 +13,12 @@ h2 {
     padding-bottom: 5px;
 }
 
+.custom-popup .mapboxgl-popup-close-button {
+    outline: none;
+    box-shadow: none;
+}
+
+.custom-popup .mapboxgl-popup-close-button:focus {
+    outline: none;
+    box-shadow: none;
+}

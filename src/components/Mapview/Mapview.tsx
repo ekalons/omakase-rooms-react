@@ -84,6 +84,9 @@ const MapView = () => {
                 onClose={() => {
                   deSelectRooms();
                 }}
+                closeButton={true}
+                closeOnClick={false}
+                className="custom-popup"
               >
                 <div>
                   <h2 className="RoomName">{room.name}</h2>
