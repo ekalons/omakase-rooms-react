@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faStar } from "@fortawesome/free-solid-svg-icons";
 import { configuration } from "../../configurationProvider";
 import { RoomsContext } from "../../providers/RoomsProvider";
+import { Room } from "../../clients/getRooms";
 
 interface Viewport {
   latitude: number;
@@ -28,6 +29,7 @@ const MapView = () => {
   const [viewState, setViewState] = useState<Viewport>(
     configuration.map.defaultViewportSettingsNYC
   );
+  const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
 
   useEffect(() => {
     const listener = (e: KeyboardEvent) => {
@@ -58,6 +60,10 @@ const MapView = () => {
             <Marker
               longitude={room.coordinates.longitude}
               latitude={room.coordinates.latitude}
+              onClick={(e) => {
+                e.originalEvent.stopPropagation();
+                setSelectedRoom(room);
+              }}
             >
               <div className="MarkerMapIcon">
                 <FontAwesomeIcon
@@ -76,12 +82,13 @@ const MapView = () => {
                 />
               </div>
             </Marker>
-            {hoveredRoom && hoveredRoom._id === room._id && (
+            {selectedRoom && selectedRoom._id === room._id && (
               <Popup
                 latitude={room.coordinates.latitude}
                 longitude={room.coordinates.longitude}
                 offset={11}
                 onClose={() => {
+                  setSelectedRoom(null);
                   deSelectRooms();
                 }}
                 closeButton={true}
