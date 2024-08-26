@@ -85,17 +85,18 @@ const MapView = () => {
                 />
               </div>
             </Marker>
-            {clickedRoomCard?.isClicked === true ? (
+            {(clickedRoomCard?.isClicked === true ||
+              (hoveredRoom && hoveredRoom._id === room._id)) && (
               <Popup
-                latitude={clickedRoomCard.coordinates.latitude}
-                longitude={clickedRoomCard.coordinates.longitude}
+                latitude={room.coordinates.latitude}
+                longitude={room.coordinates.longitude}
                 offset={11}
                 onClose={() => {
                   deSelectRooms();
                 }}
               >
                 <div>
-                  <h2 className="RoomName">{clickedRoomCard.name}</h2>
+                  <h2 className="RoomName">{room.name}</h2>
                   <div className="InfoRow">
                     <div className="IconContainer StarContainer">
                       <FontAwesomeIcon
@@ -105,27 +106,20 @@ const MapView = () => {
                         className="Star"
                       />
                     </div>
-                    <p className="RoomRating">{clickedRoomCard.rating}</p>
-                    <p className="RoomServeStyle">
-                      {clickedRoomCard.serve_style}
-                    </p>
+                    <p className="RoomRating">{room.rating}</p>
+                    <p className="RoomServeStyle">{room.serve_style}</p>
                     <p className="RoomPrice">
-                      {clickedRoomCard.price >= 250
+                      {room.price >= 250
                         ? "$$$$"
-                        : clickedRoomCard.price < 250 &&
-                          clickedRoomCard.price >= 125
+                        : room.price < 250 && room.price >= 125
                         ? "$$$"
                         : "$$"}
                     </p>
-                    {clickedRoomCard.michelin_stars >= 1 && (
+                    {room.michelin_stars >= 1 && (
                       <div className="MichelinStarContainer">
                         <MichelinStarIcon />
-                        {clickedRoomCard.michelin_stars >= 2 && (
-                          <MichelinStarIcon />
-                        )}
-                        {clickedRoomCard.michelin_stars === 3 && (
-                          <MichelinStarIcon />
-                        )}
+                        {room.michelin_stars >= 2 && <MichelinStarIcon />}
+                        {room.michelin_stars === 3 && <MichelinStarIcon />}
                       </div>
                     )}
                   </div>
@@ -137,13 +131,11 @@ const MapView = () => {
                         className="LocationMarker"
                       />
                     </div>
-                    <p className="RoomNeighborhood">
-                      {clickedRoomCard.neighborhood}
-                    </p>
+                    <p className="RoomNeighborhood">{room.neighborhood}</p>
                   </div>
                 </div>
               </Popup>
-            ) : null}
+            )}
           </div>
         ))}
       </Map>
