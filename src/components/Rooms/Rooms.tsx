@@ -24,7 +24,7 @@ const Rooms = () => {
 
   useEffect(() => {
     fetchAndUpdateRoomsData();
-  }, []);
+  }, [fetchAndUpdateRoomsData]);
 
   const onPriceClick = () => {
     const ascendingPriceSort = (room_a: Room, room_b: Room) => {
