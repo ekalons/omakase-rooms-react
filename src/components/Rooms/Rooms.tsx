@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useCallback } from "react";
 import "./Rooms.css";
 import Header from "../Header/Header";
 import RoomCard from "../RoomCard/RoomCard";
@@ -27,11 +27,7 @@ const Rooms = () => {
     fetchAndUpdateRoomsData();
   }, [fetchAndUpdateRoomsData]);
 
-  useEffect(() => {
-    applyFilters();
-  }, [rooms, isPriceClicked, isMichelinClicked, isBarTableClicked]);
-
-  const applyFilters = () => {
+  const applyFilters = useCallback(() => {
     let result = [...rooms];
 
     if (isMichelinClicked) {
@@ -48,7 +44,11 @@ const Rooms = () => {
 
     setFilteredRooms(result);
     setCurrentPage(1);
-  };
+  }, [rooms, isPriceClicked, isMichelinClicked, isBarTableClicked]);
+
+  useEffect(() => {
+    applyFilters();
+  }, [applyFilters]);
 
   const onPriceClick = () => {
     setIsPriceClicked(!isPriceClicked);
