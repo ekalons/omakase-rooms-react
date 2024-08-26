@@ -14,69 +14,52 @@ const Rooms = () => {
   if (!roomsContext) {
     throw new Error("useRoomsContext must be used within a Rooms");
   }
-  const {
-    rooms,
-    setRooms,
-    fetchAndUpdateRoomsData,
-    setClickedRoomCard,
-    setHoveredRoom,
-  } = roomsContext;
+  const { rooms, fetchAndUpdateRoomsData, setClickedRoomCard, setHoveredRoom } =
+    roomsContext;
 
-  const [isPriceClicked, setIsPriceClicked] = useState<boolean>(true);
-  const [isMichelinClicked, setIsMichelinClicked] = useState<boolean>(true);
-  const [isBarTableClicked, setIsBarTableClicked] = useState<boolean>(true);
+  const [isPriceClicked, setIsPriceClicked] = useState<boolean>(false);
+  const [isMichelinClicked, setIsMichelinClicked] = useState<boolean>(false);
+  const [isBarTableClicked, setIsBarTableClicked] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [filteredRooms, setFilteredRooms] = useState<Room[]>([]);
 
   useEffect(() => {
     fetchAndUpdateRoomsData();
   }, [fetchAndUpdateRoomsData]);
 
-  const onPriceClick = () => {
-    const ascendingPriceSort = (room_a: Room, room_b: Room) => {
-      if (room_a.price < room_b.price) {
-        return -1;
-      }
-      if (room_a.price > room_b.price) {
-        return 1;
-      }
-      return 0;
-    };
+  useEffect(() => {
+    applyFilters();
+  }, [rooms, isPriceClicked, isMichelinClicked, isBarTableClicked]);
 
-    setIsPriceClicked(!isPriceClicked);
+  const applyFilters = () => {
+    let result = [...rooms];
 
-    if (isPriceClicked === true) {
-      const arrToUpdate = rooms;
-      const priceSortArr = arrToUpdate?.sort(ascendingPriceSort);
-      setRooms(priceSortArr);
-    } else if (isPriceClicked === false) {
-      fetchAndUpdateRoomsData();
+    if (isMichelinClicked) {
+      result = result.filter((room) => room.michelin_stars >= 1);
     }
+
+    if (isBarTableClicked) {
+      result = result.filter((room) => room.serve_style !== "Bar");
+    }
+
+    if (isPriceClicked) {
+      result.sort((a, b) => a.price - b.price);
+    }
+
+    setFilteredRooms(result);
+    setCurrentPage(1);
+  };
+
+  const onPriceClick = () => {
+    setIsPriceClicked(!isPriceClicked);
   };
 
   const onMichelinClick = () => {
     setIsMichelinClicked(!isMichelinClicked);
-
-    if (isMichelinClicked === true) {
-      const arrToUpdate = rooms;
-      const michelinArr = arrToUpdate.filter((el) => el.michelin_stars >= 1);
-      setRooms(michelinArr);
-    } else {
-      fetchAndUpdateRoomsData();
-    }
   };
 
   const onBarTableClick = () => {
     setIsBarTableClicked(!isBarTableClicked);
-
-    if (isBarTableClicked === true) {
-      const arrToUpdate = rooms;
-      const barTableArr = arrToUpdate.filter(function (el) {
-        return el.serve_style !== "Bar";
-      });
-      setRooms(barTableArr);
-    } else {
-      fetchAndUpdateRoomsData();
-    }
   };
 
   const updateRoomsState = (room: Room | undefined) => {
@@ -85,9 +68,9 @@ const Rooms = () => {
     }
   };
 
-  const totalPages = Math.ceil(rooms.length / ROOMS_PER_PAGE);
+  const totalPages = Math.ceil(filteredRooms.length / ROOMS_PER_PAGE);
 
-  const paginatedRooms = rooms.slice(
+  const paginatedRooms = filteredRooms.slice(
     (currentPage - 1) * ROOMS_PER_PAGE,
     currentPage * ROOMS_PER_PAGE
   );
@@ -108,8 +91,7 @@ const Rooms = () => {
               <p
                 onClick={onPriceClick}
                 style={{
-                  backgroundColor:
-                    isPriceClicked === false ? "rgb(228 228 231)" : "",
+                  backgroundColor: isPriceClicked ? "rgb(228 228 231)" : "",
                 }}
               >
                 Price
@@ -117,8 +99,7 @@ const Rooms = () => {
               <p
                 onClick={onMichelinClick}
                 style={{
-                  backgroundColor:
-                    isMichelinClicked === false ? "rgb(228 228 231)" : "",
+                  backgroundColor: isMichelinClicked ? "rgb(228 228 231)" : "",
                 }}
               >
                 Michelin stars
@@ -126,8 +107,7 @@ const Rooms = () => {
               <p
                 onClick={onBarTableClick}
                 style={{
-                  backgroundColor:
-                    isBarTableClicked === false ? "rgb(228 228 231)" : "",
+                  backgroundColor: isBarTableClicked ? "rgb(228 228 231)" : "",
                 }}
               >
                 Bar / Table
