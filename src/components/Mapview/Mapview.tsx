@@ -34,6 +34,7 @@ const MapView = () => {
   useEffect(() => {
     const listener = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
+        setSelectedRoom(null);
         deSelectRooms();
       }
     };
@@ -41,7 +42,7 @@ const MapView = () => {
     return () => {
       window.removeEventListener("keydown", listener);
     };
-  }, [clickedRoomCard, deSelectRooms]);
+  }, [clickedRoomCard, deSelectRooms, setSelectedRoom]);
 
   return (
     <div>
