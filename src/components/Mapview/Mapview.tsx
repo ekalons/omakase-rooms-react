@@ -23,14 +23,14 @@ const MapView = () => {
   if (!roomsContext) {
     throw new Error("useRoomsContext must be used within Rooms");
   }
-  const { rooms, deSelectRooms, clickedRoomCard } = roomsContext;
+  const { rooms, deSelectRooms, clickedRoomCard, hoveredRoom } = roomsContext;
 
   const [viewState, setViewState] = useState<Viewport>(
     configuration.map.defaultViewportSettingsNYC
   );
 
   useEffect(() => {
-    const listener = (e: any) => {
+    const listener = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         deSelectRooms();
       }
@@ -39,7 +39,7 @@ const MapView = () => {
     return () => {
       window.removeEventListener("keydown", listener);
     };
-  }, [clickedRoomCard]);
+  }, [clickedRoomCard, deSelectRooms]);
 
   return (
     <div>
@@ -67,8 +67,21 @@ const MapView = () => {
               >
                 <FontAwesomeIcon
                   icon={faMapMarkerAlt}
-                  color={room.isClicked === true ? "gray" : "red"}
+                  color={
+                    room.isClicked
+                      ? "gray"
+                      : hoveredRoom && hoveredRoom._id === room._id
+                      ? "gray"
+                      : "red"
+                  }
                   size="lg"
+                  style={{
+                    transform:
+                      hoveredRoom && hoveredRoom._id === room._id
+                        ? "scale(1.2)"
+                        : "scale(1)",
+                    transition: "transform 0.2s ease-in-out",
+                  }}
                 />
               </div>
             </Marker>

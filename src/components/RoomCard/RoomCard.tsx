@@ -20,6 +20,8 @@ interface RoomCardProps {
     longitude: number;
   };
   updateParent: (obj: Room | undefined) => void;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
 }
 
 const RoomCard = ({
@@ -34,6 +36,8 @@ const RoomCard = ({
   photo,
   allRooms,
   updateParent,
+  onMouseEnter,
+  onMouseLeave,
 }: RoomCardProps) => {
   const handleUpdate = () => {
     const objArr = allRooms;
@@ -50,7 +54,12 @@ const RoomCard = ({
   };
 
   return (
-    <div className="RoomCard" onClick={handleUpdate}>
+    <div
+      className="RoomCard"
+      onClick={handleUpdate}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <div className="CardImageContainer">
         <img src={photo} alt="Restaurant" width="240px" height="160px" />
       </div>

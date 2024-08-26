@@ -14,8 +14,13 @@ const Rooms = () => {
   if (!roomsContext) {
     throw new Error("useRoomsContext must be used within a Rooms");
   }
-  const { rooms, setRooms, fetchAndUpdateRoomsData, setClickedRoomCard } =
-    roomsContext;
+  const {
+    rooms,
+    setRooms,
+    fetchAndUpdateRoomsData,
+    setClickedRoomCard,
+    setHoveredRoom,
+  } = roomsContext;
 
   const [isPriceClicked, setIsPriceClicked] = useState<boolean>(true);
   const [isMichelinClicked, setIsMichelinClicked] = useState<boolean>(true);
@@ -130,37 +135,25 @@ const Rooms = () => {
             </div>
           </div>
           <div className="RoomResults">
-            {paginatedRooms.map(
-              ({
-                _id,
-                name,
-                details,
-                rating,
-                review_count,
-                neighborhood,
-                price,
-                michelin_stars,
-                serve_style,
-                coordinates,
-                photo,
-              }) => (
-                <RoomCard
-                  key={_id}
-                  name={name}
-                  details={details}
-                  rating={rating}
-                  review_count={review_count}
-                  neighborhood={neighborhood}
-                  price={price}
-                  michelin_stars={michelin_stars}
-                  serve_style={serve_style}
-                  coordinates={coordinates}
-                  photo={photo}
-                  allRooms={rooms}
-                  updateParent={updateRoomsState}
-                />
-              )
-            )}
+            {paginatedRooms.map((room) => (
+              <RoomCard
+                key={room._id}
+                name={room.name}
+                details={room.details}
+                rating={room.rating}
+                review_count={room.review_count}
+                neighborhood={room.neighborhood}
+                price={room.price}
+                michelin_stars={room.michelin_stars}
+                serve_style={room.serve_style}
+                coordinates={room.coordinates}
+                photo={room.photo}
+                allRooms={rooms}
+                updateParent={updateRoomsState}
+                onMouseEnter={() => setHoveredRoom(room)}
+                onMouseLeave={() => setHoveredRoom(null)}
+              />
+            ))}
           </div>
           <div className="PaginationContainer">
             <Pagination
