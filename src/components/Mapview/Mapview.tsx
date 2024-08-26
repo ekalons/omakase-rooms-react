@@ -59,20 +59,11 @@ const MapView = () => {
               longitude={room.coordinates.longitude}
               latitude={room.coordinates.latitude}
             >
-              <div
-                onClick={() => {
-                  deSelectRooms();
-                }}
-                className="MarkerMapIcon"
-              >
+              <div className="MarkerMapIcon">
                 <FontAwesomeIcon
                   icon={faMapMarkerAlt}
                   color={
-                    room.isClicked
-                      ? "gray"
-                      : hoveredRoom && hoveredRoom._id === room._id
-                      ? "gray"
-                      : "red"
+                    hoveredRoom && hoveredRoom._id === room._id ? "gray" : "red"
                   }
                   size="lg"
                   style={{
@@ -85,8 +76,7 @@ const MapView = () => {
                 />
               </div>
             </Marker>
-            {(clickedRoomCard?.isClicked === true ||
-              (hoveredRoom && hoveredRoom._id === room._id)) && (
+            {hoveredRoom && hoveredRoom._id === room._id && (
               <Popup
                 latitude={room.coordinates.latitude}
                 longitude={room.coordinates.longitude}
