@@ -7,7 +7,7 @@ interface MapItemProps {
 }
 
 const MapItem = ({ backgroundColor }: MapItemProps) => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const goToRooms = () => {
     navigate("/rooms");
