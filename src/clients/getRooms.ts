@@ -22,7 +22,20 @@ export interface Room {
 export async function getRooms(): Promise<Room[]> {
   try {
     const response = await Axios.get<Room[]>(
-      `${configuration.serviceUrls.backendUrl}/rooms`
+      `${configuration.serviceUrls.backendUrl}/api/rooms`
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+export async function getRoomsV2(): Promise<Room[]> {
+  try {
+    const response = await Axios.get<Room[]>(
+      `${configuration.serviceUrls.newBackendUrl}/rooms`
     );
 
     return response.data;
