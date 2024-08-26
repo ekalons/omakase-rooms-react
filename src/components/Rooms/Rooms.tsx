@@ -1,12 +1,13 @@
 import { useState, useEffect, useContext } from "react";
-
 import "./Rooms.css";
-
 import Header from "../Header/Header";
 import RoomCard from "../RoomCard/RoomCard";
 import Mapview from "../Mapview/Mapview";
 import { Room } from "../../clients/getRooms";
 import { RoomsContext } from "../../providers/RoomsProvider";
+import Pagination from "../Pagination/Pagination";
+
+const ROOMS_PER_PAGE = 10;
 
 const Rooms = () => {
   const roomsContext = useContext(RoomsContext);
@@ -19,6 +20,7 @@ const Rooms = () => {
   const [isPriceClicked, setIsPriceClicked] = useState<boolean>(true);
   const [isMichelinClicked, setIsMichelinClicked] = useState<boolean>(true);
   const [isBarTableClicked, setIsBarTableClicked] = useState<boolean>(true);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   useEffect(() => {
     fetchAndUpdateRoomsData();
@@ -78,6 +80,17 @@ const Rooms = () => {
     }
   };
 
+  const totalPages = Math.ceil(rooms.length / ROOMS_PER_PAGE);
+
+  const paginatedRooms = rooms.slice(
+    (currentPage - 1) * ROOMS_PER_PAGE,
+    currentPage * ROOMS_PER_PAGE
+  );
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
   return (
     <div className="Rooms">
       <Header />
@@ -117,7 +130,7 @@ const Rooms = () => {
             </div>
           </div>
           <div className="RoomResults">
-            {rooms?.map(
+            {paginatedRooms.map(
               ({
                 _id,
                 name,
@@ -148,6 +161,13 @@ const Rooms = () => {
                 />
               )
             )}
+          </div>
+          <div className="PaginationContainer">
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
           </div>
         </div>
         <div className="MapContainer">

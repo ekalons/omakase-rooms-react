@@ -111,3 +111,15 @@
         display: none;
     }
 }
+
+.PaginationContainer {
+  background-color: #F3EEE8;
+  padding: 10px 0;
+  width: 100%;
+}
+
+@media (max-width: 960px) {
+  .PaginationContainer {
+    margin-bottom: 20px;
+  }
+}
