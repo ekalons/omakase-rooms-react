@@ -5,7 +5,8 @@ import React, {
   useCallback,
   ReactNode,
 } from "react";
-import { Room, getRooms } from "../clients/getRooms";
+import { Room, getRooms, getRoomsV2 } from "../clients/getRooms";
+import { configuration } from "../configurationProvider";
 
 interface RoomsContextType {
   rooms: Room[];
@@ -29,7 +30,13 @@ const RoomsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [hoveredRoom, setHoveredRoom] = useState<Room | null>(null);
 
   const initializeRoomsData = async (): Promise<Room[]> => {
-    const roomsDataFromCall = await getRooms();
+    let roomsDataFromCall: Room[];
+    if (configuration.migratedServer) {
+      roomsDataFromCall = await getRoomsV2();
+    } else {
+      roomsDataFromCall = await getRooms();
+    }
+    console.log(roomsDataFromCall);
     setRoomsData(roomsDataFromCall);
     return roomsDataFromCall;
   };

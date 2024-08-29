@@ -22,6 +22,7 @@ const Rooms = () => {
   const [isBarTableClicked, setIsBarTableClicked] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [filteredRooms, setFilteredRooms] = useState<Room[]>([]);
+  const [paginatedRooms, setPaginatedRooms] = useState<Room[]>([]);
 
   useEffect(() => {
     fetchAndUpdateRoomsData();
@@ -43,12 +44,27 @@ const Rooms = () => {
     }
 
     setFilteredRooms(result);
-    setCurrentPage(1);
   }, [rooms, isPriceClicked, isMichelinClicked, isBarTableClicked]);
 
   useEffect(() => {
     applyFilters();
-  }, [applyFilters]);
+  }, [
+    rooms,
+    isPriceClicked,
+    isMichelinClicked,
+    isBarTableClicked,
+    applyFilters,
+  ]);
+
+  const updatePaginatedRooms = useCallback(() => {
+    const startIndex = (currentPage - 1) * ROOMS_PER_PAGE;
+    const endIndex = startIndex + ROOMS_PER_PAGE;
+    setPaginatedRooms(filteredRooms.slice(startIndex, endIndex));
+  }, [currentPage, filteredRooms]);
+
+  useEffect(() => {
+    updatePaginatedRooms();
+  }, [currentPage, filteredRooms, updatePaginatedRooms]);
 
   const onPriceClick = () => {
     setIsPriceClicked(!isPriceClicked);
@@ -70,14 +86,13 @@ const Rooms = () => {
 
   const totalPages = Math.ceil(filteredRooms.length / ROOMS_PER_PAGE);
 
-  const paginatedRooms = filteredRooms.slice(
-    (currentPage - 1) * ROOMS_PER_PAGE,
-    currentPage * ROOMS_PER_PAGE
-  );
-
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [isPriceClicked, isMichelinClicked, isBarTableClicked]);
 
   return (
     <div className="Rooms">
@@ -110,7 +125,7 @@ const Rooms = () => {
                   backgroundColor: isBarTableClicked ? "rgb(228 228 231)" : "",
                 }}
               >
-                Bar / Table
+                Counter / Table
               </p>
             </div>
           </div>
