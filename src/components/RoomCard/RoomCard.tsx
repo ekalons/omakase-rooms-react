@@ -76,7 +76,11 @@ const RoomCard = ({
           </div>
           <p className="RoomRating">{rating}</p>
           <p className="RoomReviewCount">({review_count})</p>
-          <p className="RoomServeStyle">{serve_style}</p>
+          <p className="RoomServeStyle">
+            {serve_style.toLowerCase() === "bar"
+              ? "Counter"
+              : "Counter & Table"}
+          </p>
           <p className="RoomPrice">
             {price >= 250 ? "$$$$" : price < 250 && price >= 125 ? "$$$" : "$$"}
           </p>
