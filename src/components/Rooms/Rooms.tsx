@@ -159,7 +159,7 @@ const Rooms = () => {
           </div>
         </div>
         <div className="MapContainer">
-          <Mapview />
+          <Mapview paginatedRooms={paginatedRooms} />
         </div>
       </div>
     </div>

@@ -9,6 +9,10 @@ import { configuration } from "../../configurationProvider";
 import { RoomsContext } from "../../providers/RoomsProvider";
 import { Room } from "../../clients/getRooms";
 
+interface MapViewProps {
+  paginatedRooms: Room[];
+}
+
 interface Viewport {
   latitude: number;
   longitude: number;
@@ -19,12 +23,12 @@ const defaultStyleSettings: React.CSSProperties = {
   height: window.innerHeight - 60,
 };
 
-const MapView = () => {
+const MapView: React.FC<MapViewProps> = ({ paginatedRooms }) => {
   const roomsContext = useContext(RoomsContext);
   if (!roomsContext) {
     throw new Error("useRoomsContext must be used within Rooms");
   }
-  const { rooms, deSelectRooms, clickedRoomCard, hoveredRoom } = roomsContext;
+  const { deSelectRooms, clickedRoomCard, hoveredRoom } = roomsContext;
 
   const [viewState, setViewState] = useState<Viewport>(
     configuration.map.defaultViewportSettingsNYC
@@ -56,7 +60,7 @@ const MapView = () => {
           setViewState(newView.viewState)
         }
       >
-        {rooms?.map((room) => (
+        {paginatedRooms?.map((room) => (
           <div key={room.coordinates.longitude}>
             <Marker
               longitude={room.coordinates.longitude}
