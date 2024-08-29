@@ -29,28 +29,31 @@ const RoomsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   );
   const [hoveredRoom, setHoveredRoom] = useState<Room | null>(null);
 
-  const initializeRoomsData = async (): Promise<Room[]> => {
+  const initializeRoomsData = useCallback(async (): Promise<Room[]> => {
     let roomsDataFromCall: Room[];
     if (configuration.migratedServer) {
       roomsDataFromCall = await getRoomsV2();
     } else {
       roomsDataFromCall = await getRooms();
     }
-    console.log(roomsDataFromCall);
     setRoomsData(roomsDataFromCall);
     return roomsDataFromCall;
-  };
-
-  const fetchInitialData = useCallback(async () => {
-    const roomsDataFromCall = await initializeRoomsData();
-    const updatedRooms = addOnClickPropertyToRooms([...roomsDataFromCall]);
-    setRooms(updatedRooms);
   }, []);
 
-  const fetchAndUpdateRoomsData = async () => {
+  const fetchAndUpdateRoomsData = useCallback(async () => {
     const updatedRooms = addOnClickPropertyToRooms([...roomsData]);
     setRooms(updatedRooms);
-  };
+  }, [roomsData]);
+
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      const roomsDataFromCall = await initializeRoomsData();
+      const updatedRooms = addOnClickPropertyToRooms([...roomsDataFromCall]);
+      setRooms(updatedRooms);
+    };
+
+    fetchInitialData();
+  }, [initializeRoomsData]);
 
   const addOnClickPropertyToRooms = (rooms: Room[]): Room[] => {
     return rooms.map((room) => ({
@@ -63,10 +66,6 @@ const RoomsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     rooms?.forEach((room) => (room.isClicked = false));
     setClickedRoomCard(undefined);
   };
-
-  useEffect(() => {
-    fetchInitialData();
-  }, [fetchInitialData]);
 
   return (
     <RoomsContext.Provider
