@@ -1,13 +1,13 @@
 import { useState, useEffect, useContext } from "react";
-import Map, { Marker, Popup, ViewStateChangeEvent } from "react-map-gl";
+import Map, { Marker, ViewStateChangeEvent } from "react-map-gl";
 import "./Mapview.css";
 
-import { MichelinStarIcon } from "../MichelinStar/MichelinStar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { configuration } from "../../configurationProvider";
 import { RoomsContext } from "../../providers/RoomsProvider";
 import { Room } from "../../clients/getRooms";
+import MapPopup from "../MapPopup/MapPopup";
 
 interface MapViewProps {
   paginatedRooms: Room[];
@@ -88,58 +88,13 @@ const MapView: React.FC<MapViewProps> = ({ paginatedRooms }) => {
               </div>
             </Marker>
             {selectedRoom && selectedRoom._id === room._id && (
-              <Popup
-                latitude={room.coordinates.latitude}
-                longitude={room.coordinates.longitude}
-                offset={11}
+              <MapPopup
+                room={room}
                 onClose={() => {
                   setSelectedRoom(null);
                   deSelectRooms();
                 }}
-                closeButton={true}
-                closeOnClick={false}
-                className="custom-popup"
-              >
-                <div>
-                  <h2 className="RoomName">{room.name}</h2>
-                  <div className="InfoRow">
-                    <div className="IconContainer StarContainer">
-                      <FontAwesomeIcon
-                        icon={faStar}
-                        color="red"
-                        size="sm"
-                        className="Star"
-                      />
-                    </div>
-                    <p className="RoomRating">{room.rating}</p>
-                    <p className="RoomServeStyle">{room.serve_style}</p>
-                    <p className="RoomPrice">
-                      {room.price >= 250
-                        ? "$$$$"
-                        : room.price < 250 && room.price >= 125
-                        ? "$$$"
-                        : "$$"}
-                    </p>
-                    {room.michelin_stars >= 1 && (
-                      <div className="MichelinStarContainer">
-                        <MichelinStarIcon />
-                        {room.michelin_stars >= 2 && <MichelinStarIcon />}
-                        {room.michelin_stars === 3 && <MichelinStarIcon />}
-                      </div>
-                    )}
-                  </div>
-                  <div className="InfoRow">
-                    <div className="IconContainer">
-                      <FontAwesomeIcon
-                        icon={faMapMarkerAlt}
-                        size="sm"
-                        className="LocationMarker"
-                      />
-                    </div>
-                    <p className="RoomNeighborhood">{room.neighborhood}</p>
-                  </div>
-                </div>
-              </Popup>
+              />
             )}
           </div>
         ))}
