@@ -8,7 +8,7 @@ interface NeighborhoodDetailsProps {
 
 const NeighborhoodDetails = ({ neighborhood }: NeighborhoodDetailsProps) => {
   return (
-    <div className="InfoRow">
+    <div className="NeighborhoodDetails InfoRow">
       <div className="IconContainer">
         <FontAwesomeIcon
           icon={faMapMarkerAlt}
@@ -16,7 +16,7 @@ const NeighborhoodDetails = ({ neighborhood }: NeighborhoodDetailsProps) => {
           className="LocationMarker"
         />
       </div>
-      <p className="RoomNeighborhood">{neighborhood}</p>
+      <span className="RoomNeighborhood">{neighborhood}</span>
     </div>
   );
 };

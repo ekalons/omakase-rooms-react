@@ -19,18 +19,18 @@ const RoomInfo = ({
   michelin_stars,
 }: RoomInfoProps) => {
   return (
-    <div className="InfoRow">
+    <div className="RoomInfo InfoRow">
       <div className="IconContainer">
-        <FontAwesomeIcon icon={faStar} color="red" size="sm" className="Star" />
+        <FontAwesomeIcon icon={faStar} className="Star" />
       </div>
-      <p className="RoomRating">{rating}</p>
-      <p className="RoomReviewCount">({review_count})</p>
-      <p className="RoomServeStyle">
+      <span className="RoomRating">{rating}</span>
+      <span className="RoomReviewCount">({review_count})</span>
+      <span className="RoomServeStyle">
         {serve_style.toLowerCase() === "bar" ? "Counter" : "Counter & Table"}
-      </p>
-      <p className="RoomPrice">
+      </span>
+      <span className="RoomPrice">
         {price >= 250 ? "$$$$" : price < 250 && price >= 125 ? "$$$" : "$$"}
-      </p>
+      </span>
       {michelin_stars >= 1 && (
         <div className="MichelinStarContainer">
           <MichelinStarIcon />

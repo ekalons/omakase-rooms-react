@@ -1,6 +1,37 @@
 .RoomNeighborhood {
   font-size: 15px;
-  position: relative;
-  top: 1.5px;
-  padding-left: 2px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.InfoRow {
+    display: flex;
+    align-items: center;
+    height: 20px;
+}
+
+.IconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+.LocationMarker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* If you're using FontAwesome or a similar icon library, you might need this: */
+.LocationMarker svg {
+    width: 14px;
+    height: 14px;
 }

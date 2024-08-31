@@ -31,7 +31,8 @@
     width: 100%;
     border-radius: 10px;
 }
-.InfoContainer {
+
+.RoomCard .InfoContainer {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -39,27 +40,46 @@
     padding-right: 0;
 }
 
-.InfoContainer p {
+.RoomCard .InfoContainer p {
     padding-bottom: 3px;
+    margin: 0; /* Add this to remove default margins */
 }
 
-.RoomName {
+.RoomCard .RoomName {
     font-size: 20px;
     font-weight: 500;
+    margin-bottom: 5px; /* Add some space below the room name */
 }
 
-.LocationMarker {
-    position: relative;
-    top: 3.5px;
+.RoomCard .LocationMarker,
+.RoomCard .Star {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.RoomDetailsContainer {
+.RoomCard .RoomDetailsContainer {
     display: flex;
     height: 100%;
     font-size: 15px;
     font-weight: 400;
     align-items: flex-end;
+    margin-top: auto; /* Push details to the bottom */
+}
 
+.RoomCard .InfoRow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px; /* Add some space between info rows */
+}
+
+.RoomCard .IconContainer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
 }
 
 @media (max-width: 640px) {

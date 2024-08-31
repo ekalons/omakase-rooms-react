@@ -1,60 +1,64 @@
 .InfoRow {
     display: flex;
-    flex-direction: row;
-}
-
-.RoomRating {
-    font-size: 15px;
-    font-weight: 450;
-    color: red;
-    padding-left: 2px;
-}
-
-.RoomReviewCount {
-    font-size: 12px;
-    padding: 1.5px 3px;
-}
-
-.RoomServeStyle {
-    font-size: 13px;
-    padding: 1.5px 3px;
-    font-weight: 500;
-}
-
-.RoomPrice {
-    font-weight: 500;
-    font-size: 14px;
-    padding: 1px 3px;
+    align-items: center;
+    height: 20px;
 }
 
 .IconContainer {
-    display: flex;
-    height: 21px;
-    width: 16px;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
 }
 
 .Star {
-    position: relative;
-    top: 1.25px;
+    color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+}
+
+.Star svg {
+    width: 100%;
+    height: 100%;
+}
+
+.RoomRating, .RoomReviewCount, .RoomServeStyle, .RoomPrice {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 0 5px 0 0;
+    font-size: 14px;
+}
+
+.RoomRating {
+    font-weight: 450;
     color: red;
 }
 
-
 .MichelinStarContainer {
-    display: flex;
-    height: 21px;
-    width: 55px;
-    padding: 0px 3px;
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 3px;
 }
 
 .MichelinStar {
-    position: relative;
-    top: 3.5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     height: 12px;
     width: 12px;
-    padding: 0px 2px;
+    padding: 0 2px;
+}
 
+.MichelinStar svg {
+    height: 100%;
+    width: 100%;
 }
 
 @media (max-width: 450px) {

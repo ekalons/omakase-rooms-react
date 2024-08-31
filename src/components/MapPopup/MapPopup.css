@@ -4,7 +4,6 @@
     padding-left: 2px;
 }
 
-
 .custom-popup .mapboxgl-popup-close-button {
     outline: none;
     box-shadow: none;
@@ -15,7 +14,51 @@
     box-shadow: none;
 }
 
-h2 {
+.custom-popup .mapboxgl-popup-content {
+    padding: 15px;
+    width: 250px;
+    max-width: 90vw;
+}
+
+.custom-popup h2 {
     padding: 1px;
     padding-bottom: 5px;
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+.custom-popup .InfoRow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.custom-popup .IconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+.custom-popup .RoomRating,
+.custom-popup .RoomReviewCount,
+.custom-popup .RoomServeStyle,
+.custom-popup .RoomPrice,
+.custom-popup .RoomNeighborhood {
+    margin: 0;
+    padding: 0 5px 0 0;
+    font-size: 14px;
+}
+
+.custom-popup .MichelinStarContainer {
+    display: flex;
+    align-items: center;
+}
+
+.custom-popup .Star {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
