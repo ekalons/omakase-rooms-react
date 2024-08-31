@@ -1,24 +1,25 @@
 .Header {
     display: flex;
-    background-color: transparent;
+    background-color: #F3EEE8;
     position: fixed;
     width: 100vw;
     top: 0;
     padding: 15px;
     padding-top: 15px;
     z-index: 100;
+    border-bottom: 1px solid #a3a3a3;
 }
 
 .HeaderLogo {
     height: 30px;
     width: 100px;
-    background: transparent;
-    z-index: 10;
+    background: #F3EEE8;
+    z-index: 102;
     cursor: pointer;
 }
 
 .HeaderLogo h1 {
-    background: transparent;
+    background: #F3EEE8;
     font-size: 25px;
     text-align: center;
 }
@@ -40,6 +41,7 @@
         margin-top: 15px;
         padding: 0;
         padding-top: 0;
+        background-color: #3B3B3B;
     }
     .HeaderLogo {
         position: absolute;
