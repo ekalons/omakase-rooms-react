@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import { HamMenu } from "../HamMenu/HamMenu";
 import "./NavBar.css";
 
-const NavBar = () => {
+interface NavBarProps {
+  isTransparent: boolean;
+}
+
+const NavBar = ({ isTransparent }: NavBarProps) => {
   const [animate, setAnimate] = useState(false);
 
   const handleClick = () => setAnimate((prevAnimate) => !prevAnimate);
@@ -11,11 +15,11 @@ const NavBar = () => {
   return (
     <div>
       <div
-        className={`${
-          animate ? "NavbarContainer TransitionIn" : "NavbarContainer"
+        className={`NavbarContainer ${animate ? "TransitionIn" : ""} ${
+          isTransparent ? "transparent" : ""
         }`}
       >
-        <ul className="navBar">
+        <ul className={`navBar ${isTransparent ? "transparent" : ""}`}>
           <li className={`${animate ? "ShowItem" : "HideItem"}`}>
             <Link to="/">Home</Link>
           </li>

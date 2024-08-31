@@ -26,6 +26,9 @@ a {
         display: contents;
         background-color: #F3EEE8;
     }
+    .NavbarContainer.transparent {
+        background-color: transparent;
+    }
     a:after{
         content: "";
         position: absolute;
@@ -51,6 +54,9 @@ a {
         margin-top: 3px;
         font-weight: 600;
         z-index: 101;
+    }
+    .navBar.transparent {
+        background-color: transparent;
     }
 }
 
@@ -83,6 +89,9 @@ a {
         transition-property: height;
         transition-duration: 0.3s;
         z-index: 101;
+    }
+    .NavbarContainer.transparent {
+        background-color: transparent;
     }
 
     .navbar .ShowItem {

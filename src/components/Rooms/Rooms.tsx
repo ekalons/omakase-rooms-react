@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext, useCallback } from "react";
 import "./Rooms.css";
-import Header from "../Header/Header";
 import RoomCard from "../RoomCard/RoomCard";
 import Mapview from "../Mapview/Mapview";
 import { Room } from "../../clients/getRooms";
@@ -96,8 +95,6 @@ const Rooms = () => {
 
   return (
     <div className="Rooms">
-      <Header />
-      <div className="HeaderBackground"></div>
       <div className="PageContainer">
         <div className="RoomResultsContainer">
           <div className="ParameterContainer">
