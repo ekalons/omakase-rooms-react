@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faStar } from "@fortawesome/free-solid-svg-icons";
 import { MichelinStarIcon } from "../MichelinStar/MichelinStar";
 import { Room } from "../../clients/getRooms";
+import "./MapPopup.css";
 
 interface MapPopupProps {
   room: Room;
