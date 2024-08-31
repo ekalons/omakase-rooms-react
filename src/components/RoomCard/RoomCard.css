@@ -48,74 +48,9 @@
     font-weight: 500;
 }
 
-.InfoRow {
-    display: flex;
-    flex-direction: row;
-}
-
-.RoomRating {
-    font-size: 15px;
-    font-weight: 450;
-    color: red;
-    padding-left: 2px;
-}
-
-.RoomReviewCount {
-    font-size: 12px;
-    padding: 1.5px 3px;
-}
-
-.RoomServeStyle {
-    font-size: 13px;
-    padding: 1.5px 3px;
-    font-weight: 500;
-}
-
-.RoomPrice {
-    font-weight: 500;
-    font-size: 14px;
-    padding: 1px 3px;
-}
-
-.RoomNeighborhood {
-    font-size: 15px;
-    position: relative;
-    top: 1.5px;
-    padding-left: 2px;
-}
-
-.IconContainer {
-    display: flex;
-    height: 21px;
-    width: 16px;
-    justify-content: center;
-}
-
-.Star {
-    position: relative;
-    top: 1.25px;
-    color: red;
-}
-
 .LocationMarker {
     position: relative;
     top: 3.5px;
-}
-
-.MichelinStarContainer {
-    display: flex;
-    height: 21px;
-    width: 55px;
-    padding: 0px 3px;
-}
-
-.MichelinStar {
-    position: relative;
-    top: 3.5px;
-    height: 12px;
-    width: 12px;
-    padding: 0px 2px;
-
 }
 
 .RoomDetailsContainer {
@@ -123,7 +58,6 @@
     height: 100%;
     font-size: 15px;
     font-weight: 400;
-    /*vertical-align: bottom;*/
     align-items: flex-end;
 
 }

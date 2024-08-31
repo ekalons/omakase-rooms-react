@@ -1,8 +1,7 @@
 import "./RoomCard.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { Room } from "../../clients/getRooms";
 import RoomInfo from "../RoomInfo/RoomInfo";
+import NeighborhoodDetails from "../NeighborhoodDetails/NeighborhoodDetails";
 
 interface RoomCardProps {
   name: string;
@@ -72,16 +71,7 @@ const RoomCard = ({
           price={price}
           michelin_stars={michelin_stars}
         />
-        <div className="InfoRow">
-          <div className="IconContainer">
-            <FontAwesomeIcon
-              icon={faMapMarkerAlt}
-              size="sm"
-              className="LocationMarker"
-            />
-          </div>
-          <p className="RoomNeighborhood">{neighborhood}</p>
-        </div>
+        <NeighborhoodDetails neighborhood={neighborhood} />
         <div className="InfoRow RoomDetailsContainer">
           <span>{details}</span>
         </div>

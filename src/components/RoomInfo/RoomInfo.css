@@ -1,0 +1,64 @@
+.InfoRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.RoomRating {
+    font-size: 15px;
+    font-weight: 450;
+    color: red;
+    padding-left: 2px;
+}
+
+.RoomReviewCount {
+    font-size: 12px;
+    padding: 1.5px 3px;
+}
+
+.RoomServeStyle {
+    font-size: 13px;
+    padding: 1.5px 3px;
+    font-weight: 500;
+}
+
+.RoomPrice {
+    font-weight: 500;
+    font-size: 14px;
+    padding: 1px 3px;
+}
+
+.IconContainer {
+    display: flex;
+    height: 21px;
+    width: 16px;
+    justify-content: center;
+}
+
+.Star {
+    position: relative;
+    top: 1.25px;
+    color: red;
+}
+
+
+.MichelinStarContainer {
+    display: flex;
+    height: 21px;
+    width: 55px;
+    padding: 0px 3px;
+}
+
+.MichelinStar {
+    position: relative;
+    top: 3.5px;
+    height: 12px;
+    width: 12px;
+    padding: 0px 2px;
+
+}
+
+@media (max-width: 450px) {
+    .RoomServeStyle {
+        display: none;
+    }
+}

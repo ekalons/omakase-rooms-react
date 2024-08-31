@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { MichelinStarIcon } from "../MichelinStar/MichelinStar";
+import "./RoomInfo.css";
 
 interface RoomInfoProps {
   rating: number;
