@@ -1,8 +1,8 @@
 import "./RoomCard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt, faStar } from "@fortawesome/free-solid-svg-icons";
-import { MichelinStarIcon } from "../MichelinStar/MichelinStar";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { Room } from "../../clients/getRooms";
+import RoomInfo from "../RoomInfo/RoomInfo";
 
 interface RoomCardProps {
   name: string;
@@ -65,33 +65,13 @@ const RoomCard = ({
       </div>
       <div className="InfoContainer">
         <p className="RoomName">{name}</p>
-        <div className="InfoRow">
-          <div className="IconContainer">
-            <FontAwesomeIcon
-              icon={faStar}
-              color="red"
-              size="sm"
-              className="Star"
-            />
-          </div>
-          <p className="RoomRating">{rating}</p>
-          <p className="RoomReviewCount">({review_count})</p>
-          <p className="RoomServeStyle">
-            {serve_style.toLowerCase() === "bar"
-              ? "Counter"
-              : "Counter & Table"}
-          </p>
-          <p className="RoomPrice">
-            {price >= 250 ? "$$$$" : price < 250 && price >= 125 ? "$$$" : "$$"}
-          </p>
-          {michelin_stars >= 1 && (
-            <div className="MichelinStarContainer">
-              <MichelinStarIcon />
-              {michelin_stars >= 2 && <MichelinStarIcon />}
-              {michelin_stars === 3 && <MichelinStarIcon />}
-            </div>
-          )}
-        </div>
+        <RoomInfo
+          rating={rating}
+          review_count={review_count}
+          serve_style={serve_style}
+          price={price}
+          michelin_stars={michelin_stars}
+        />
         <div className="InfoRow">
           <div className="IconContainer">
             <FontAwesomeIcon
