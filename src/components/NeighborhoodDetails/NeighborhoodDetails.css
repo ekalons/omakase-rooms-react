@@ -30,7 +30,6 @@
     transform: translate(-50%, -50%);
 }
 
-/* If you're using FontAwesome or a similar icon library, you might need this: */
 .LocationMarker svg {
     width: 14px;
     height: 14px;
