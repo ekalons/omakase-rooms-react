@@ -82,16 +82,6 @@
     flex-direction: column;
 }
 
-.HeaderBackground {
-    display: flex;
-    position: fixed;
-    top: 0px;
-    width: 100vw;
-    height: 60px;
-    background: #F3EEE8;
-    border-bottom: 1px solid #a3a3a3;
-    z-index: 5;
-}
 
 
 @media (max-width: 960px) {
@@ -107,7 +97,16 @@
     .PageContainer {
         touch-action: manipulation;
     }
-    .HeaderBackground {
-        display: none;
-    }
+}
+
+.PaginationContainer {
+  background-color: #F3EEE8;
+  padding: 10px 0;
+  width: 100%;
+}
+
+@media (max-width: 960px) {
+  .PaginationContainer {
+    margin-bottom: 20px;
+  }
 }

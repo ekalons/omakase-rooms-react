@@ -1,7 +1,9 @@
 export const configuration = {
   serviceUrls: {
     backendUrl: import.meta.env.VITE_SERVER_ACCESS_TOKEN,
+    newBackendUrl: import.meta.env.VITE_NEW_SERVER_ACCESS_TOKEN,
   },
+  migratedServer: import.meta.env.VITE_USE_NEW_SERVER,
   map: {
     defaultViewportSettingsNYC: {
       latitude: 40.736,

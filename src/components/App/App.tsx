@@ -6,11 +6,13 @@ import Etiquette from "../Etiquette/Etiquette";
 import Footer from "../Footer/Footer";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { RoomsProvider } from "../../providers/RoomsProvider";
+import Header from "../Header/Header";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <Header />
         <ScrollToTop>
           <Routes>
             <Route path="/" element={<Home />} />

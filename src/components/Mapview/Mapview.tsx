@@ -1,12 +1,17 @@
 import { useState, useEffect, useContext } from "react";
-import Map, { Marker, Popup, ViewStateChangeEvent } from "react-map-gl";
+import Map, { Marker, ViewStateChangeEvent } from "react-map-gl";
 import "./Mapview.css";
 
-import { MichelinStarIcon } from "../MichelinStar/MichelinStar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { configuration } from "../../configurationProvider";
 import { RoomsContext } from "../../providers/RoomsProvider";
+import { Room } from "../../clients/getRooms";
+import MapPopup from "../MapPopup/MapPopup";
+
+interface MapViewProps {
+  paginatedRooms: Room[];
+}
 
 interface Viewport {
   latitude: number;
@@ -18,20 +23,22 @@ const defaultStyleSettings: React.CSSProperties = {
   height: window.innerHeight - 60,
 };
 
-const MapView = () => {
+const MapView: React.FC<MapViewProps> = ({ paginatedRooms }) => {
   const roomsContext = useContext(RoomsContext);
   if (!roomsContext) {
     throw new Error("useRoomsContext must be used within Rooms");
   }
-  const { rooms, deSelectRooms, clickedRoomCard } = roomsContext;
+  const { deSelectRooms, clickedRoomCard, hoveredRoom } = roomsContext;
 
   const [viewState, setViewState] = useState<Viewport>(
     configuration.map.defaultViewportSettingsNYC
   );
+  const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
 
   useEffect(() => {
-    const listener = (e: any) => {
+    const listener = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
+        setSelectedRoom(null);
         deSelectRooms();
       }
     };
@@ -39,7 +46,7 @@ const MapView = () => {
     return () => {
       window.removeEventListener("keydown", listener);
     };
-  }, [clickedRoomCard]);
+  }, [clickedRoomCard, deSelectRooms, setSelectedRoom]);
 
   return (
     <div>
@@ -53,84 +60,42 @@ const MapView = () => {
           setViewState(newView.viewState)
         }
       >
-        {rooms?.map((room) => (
+        {paginatedRooms?.map((room) => (
           <div key={room.coordinates.longitude}>
             <Marker
               longitude={room.coordinates.longitude}
               latitude={room.coordinates.latitude}
+              onClick={(e) => {
+                e.originalEvent.stopPropagation();
+                setSelectedRoom(room);
+              }}
             >
-              <div
-                onClick={() => {
-                  deSelectRooms();
-                }}
-                className="MarkerMapIcon"
-              >
+              <div className="MarkerMapIcon">
                 <FontAwesomeIcon
                   icon={faMapMarkerAlt}
-                  color={room.isClicked === true ? "gray" : "red"}
+                  color={
+                    hoveredRoom && hoveredRoom._id === room._id ? "gray" : "red"
+                  }
                   size="lg"
+                  style={{
+                    transform:
+                      hoveredRoom && hoveredRoom._id === room._id
+                        ? "scale(1.2)"
+                        : "scale(1)",
+                    transition: "transform 0.2s ease-in-out",
+                  }}
                 />
               </div>
             </Marker>
-            {clickedRoomCard?.isClicked === true ? (
-              <Popup
-                latitude={clickedRoomCard.coordinates.latitude}
-                longitude={clickedRoomCard.coordinates.longitude}
-                offset={11}
+            {selectedRoom && selectedRoom._id === room._id && (
+              <MapPopup
+                room={room}
                 onClose={() => {
+                  setSelectedRoom(null);
                   deSelectRooms();
                 }}
-              >
-                <div>
-                  <h2 className="RoomName">{clickedRoomCard.name}</h2>
-                  <div className="InfoRow">
-                    <div className="IconContainer StarContainer">
-                      <FontAwesomeIcon
-                        icon={faStar}
-                        color="red"
-                        size="sm"
-                        className="Star"
-                      />
-                    </div>
-                    <p className="RoomRating">{clickedRoomCard.rating}</p>
-                    <p className="RoomServeStyle">
-                      {clickedRoomCard.serve_style}
-                    </p>
-                    <p className="RoomPrice">
-                      {clickedRoomCard.price >= 250
-                        ? "$$$$"
-                        : clickedRoomCard.price < 250 &&
-                          clickedRoomCard.price >= 125
-                        ? "$$$"
-                        : "$$"}
-                    </p>
-                    {clickedRoomCard.michelin_stars >= 1 && (
-                      <div className="MichelinStarContainer">
-                        <MichelinStarIcon />
-                        {clickedRoomCard.michelin_stars >= 2 && (
-                          <MichelinStarIcon />
-                        )}
-                        {clickedRoomCard.michelin_stars === 3 && (
-                          <MichelinStarIcon />
-                        )}
-                      </div>
-                    )}
-                  </div>
-                  <div className="InfoRow">
-                    <div className="IconContainer">
-                      <FontAwesomeIcon
-                        icon={faMapMarkerAlt}
-                        size="sm"
-                        className="LocationMarker"
-                      />
-                    </div>
-                    <p className="RoomNeighborhood">
-                      {clickedRoomCard.neighborhood}
-                    </p>
-                  </div>
-                </div>
-              </Popup>
-            ) : null}
+              />
+            )}
           </div>
         ))}
       </Map>

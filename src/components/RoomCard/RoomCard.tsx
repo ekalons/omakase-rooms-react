@@ -1,8 +1,7 @@
 import "./RoomCard.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt, faStar } from "@fortawesome/free-solid-svg-icons";
-import { MichelinStarIcon } from "../MichelinStar/MichelinStar";
 import { Room } from "../../clients/getRooms";
+import RoomInfo from "../RoomInfo/RoomInfo";
+import NeighborhoodDetails from "../NeighborhoodDetails/NeighborhoodDetails";
 
 interface RoomCardProps {
   name: string;
@@ -20,6 +19,8 @@ interface RoomCardProps {
     longitude: number;
   };
   updateParent: (obj: Room | undefined) => void;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
 }
 
 const RoomCard = ({
@@ -34,6 +35,8 @@ const RoomCard = ({
   photo,
   allRooms,
   updateParent,
+  onMouseEnter,
+  onMouseLeave,
 }: RoomCardProps) => {
   const handleUpdate = () => {
     const objArr = allRooms;
@@ -50,45 +53,25 @@ const RoomCard = ({
   };
 
   return (
-    <div className="RoomCard" onClick={handleUpdate}>
+    <div
+      className="RoomCard"
+      onClick={handleUpdate}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <div className="CardImageContainer">
         <img src={photo} alt="Restaurant" width="240px" height="160px" />
       </div>
       <div className="InfoContainer">
         <p className="RoomName">{name}</p>
-        <div className="InfoRow">
-          <div className="IconContainer">
-            <FontAwesomeIcon
-              icon={faStar}
-              color="red"
-              size="sm"
-              className="Star"
-            />
-          </div>
-          <p className="RoomRating">{rating}</p>
-          <p className="RoomReviewCount">({review_count})</p>
-          <p className="RoomServeStyle">{serve_style}</p>
-          <p className="RoomPrice">
-            {price >= 250 ? "$$$$" : price < 250 && price >= 125 ? "$$$" : "$$"}
-          </p>
-          {michelin_stars >= 1 && (
-            <div className="MichelinStarContainer">
-              <MichelinStarIcon />
-              {michelin_stars >= 2 && <MichelinStarIcon />}
-              {michelin_stars === 3 && <MichelinStarIcon />}
-            </div>
-          )}
-        </div>
-        <div className="InfoRow">
-          <div className="IconContainer">
-            <FontAwesomeIcon
-              icon={faMapMarkerAlt}
-              size="sm"
-              className="LocationMarker"
-            />
-          </div>
-          <p className="RoomNeighborhood">{neighborhood}</p>
-        </div>
+        <RoomInfo
+          rating={rating}
+          review_count={review_count}
+          serve_style={serve_style}
+          price={price}
+          michelin_stars={michelin_stars}
+        />
+        <NeighborhoodDetails neighborhood={neighborhood} />
         <div className="InfoRow RoomDetailsContainer">
           <span>{details}</span>
         </div>

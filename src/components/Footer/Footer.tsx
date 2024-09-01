@@ -1,9 +1,11 @@
 import "./Footer.css";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer>
-      <p>omakaserooms © 2022 - All rights reserved</p>
+      <p>omakaserooms © {currentYear} - All rights reserved</p>
     </footer>
   );
 };

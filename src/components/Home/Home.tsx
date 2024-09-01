@@ -1,6 +1,5 @@
 import "./Home.css";
 
-import Header from "../Header/Header";
 import Item from "../Item/Item";
 import MapItem from "../MapItem/MapItem";
 
@@ -11,7 +10,6 @@ import Serving from "../../assets/serving.jpeg";
 const Home = () => {
   return (
     <div className="Home">
-      <Header />
       <div className="HomeItemsContainer">
         <Item
           title="Omakase"

@@ -1,5 +1,12 @@
-import React, { createContext, useState, useEffect, ReactNode } from "react";
-import { Room, getRooms } from "../clients/getRooms";
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  useCallback,
+  ReactNode,
+} from "react";
+import { Room, getRooms, getRoomsV2 } from "../clients/getRooms";
+import { configuration } from "../configurationProvider";
 
 interface RoomsContextType {
   rooms: Room[];
@@ -8,6 +15,8 @@ interface RoomsContextType {
   fetchAndUpdateRoomsData: () => Promise<void>;
   setClickedRoomCard: React.Dispatch<React.SetStateAction<Room | undefined>>;
   deSelectRooms: () => void;
+  hoveredRoom: Room | null;
+  setHoveredRoom: React.Dispatch<React.SetStateAction<Room | null>>;
 }
 
 const RoomsContext = createContext<RoomsContextType | undefined>(undefined);
@@ -18,37 +27,45 @@ const RoomsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [clickedRoomCard, setClickedRoomCard] = useState<Room | undefined>(
     undefined
   );
+  const [hoveredRoom, setHoveredRoom] = useState<Room | null>(null);
 
-  const initializeRoomsData = async (): Promise<Room[]> => {
-    const roomsDataFromCall = await getRooms();
+  const initializeRoomsData = useCallback(async (): Promise<Room[]> => {
+    let roomsDataFromCall: Room[];
+    if (configuration.migratedServer) {
+      roomsDataFromCall = await getRoomsV2();
+    } else {
+      roomsDataFromCall = await getRooms();
+    }
     setRoomsData(roomsDataFromCall);
     return roomsDataFromCall;
-  };
+  }, []);
 
-  const fetchInitialData = async () => {
-    const roomsDataFromCall = await initializeRoomsData();
-    const updatedRooms = addOnClickPropertyToRooms([...roomsDataFromCall]);
-    setRooms(updatedRooms);
-  };
-
-  const fetchAndUpdateRoomsData = async () => {
+  const fetchAndUpdateRoomsData = useCallback(async () => {
     const updatedRooms = addOnClickPropertyToRooms([...roomsData]);
     setRooms(updatedRooms);
-  };
+  }, [roomsData]);
 
-  const addOnClickPropertyToRooms = (rooms: Room[]) => {
-    rooms.forEach((room: any) => (room.isClicked = false));
-    return rooms;
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      const roomsDataFromCall = await initializeRoomsData();
+      const updatedRooms = addOnClickPropertyToRooms([...roomsDataFromCall]);
+      setRooms(updatedRooms);
+    };
+
+    fetchInitialData();
+  }, [initializeRoomsData]);
+
+  const addOnClickPropertyToRooms = (rooms: Room[]): Room[] => {
+    return rooms.map((room) => ({
+      ...room,
+      isClicked: false,
+    }));
   };
 
   const deSelectRooms = () => {
     rooms?.forEach((room) => (room.isClicked = false));
     setClickedRoomCard(undefined);
   };
-
-  useEffect(() => {
-    fetchInitialData();
-  }, []);
 
   return (
     <RoomsContext.Provider
@@ -59,6 +76,8 @@ const RoomsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         clickedRoomCard,
         setClickedRoomCard,
         deSelectRooms,
+        hoveredRoom,
+        setHoveredRoom,
       }}
     >
       {children}

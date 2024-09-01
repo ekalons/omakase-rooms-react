@@ -1,0 +1,36 @@
+.RoomNeighborhood {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.InfoRow {
+    display: flex;
+    align-items: center;
+    height: 20px;
+}
+
+.IconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+.LocationMarker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.LocationMarker svg {
+    width: 14px;
+    height: 14px;
+}

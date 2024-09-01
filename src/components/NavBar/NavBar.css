@@ -24,6 +24,10 @@ a {
     .NavbarContainer {
         width: 500px;
         display: contents;
+        background-color: #F3EEE8;
+    }
+    .NavbarContainer.transparent {
+        background-color: transparent;
     }
     a:after{
         content: "";
@@ -43,12 +47,16 @@ a {
     }
     .navBar {
         position: absolute;
-        background-color: transparent;
+        background-color: #F3EEE8;
         flex: 1;
         display: flex;
         justify-content: center;
         margin-top: 3px;
         font-weight: 600;
+        z-index: 101;
+    }
+    .navBar.transparent {
+        background-color: transparent;
     }
 }
 
@@ -71,12 +79,19 @@ a {
 
 
 @media (max-width: 720px) {
-    .navBar {
-        height: 100px;
-        top: 50px;
-        right: 0;
-        left: 0;
-        display: unset;
+    .NavbarContainer {
+        background-color: #3B3B3B;
+        position: absolute;
+        top: -15px;
+        right: 0px;
+        width: 103vw;
+        height: 6.5vh;
+        transition-property: height;
+        transition-duration: 0.3s;
+        z-index: 101;
+    }
+    .NavbarContainer.transparent {
+        background-color: transparent;
     }
 
     .navbar .ShowItem {
@@ -94,23 +109,7 @@ a {
         background-color: transparent;
         justify-content: flex-end;
         position: absolute;
-        /*top: 5px;*/
         right: 35px;
-    }
-
-    .NavbarContainer {
-        background-color: #3B3B3B;
-        position: absolute;
-        top: -15px;
-        right: 0px;
-        width: 103vw;
-        height: 6.5vh;
-        transition-property: height;
-        transition-duration: 0.3s;
-    }
-
-    .TransitionIn {
-        height: 200px;
     }
 
     .NavbarContainer ul {

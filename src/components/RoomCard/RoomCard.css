@@ -31,7 +31,8 @@
     width: 100%;
     border-radius: 10px;
 }
-.InfoContainer {
+
+.RoomCard .InfoContainer {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -39,93 +40,59 @@
     padding-right: 0;
 }
 
-.InfoContainer p {
+.RoomCard .InfoContainer p {
     padding-bottom: 3px;
+    margin: 0;
 }
 
-.RoomName {
+.RoomCard .InfoContainer p.RoomName {
+    padding: 0;
     font-size: 20px;
     font-weight: 500;
+    margin: 0 0 5px 2px;
 }
 
-.InfoRow {
+.RoomCard .RoomName,
+.RoomCard .InfoRow,
+.RoomCard .NeighborhoodDetails {
+    padding-left: 5px;
+}
+
+.RoomCard .LocationMarker,
+.RoomCard .Star {
     display: flex;
-    flex-direction: row;
-}
-
-.RoomRating {
-    font-size: 15px;
-    font-weight: 450;
-    color: red;
-    padding-left: 2px;
-}
-
-.RoomReviewCount {
-    font-size: 12px;
-    padding: 1.5px 3px;
-}
-
-.RoomServeStyle {
-    font-size: 13px;
-    padding: 1.5px 3px;
-    font-weight: 500;
-}
-
-.RoomPrice {
-    font-weight: 500;
-    font-size: 14px;
-    padding: 1px 3px;
-}
-
-.RoomNeighborhood {
-    font-size: 15px;
-    position: relative;
-    top: 1.5px;
-    padding-left: 2px;
-}
-
-.IconContainer {
-    display: flex;
-    height: 21px;
-    width: 16px;
+    align-items: center;
     justify-content: center;
 }
 
-.Star {
-    position: relative;
-    top: 1.25px;
-    color: red;
-}
-
-.LocationMarker {
-    position: relative;
-    top: 3.5px;
-}
-
-.MichelinStarContainer {
-    display: flex;
-    height: 21px;
-    width: 55px;
-    padding: 0px 3px;
-}
-
-.MichelinStar {
-    position: relative;
-    top: 3.5px;
-    height: 12px;
-    width: 12px;
-    padding: 0px 2px;
-
-}
-
-.RoomDetailsContainer {
+.RoomCard .RoomDetailsContainer {
     display: flex;
     height: 100%;
     font-size: 15px;
     font-weight: 400;
-    /*vertical-align: bottom;*/
     align-items: flex-end;
+    margin-top: auto;
+    padding-left: 8px;
+}
 
+.RoomCard .InfoRow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.RoomCard .IconContainer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-left: 0;
+    margin-right: 5px;
+}
+
+.RoomCard .InfoRow > *:first-child {
+    margin-left: -5px;
 }
 
 @media (max-width: 640px) {
@@ -141,7 +108,6 @@
     }
 
     .RoomServeStyle {
-        /*font-size: 10px;*/
         display: none;
     }
 }
