@@ -30,12 +30,9 @@ const RoomsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [hoveredRoom, setHoveredRoom] = useState<Room | null>(null);
 
   const initializeRoomsData = useCallback(async (): Promise<Room[]> => {
-    let roomsDataFromCall: Room[];
-    if (configuration.migratedServer) {
-      roomsDataFromCall = await getRoomsV2();
-    } else {
-      roomsDataFromCall = await getRooms();
-    }
+    const roomsDataFromCall = configuration.migratedServer
+      ? await getRoomsV2()
+      : await getRooms();
     setRoomsData(roomsDataFromCall);
     return roomsDataFromCall;
   }, []);

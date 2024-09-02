@@ -74,7 +74,7 @@ const MapView: React.FC<MapViewProps> = ({ paginatedRooms }) => {
                 <FontAwesomeIcon
                   icon={faMapMarkerAlt}
                   color={
-                    hoveredRoom && hoveredRoom._id === room._id ? "gray" : "red"
+                    hoveredRoom && hoveredRoom._id === room._id ? "red" : "gray"
                   }
                   size="lg"
                   style={{
