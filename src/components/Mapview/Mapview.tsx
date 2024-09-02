@@ -1,5 +1,9 @@
-import { useState, useEffect, useContext } from "react";
-import Map, { Marker, ViewStateChangeEvent } from "react-map-gl";
+import { useState, useEffect, useContext, useCallback } from "react";
+import Map, {
+  Marker,
+  ViewStateChangeEvent,
+  MapLayerMouseEvent,
+} from "react-map-gl";
 import "./Mapview.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,6 +22,7 @@ interface Viewport {
   longitude: number;
   zoom: number;
 }
+
 const defaultStyleSettings: React.CSSProperties = {
   width: "50vw",
   height: window.innerHeight - 60,
@@ -35,6 +40,20 @@ const MapView: React.FC<MapViewProps> = ({ paginatedRooms }) => {
     configuration.map.defaultViewportSettingsNYC
   );
   const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
+
+  const handleMapClick = useCallback(
+    (event: MapLayerMouseEvent) => {
+      if (
+        event.originalEvent.target instanceof HTMLElement &&
+        event.originalEvent.target.closest(".MarkerMapIcon")
+      ) {
+        return;
+      }
+      setSelectedRoom(null);
+      deSelectRooms();
+    },
+    [deSelectRooms]
+  );
 
   useEffect(() => {
     const listener = (e: KeyboardEvent) => {
@@ -60,6 +79,7 @@ const MapView: React.FC<MapViewProps> = ({ paginatedRooms }) => {
         onMove={(newView: ViewStateChangeEvent) =>
           setViewState(newView.viewState)
         }
+        onClick={handleMapClick}
       >
         {paginatedRooms?.map((room) => (
           <div key={room.coordinates.longitude}>
