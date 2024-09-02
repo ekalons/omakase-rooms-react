@@ -77,9 +77,16 @@ const Rooms = () => {
     setIsBarTableClicked(!isBarTableClicked);
   };
 
+  const handleRoomClick = useCallback((room: Room) => {
+    if (room.url) {
+      window.open(room.url, "_blank", "noopener,noreferrer");
+    }
+  }, []);
+
   const updateRoomsState = (room: Room | undefined) => {
     if (room !== undefined) {
       setClickedRoomCard(room);
+      handleRoomClick(room);
     }
   };
 
@@ -141,6 +148,7 @@ const Rooms = () => {
                 coordinates={room.coordinates}
                 photo={room.photo}
                 allRooms={rooms}
+                url={room.url}
                 updateParent={updateRoomsState}
                 onMouseEnter={() => setHoveredRoom(room)}
                 onMouseLeave={() => setHoveredRoom(null)}

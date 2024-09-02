@@ -17,6 +17,7 @@ export interface Room {
   rating: number;
   review_count: number;
   serve_style: string;
+  url?: string;
 }
 
 export async function getRooms(): Promise<Room[]> {

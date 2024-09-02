@@ -21,6 +21,7 @@ interface RoomCardProps {
   updateParent: (obj: Room | undefined) => void;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
+  url?: string;
 }
 
 const RoomCard = ({
