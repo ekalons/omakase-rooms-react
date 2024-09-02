@@ -40,6 +40,7 @@ const MapView: React.FC<MapViewProps> = ({ paginatedRooms }) => {
     configuration.map.defaultViewportSettingsNYC
   );
   const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
+  const [clickedMarker, setClickedMarker] = useState<string | null>(null);
 
   const handleMapClick = useCallback(
     (event: MapLayerMouseEvent) => {
@@ -50,15 +51,22 @@ const MapView: React.FC<MapViewProps> = ({ paginatedRooms }) => {
         return;
       }
       setSelectedRoom(null);
+      setClickedMarker(null);
       deSelectRooms();
     },
     [deSelectRooms]
   );
 
+  const handleMarkerClick = useCallback((room: Room) => {
+    setSelectedRoom(room);
+    setClickedMarker(room._id);
+  }, []);
+
   useEffect(() => {
     const listener = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setSelectedRoom(null);
+        setClickedMarker(null);
         deSelectRooms();
       }
     };
@@ -67,6 +75,15 @@ const MapView: React.FC<MapViewProps> = ({ paginatedRooms }) => {
       window.removeEventListener("keydown", listener);
     };
   }, [clickedRoomCard, deSelectRooms, setSelectedRoom]);
+
+  const getMarkerColor = useCallback(
+    (room: Room) => {
+      if (clickedMarker === room._id) return "red";
+      if (hoveredRoom && hoveredRoom._id === room._id) return "red";
+      return "gray";
+    },
+    [hoveredRoom, clickedMarker]
+  );
 
   return (
     <div>
@@ -88,7 +105,7 @@ const MapView: React.FC<MapViewProps> = ({ paginatedRooms }) => {
               latitude={room.coordinates.latitude}
               onClick={(e) => {
                 e.originalEvent.stopPropagation();
-                setSelectedRoom(room);
+                handleMarkerClick(room);
               }}
             >
               <div
@@ -98,13 +115,12 @@ const MapView: React.FC<MapViewProps> = ({ paginatedRooms }) => {
               >
                 <FontAwesomeIcon
                   icon={faMapMarkerAlt}
-                  color={
-                    hoveredRoom && hoveredRoom._id === room._id ? "red" : "gray"
-                  }
+                  color={getMarkerColor(room)}
                   size="lg"
                   style={{
                     transform:
-                      hoveredRoom && hoveredRoom._id === room._id
+                      (hoveredRoom && hoveredRoom._id === room._id) ||
+                      clickedMarker === room._id
                         ? "scale(1.2)"
                         : "scale(1)",
                     transition: "transform 0.2s ease-in-out",
@@ -117,6 +133,7 @@ const MapView: React.FC<MapViewProps> = ({ paginatedRooms }) => {
                 room={room}
                 onClose={() => {
                   setSelectedRoom(null);
+                  setClickedMarker(null);
                   deSelectRooms();
                 }}
               />
