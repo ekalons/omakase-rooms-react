@@ -70,3 +70,11 @@
 .RoomInfo {
     padding-left: 0px;
 }
+
+.RoomCard .RoomInfo .RoomRating,
+.RoomCard .RoomInfo .RoomServeStyle,
+.RoomCard .RoomInfo .RoomPrice {
+    font-weight: 500;
+    -webkit-text-stroke: 0.2px;
+    text-stroke: 0.2px;
+}
