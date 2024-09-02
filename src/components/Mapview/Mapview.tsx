@@ -28,7 +28,8 @@ const MapView: React.FC<MapViewProps> = ({ paginatedRooms }) => {
   if (!roomsContext) {
     throw new Error("useRoomsContext must be used within Rooms");
   }
-  const { deSelectRooms, clickedRoomCard, hoveredRoom } = roomsContext;
+  const { deSelectRooms, clickedRoomCard, hoveredRoom, setHoveredRoom } =
+    roomsContext;
 
   const [viewState, setViewState] = useState<Viewport>(
     configuration.map.defaultViewportSettingsNYC
@@ -70,7 +71,11 @@ const MapView: React.FC<MapViewProps> = ({ paginatedRooms }) => {
                 setSelectedRoom(room);
               }}
             >
-              <div className="MarkerMapIcon">
+              <div
+                className="MarkerMapIcon"
+                onMouseEnter={() => setHoveredRoom(room)}
+                onMouseLeave={() => setHoveredRoom(null)}
+              >
                 <FontAwesomeIcon
                   icon={faMapMarkerAlt}
                   color={
