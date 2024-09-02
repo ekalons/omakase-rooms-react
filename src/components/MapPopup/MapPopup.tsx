@@ -10,28 +10,38 @@ interface MapPopupProps {
   onClose: () => void;
 }
 
-const MapPopup: React.FC<MapPopupProps> = ({ room, onClose }) => (
-  <Popup
-    latitude={room.coordinates.latitude}
-    longitude={room.coordinates.longitude}
-    offset={11}
-    onClose={onClose}
-    closeButton={true}
-    closeOnClick={false}
-    className="custom-popup"
-  >
-    <div className="popup-content">
-      <h2 className="RoomName">{room.name}</h2>
-      <RoomInfo
-        rating={room.rating}
-        review_count={room.review_count}
-        serve_style={room.serve_style}
-        price={room.price}
-        michelin_stars={room.michelin_stars}
-      />
-      <NeighborhoodDetails neighborhood={room.neighborhood} />
-    </div>
-  </Popup>
-);
+const MapPopup: React.FC<MapPopupProps> = ({ room, onClose }) => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (room.url) {
+      window.open(room.url, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  return (
+    <Popup
+      latitude={room.coordinates.latitude}
+      longitude={room.coordinates.longitude}
+      offset={11}
+      onClose={onClose}
+      closeButton={true}
+      closeOnClick={false}
+      className="custom-popup"
+    >
+      <div className="popup-content" onClick={handleClick}>
+        <h2 className="RoomName">{room.name}</h2>
+        <RoomInfo
+          rating={room.rating}
+          review_count={room.review_count}
+          serve_style={room.serve_style}
+          price={room.price}
+          michelin_stars={room.michelin_stars}
+        />
+        <NeighborhoodDetails neighborhood={room.neighborhood} />
+      </div>
+    </Popup>
+  );
+};
 
 export default MapPopup;
