@@ -88,7 +88,7 @@ a {
         height: 6.5vh;
         transition-property: height;
         transition-duration: 0.3s;
-        z-index: 101;
+        z-index: 100;
     }
     .NavbarContainer.transparent {
         background-color: transparent;
@@ -110,6 +110,7 @@ a {
         justify-content: flex-end;
         position: absolute;
         right: 35px;
+        z-index: 1000;
     }
 
     .NavbarContainer ul {
@@ -137,6 +138,10 @@ a {
         color: #C2BEB9;
     }
 
+    .NavbarContainer,
+    .NavbarContainer.transparent {
+        background-color: #3B3B3B;
+    }
 }
 
 @media (max-width: 500px) {
