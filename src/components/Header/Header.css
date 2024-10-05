@@ -58,8 +58,9 @@
 
     .HeaderLogo {
         position: absolute;
-        top: -4px;
+        top: -3px;
     }
+    
     .HeaderLogo h1 {
         color: #F3EEE8;
     }
