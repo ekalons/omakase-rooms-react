@@ -7,10 +7,11 @@
     align-items: center;
     position: fixed;
     top: 16.5px;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
+    touch-action: manipulation;
 }
 
 .HamburgerMenu {
@@ -18,10 +19,12 @@
     width: 4rem;
     background: transparent;
     cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
+    touch-action: manipulation;
+    outline: none;
 }
 
 .HamburgerMenu.Cross #Bar1 {
@@ -57,4 +60,8 @@
 
 @media (min-width: 721px) {
     .ButtonContainer {display: none;}
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
