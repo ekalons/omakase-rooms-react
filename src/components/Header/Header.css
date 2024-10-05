@@ -55,12 +55,10 @@
         padding: 0;
         padding-top: 0;
     }
-    .Header:not(.transparent) {
-        background-color: #3B3B3B;
-    }
+
     .HeaderLogo {
         position: absolute;
-        top: -6px;
+        top: -4px;
     }
     .HeaderLogo h1 {
         color: #F3EEE8;
