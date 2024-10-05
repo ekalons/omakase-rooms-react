@@ -1,16 +1,13 @@
-import { useState } from "react";
 import "./HamMenu.css";
 
-const HamMenu = () => {
-  const [switchIcon, setSwitchIcon] = useState(false);
-  const handleClick = () => setSwitchIcon(!switchIcon);
+interface HamMenuProps {
+  isOpen: boolean;
+}
 
+const HamMenu = ({ isOpen }: HamMenuProps) => {
   return (
     <div className="ButtonContainer">
-      <div
-        className={`HamburgerMenu ${switchIcon === true ? "Cross" : ""}`}
-        onClick={handleClick}
-      >
+      <div className={`HamburgerMenu ${isOpen ? "Cross" : ""}`}>
         <div className="Bar" id="Bar1"></div>
         <div className="Bar" id="Bar2"></div>
       </div>
