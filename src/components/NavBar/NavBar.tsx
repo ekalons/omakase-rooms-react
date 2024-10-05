@@ -12,6 +12,10 @@ const NavBar = ({ isTransparent }: NavBarProps) => {
 
   const handleClick = () => setAnimate((prevAnimate) => !prevAnimate);
 
+  const handleLinkClick = () => {
+    setAnimate(false);
+  };
+
   return (
     <div>
       <div
@@ -19,21 +23,27 @@ const NavBar = ({ isTransparent }: NavBarProps) => {
           isTransparent ? "transparent" : ""
         }`}
       >
-        <ul className={`navBar ${isTransparent ? "transparent" : ""}`}>
+        <ul className="navBar">
           <li className={`${animate ? "ShowItem" : "HideItem"}`}>
-            <Link to="/">Home</Link>
+            <Link to="/" onClick={handleLinkClick}>
+              Home
+            </Link>
           </li>
           <li className={`${animate ? "ShowItem" : "HideItem"}`}>
-            <Link to="/rooms">Rooms</Link>
+            <Link to="/rooms" onClick={handleLinkClick}>
+              Rooms
+            </Link>
           </li>
           <li className={`${animate ? "ShowItem" : "HideItem"}`}>
-            <Link to="/etiquette">Etiquette</Link>
+            <Link to="/etiquette" onClick={handleLinkClick}>
+              Etiquette
+            </Link>
           </li>
         </ul>
       </div>
 
       <div className="HamButtonContainer" onClick={handleClick}>
-        <HamMenu />
+        <HamMenu isOpen={animate} />
       </div>
     </div>
   );
