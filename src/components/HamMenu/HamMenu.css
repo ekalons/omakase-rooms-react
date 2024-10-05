@@ -7,6 +7,10 @@
     align-items: center;
     position: fixed;
     top: 16.5px;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .HamburgerMenu {
@@ -14,6 +18,10 @@
     width: 4rem;
     background: transparent;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .HamburgerMenu.Cross #Bar1 {
