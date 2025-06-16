@@ -35,7 +35,9 @@ const Rooms = () => {
     }
 
     if (isBarTableClicked) {
-      result = result.filter((room) => room.serve_style !== "Bar");
+      result = result.filter(
+        (room) => room.serve_style.toLowerCase() !== "bar"
+      );
     }
 
     if (isPriceClicked) {
@@ -129,7 +131,7 @@ const Rooms = () => {
                   backgroundColor: isBarTableClicked ? "rgb(228 228 231)" : "",
                 }}
               >
-                Counter / Table
+                Counter & Tables
               </p>
             </div>
           </div>
