@@ -3,7 +3,7 @@ import Map, {
   Marker,
   ViewStateChangeEvent,
   MapLayerMouseEvent,
-} from "react-map-gl";
+} from "react-map-gl/mapbox";
 import "./Mapview.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
