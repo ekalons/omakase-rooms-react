@@ -1,5 +1,5 @@
 import React from "react";
-import { Popup } from "react-map-gl";
+import { Popup } from "react-map-gl/mapbox";
 import { Room } from "../../clients/getRooms";
 import RoomInfo from "../RoomInfo/RoomInfo";
 import NeighborhoodDetails from "../NeighborhoodDetails/NeighborhoodDetails";

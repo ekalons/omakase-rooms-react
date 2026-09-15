@@ -2,8 +2,8 @@ import { useState, useEffect, useContext, useCallback } from "react";
 import Map, {
   Marker,
   ViewStateChangeEvent,
-  MapLayerMouseEvent,
-} from "react-map-gl";
+  MapMouseEvent,
+} from "react-map-gl/mapbox";
 import "./Mapview.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -37,13 +37,13 @@ const MapView: React.FC<MapViewProps> = ({ paginatedRooms }) => {
     roomsContext;
 
   const [viewState, setViewState] = useState<Viewport>(
-    configuration.map.defaultViewportSettingsNYC
+    configuration.map.defaultViewportSettingsNYC,
   );
   const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
   const [clickedMarker, setClickedMarker] = useState<string | null>(null);
 
   const handleMapClick = useCallback(
-    (event: MapLayerMouseEvent) => {
+    (event: MapMouseEvent) => {
       if (
         event.originalEvent.target instanceof HTMLElement &&
         event.originalEvent.target.closest(".MarkerMapIcon")
@@ -54,7 +54,7 @@ const MapView: React.FC<MapViewProps> = ({ paginatedRooms }) => {
       setClickedMarker(null);
       deSelectRooms();
     },
-    [deSelectRooms]
+    [deSelectRooms],
   );
 
   const handleMarkerClick = useCallback((room: Room) => {
@@ -82,7 +82,7 @@ const MapView: React.FC<MapViewProps> = ({ paginatedRooms }) => {
       if (hoveredRoom && hoveredRoom._id === room._id) return "red";
       return "gray";
     },
-    [hoveredRoom, clickedMarker]
+    [hoveredRoom, clickedMarker],
   );
 
   return (
